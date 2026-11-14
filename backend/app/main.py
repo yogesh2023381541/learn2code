@@ -14,10 +14,20 @@ from .models import (
     AIFeedback,
     AIMessage,
     AIUsageLog,
+    AIRecommendation,
+    AdminContentDraft,
+    Flashcard,
+    FlashcardReview,
     Lesson,
     LessonProgress,
     PracticeProblem,
     PracticeSubmission,
+    PersonalizedRoadmap,
+    PersonalizedRoadmapNode,
+    Quiz,
+    QuizAttempt,
+    QuizQuestion,
+    RevisionSession,
     RefreshSession,
     Subject,
     SubjectEnrollment,
@@ -28,11 +38,14 @@ from .models import (
     UserProfile,
 )
 from .schemas import (
+    AdminDraftRequest,
+    AdminDraftResponse,
     AIConversationCreateRequest,
     AIConversationResponse,
     AIFeedbackRequest,
     AIMessageRequest,
     AIMessageResponse,
+    CodeAssistantRequest,
     ActivityRequest,
     AuthResponse,
     BookmarkRequest,
@@ -44,6 +57,12 @@ from .schemas import (
     OnboardingRequest,
     PracticeProblemResponse,
     ProfileUpdateRequest,
+    QuizAttemptRequest,
+    QuizAttemptResponse,
+    QuizGenerateRequest,
+    QuizQuestionResponse,
+    QuizResponse,
+    RecommendationResponse,
     RefreshRequest,
     SignupRequest,
     SubmissionRequest,
@@ -51,6 +70,11 @@ from .schemas import (
     SubjectResponse,
     TokenResponse,
     UserResponse,
+    FlashcardResponse,
+    RevisionResponse,
+    RoadmapRequest,
+    RoadmapResponse,
+    RoadmapNodeResponse,
 )
 from .services.ai.chat_service import AIProviderError, generate_reply
 from .security import (
@@ -274,6 +298,235 @@ def add_ai_feedback(
     db.add(AIFeedback(user_id=user.id, message_id=message.id, rating=payload.rating, comment=payload.comment))
     db.commit()
     return {"status": "recorded"}
+
+
+@app.post("/api/ai/code-assistant")
+def code_assistant(
+    payload: CodeAssistantRequest,
+    user: User = Depends(current_user),
+) -> dict[str, str]:
+    context = {"language": payload.language, "task": payload.task}
+    if payload.error_message:
+        context["compiler_error"] = payload.error_message
+    try:
+        result = generate_reply(
+            [{"role": "user", "content": f"Review this code for {payload.task}:\n```{payload.language}\n{payload.code}\n```"}],
+            "practical",
+            context,
+        )
+    except AIProviderError as error:
+        raise HTTPException(status_code=503, detail=str(error)) from error
+    return {"content": result.content}
+
+
+@app.get("/api/recommendations", response_model=list[RecommendationResponse])
+def recommendations(user: User = Depends(current_user), db: Session = Depends(get_db)) -> list[RecommendationResponse]:
+    profile = user.profile
+    recommendations: list[AIRecommendation] = []
+    activity_count = db.scalar(select(func.count(UserActivity.id)).where(UserActivity.user_id == user.id)) or 0
+    if profile and profile.topics_completed == 0:
+        subject = db.scalar(select(Subject).where(Subject.is_published.is_(True)).order_by(Subject.id))
+        if subject:
+            recommendations.append(AIRecommendation(
+                user_id=user.id, title=f"Start {subject.name}", reason="No completed topics yet; begin with the first published learning path.",
+                target_type="subject", target_id=subject.id, evidence_json=json.dumps({"topics_completed": 0}),
+            ))
+    if activity_count == 0:
+        subject = db.scalar(select(Subject).where(Subject.is_published.is_(True)).order_by(Subject.id))
+        if subject:
+            recommendations.append(AIRecommendation(
+                user_id=user.id, title="Build your first study habit", reason="No learning activity has been recorded. Complete a short lesson today.",
+                target_type="subject", target_id=subject.id, evidence_json=json.dumps({"activity_count": 0}),
+            ))
+    if profile and profile.problems_solved == 0:
+        problem = db.scalar(select(PracticeProblem).order_by(PracticeProblem.id))
+        if problem:
+            recommendations.append(AIRecommendation(
+                user_id=user.id, title="Try an easy coding problem", reason="Practice history shows no accepted problems yet.",
+                target_type="problem", target_id=problem.id, evidence_json=json.dumps({"problems_solved": 0}),
+            ))
+    for item in recommendations:
+        db.add(item)
+    db.commit()
+    return [
+        RecommendationResponse(
+            id=item.id, title=item.title, reason=item.reason, target_type=item.target_type,
+            target_id=item.target_id, evidence=json.loads(item.evidence_json),
+        ) for item in recommendations
+    ]
+
+
+@app.get("/api/analytics")
+def analytics(user: User = Depends(current_user), db: Session = Depends(get_db)) -> dict[str, object]:
+    activity = db.execute(select(UserActivity.activity_type, func.sum(UserActivity.minutes)).where(
+        UserActivity.user_id == user.id,
+    ).group_by(UserActivity.activity_type)).all()
+    completed_lessons = db.scalar(select(func.count(LessonProgress.id)).where(LessonProgress.user_id == user.id)) or 0
+    submissions = db.scalar(select(func.count(PracticeSubmission.id)).where(PracticeSubmission.user_id == user.id)) or 0
+    accepted = db.scalar(select(func.count(PracticeSubmission.id)).where(
+        PracticeSubmission.user_id == user.id, PracticeSubmission.status == "accepted",
+    )) or 0
+    return {
+        "measured": {
+            "activity_minutes_by_type": {kind: int(minutes) for kind, minutes in activity},
+            "completed_lessons": completed_lessons,
+            "practice_submissions": submissions,
+            "accepted_submissions": accepted,
+            "acceptance_rate": round(accepted / submissions * 100, 1) if submissions else 0,
+            "learning_hours": user.profile.learning_hours if user.profile else 0,
+        },
+        "insights": [
+            "Complete another lesson to establish a measurable learning trend." if completed_lessons < 2 else "Your lesson completion history is building a consistent trend.",
+            "Try an easy practice problem to improve coding evidence." if accepted == 0 else "Keep practicing to strengthen problem-solving fluency.",
+        ],
+    }
+
+
+@app.post("/api/roadmaps", response_model=RoadmapResponse, status_code=201)
+def create_roadmap(
+    payload: RoadmapRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> RoadmapResponse:
+    profile = user.profile
+    roadmap = PersonalizedRoadmap(
+        user_id=user.id, goal=payload.goal,
+        experience_level=profile.experience_level if profile and profile.experience_level else "beginner",
+    )
+    db.add(roadmap)
+    db.flush()
+    subjects = list(db.scalars(select(Subject).where(Subject.is_published.is_(True)).order_by(Subject.id)))
+    nodes: list[PersonalizedRoadmapNode] = []
+    order = 0
+    previous_id: int | None = None
+    for subject in subjects:
+        lessons = list(db.scalars(select(Lesson).where(Lesson.subject_id == subject.id).order_by(Lesson.order_index).limit(3)))
+        for lesson in lessons:
+            order += 1
+            node = PersonalizedRoadmapNode(
+                roadmap_id=roadmap.id, subject_id=subject.id, lesson_id=lesson.id,
+                title=f"{subject.name}: {lesson.title}", order_index=order,
+                estimated_minutes=lesson.estimated_minutes,
+                prerequisite_ids=json.dumps([previous_id] if previous_id else []),
+            )
+            db.add(node)
+            db.flush()
+            nodes.append(node)
+            previous_id = node.id
+    db.commit()
+    return RoadmapResponse(
+        id=roadmap.id, goal=roadmap.goal, experience_level=roadmap.experience_level,
+        nodes=[RoadmapNodeResponse(
+            id=node.id, title=node.title, subject_id=node.subject_id, lesson_id=node.lesson_id,
+            node_type=node.node_type, order_index=node.order_index, estimated_minutes=node.estimated_minutes,
+            prerequisite_ids=json.loads(node.prerequisite_ids),
+        ) for node in nodes],
+    )
+
+
+@app.post("/api/quizzes", response_model=QuizResponse, status_code=201)
+def generate_quiz(
+    payload: QuizGenerateRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> QuizResponse:
+    query = select(Lesson).order_by(Lesson.order_index)
+    if payload.subject_id:
+        query = query.where(Lesson.subject_id == payload.subject_id)
+    lessons = list(db.scalars(query.limit(payload.question_count)))
+    if not lessons:
+        raise HTTPException(status_code=404, detail="No lesson content is available for this quiz")
+    quiz = Quiz(user_id=user.id, subject_id=payload.subject_id, title="Generated learning check", difficulty=payload.difficulty, question_count=len(lessons))
+    db.add(quiz)
+    db.flush()
+    questions: list[QuizQuestion] = []
+    for lesson in lessons:
+        question = QuizQuestion(
+            quiz_id=quiz.id, prompt=f"What is the main idea of '{lesson.title}'?",
+            options_json=json.dumps([lesson.summary, "Skip the topic", "Delete the program", "None of these"]),
+            correct_answer=lesson.summary, explanation=lesson.content,
+        )
+        db.add(question)
+        db.flush()
+        questions.append(question)
+    db.commit()
+    return QuizResponse(
+        id=quiz.id, title=quiz.title, difficulty=quiz.difficulty,
+        questions=[QuizQuestionResponse(id=q.id, prompt=q.prompt, options=json.loads(q.options_json), explanation=q.explanation) for q in questions],
+    )
+
+
+@app.post("/api/quizzes/{quiz_id}/attempts", response_model=QuizAttemptResponse, status_code=201)
+def submit_quiz(
+    quiz_id: int,
+    payload: QuizAttemptRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> QuizAttemptResponse:
+    quiz = db.scalar(select(Quiz).where(Quiz.id == quiz_id, Quiz.user_id == user.id))
+    if quiz is None:
+        raise HTTPException(status_code=404, detail="Quiz not found")
+    questions = list(db.scalars(select(QuizQuestion).where(QuizQuestion.quiz_id == quiz.id)))
+    score = sum(payload.answers.get(str(q.id)) == q.correct_answer for q in questions)
+    attempt = QuizAttempt(user_id=user.id, quiz_id=quiz.id, score=score, answers_json=json.dumps(payload.answers))
+    db.add(attempt)
+    db.commit()
+    db.refresh(attempt)
+    return QuizAttemptResponse(id=attempt.id, score=score, total=len(questions))
+
+
+@app.get("/api/revision", response_model=list[RevisionResponse])
+def revision_queue(user: User = Depends(current_user), db: Session = Depends(get_db)) -> list[RevisionResponse]:
+    rows = db.scalars(select(RevisionSession).where(
+        RevisionSession.user_id == user.id, RevisionSession.completed_at.is_(None),
+    ).order_by(RevisionSession.due_at))
+    return [RevisionResponse(id=row.id, topic=row.topic, due_at=row.due_at.isoformat(), interval_days=row.interval_days) for row in rows]
+
+
+@app.post("/api/revision", response_model=RevisionResponse, status_code=201)
+def create_revision(topic: str, user: User = Depends(current_user), db: Session = Depends(get_db)) -> RevisionResponse:
+    row = RevisionSession(user_id=user.id, topic=topic, due_at=datetime.now(UTC) + timedelta(days=1), interval_days=1)
+    db.add(row)
+    db.commit()
+    db.refresh(row)
+    return RevisionResponse(id=row.id, topic=row.topic, due_at=row.due_at.isoformat(), interval_days=row.interval_days)
+
+
+@app.post("/api/revision/{revision_id}/complete", response_model=RevisionResponse)
+def complete_revision(revision_id: int, user: User = Depends(current_user), db: Session = Depends(get_db)) -> RevisionResponse:
+    row = db.scalar(select(RevisionSession).where(RevisionSession.id == revision_id, RevisionSession.user_id == user.id))
+    if row is None:
+        raise HTTPException(status_code=404, detail="Revision session not found")
+    row.completed_at = datetime.now(UTC)
+    row.interval_days = min(60, row.interval_days * 2)
+    row.due_at = datetime.now(UTC) + timedelta(days=row.interval_days)
+    row.completed_at = None
+    db.commit()
+    return RevisionResponse(id=row.id, topic=row.topic, due_at=row.due_at.isoformat(), interval_days=row.interval_days)
+
+
+@app.post("/api/admin/drafts", response_model=AdminDraftResponse, status_code=201)
+def create_admin_draft(payload: AdminDraftRequest, user: User = Depends(current_user), db: Session = Depends(get_db)) -> AdminDraftResponse:
+    if user.role != "admin":
+        raise HTTPException(status_code=403, detail="Admin access required")
+    draft = AdminContentDraft(author_id=user.id, content_type=payload.content_type, title=payload.title, body_json=json.dumps(payload.body))
+    db.add(draft)
+    db.commit()
+    db.refresh(draft)
+    return AdminDraftResponse(id=draft.id, content_type=draft.content_type, title=draft.title, status=draft.status, body=payload.body)
+
+
+@app.post("/api/admin/drafts/{draft_id}/approve", response_model=AdminDraftResponse)
+def approve_admin_draft(draft_id: int, user: User = Depends(current_user), db: Session = Depends(get_db)) -> AdminDraftResponse:
+    if user.role != "admin":
+        raise HTTPException(status_code=403, detail="Admin access required")
+    draft = db.get(AdminContentDraft, draft_id)
+    if draft is None:
+        raise HTTPException(status_code=404, detail="Draft not found")
+    draft.status = "approved"
+    draft.reviewed_by = user.id
+    db.commit()
+    return AdminDraftResponse(id=draft.id, content_type=draft.content_type, title=draft.title, status=draft.status, body=json.loads(draft.body_json))
 
 
 @app.post("/api/auth/signup", response_model=AuthResponse, status_code=status.HTTP_201_CREATED)

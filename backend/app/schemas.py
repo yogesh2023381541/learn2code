@@ -177,3 +177,99 @@ class AIConversationResponse(BaseModel):
 class AIFeedbackRequest(BaseModel):
     rating: str = Field(pattern="^(helpful|not_helpful)$")
     comment: str | None = Field(default=None, max_length=2_000)
+
+
+class CodeAssistantRequest(BaseModel):
+    task: str = Field(min_length=1, max_length=100)
+    code: str = Field(min_length=1, max_length=100_000)
+    language: str = Field(min_length=1, max_length=40)
+    error_message: str | None = Field(default=None, max_length=10_000)
+
+
+class RecommendationResponse(BaseModel):
+    id: int
+    title: str
+    reason: str
+    target_type: str
+    target_id: int
+    evidence: dict[str, int | float | str]
+
+
+class RoadmapRequest(BaseModel):
+    goal: str = Field(min_length=2, max_length=180)
+
+
+class RoadmapNodeResponse(BaseModel):
+    id: int
+    title: str
+    subject_id: int
+    lesson_id: int | None
+    node_type: str
+    order_index: int
+    estimated_minutes: int
+    prerequisite_ids: list[int]
+
+
+class RoadmapResponse(BaseModel):
+    id: int
+    goal: str
+    experience_level: str
+    nodes: list[RoadmapNodeResponse]
+
+
+class QuizGenerateRequest(BaseModel):
+    subject_id: int | None = None
+    difficulty: str = Field(default="beginner", pattern="^(beginner|intermediate|advanced)$")
+    question_count: int = Field(default=5, ge=1, le=20)
+
+
+class QuizQuestionResponse(BaseModel):
+    id: int
+    prompt: str
+    options: list[str]
+    explanation: str
+
+
+class QuizResponse(BaseModel):
+    id: int
+    title: str
+    difficulty: str
+    questions: list[QuizQuestionResponse]
+
+
+class QuizAttemptRequest(BaseModel):
+    answers: dict[str, str]
+
+
+class QuizAttemptResponse(BaseModel):
+    id: int
+    score: int
+    total: int
+
+
+class RevisionResponse(BaseModel):
+    id: int
+    topic: str
+    due_at: str
+    interval_days: int
+
+
+class FlashcardResponse(BaseModel):
+    id: int
+    topic: str
+    front: str
+    back: str
+
+
+class AdminDraftRequest(BaseModel):
+    content_type: str = Field(pattern="^(lesson|quiz|example|flashcard|practice)$")
+    title: str = Field(min_length=2, max_length=180)
+    body: dict[str, str | list[str]]
+
+
+class AdminDraftResponse(BaseModel):
+    id: int
+    content_type: str
+    title: str
+    status: str
+    body: dict[str, str | list[str]]

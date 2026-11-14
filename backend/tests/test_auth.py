@@ -152,3 +152,37 @@ def test_ai_conversations_are_private_and_provider_errors_are_explicit(client):
     )
     assert message.status_code == 503
     assert "AI_PROVIDER_URL" in message.json()["detail"]
+
+
+def test_phase_two_learning_intelligence_and_assessment_flows(client):
+    signup = client.post("/api/auth/signup", json=signup_payload()).json()
+    headers = {"Authorization": f"Bearer {signup['access_token']}"}
+
+    recommendations = client.get("/api/recommendations", headers=headers)
+    assert recommendations.status_code == 200
+    assert recommendations.json()[0]["evidence"]["topics_completed"] == 0
+
+    roadmap = client.post("/api/roadmaps", headers=headers, json={"goal": "Become a Python developer"})
+    assert roadmap.status_code == 201
+    assert roadmap.json()["nodes"][0]["lesson_id"]
+    assert roadmap.json()["nodes"][0]["prerequisite_ids"] == []
+
+    quiz = client.post(
+        "/api/quizzes",
+        headers=headers,
+        json={"subject_id": 1, "difficulty": "beginner", "question_count": 1},
+    )
+    assert quiz.status_code == 201
+    question = quiz.json()["questions"][0]
+    attempt = client.post(
+        f"/api/quizzes/{quiz.json()['id']}/attempts",
+        headers=headers,
+        json={"answers": {str(question["id"]): question["options"][0]}},
+    )
+    assert attempt.status_code == 201
+    assert attempt.json() == {"id": 1, "score": 1, "total": 1}
+
+    revision = client.post("/api/revision", headers=headers, params={"topic": "Variables"})
+    assert revision.status_code == 201
+    assert client.get("/api/revision", headers=headers).json()[0]["topic"] == "Variables"
+    assert client.get("/api/analytics", headers=headers).json()["measured"]["completed_lessons"] == 0

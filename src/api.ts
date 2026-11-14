@@ -241,6 +241,85 @@ export async function getHistory() {
   return authorizedFetch("/api/users/me/history") as Promise<Array<{ target_type: string; target_id: number; viewed_at: string }>>;
 }
 
+export type Recommendation = {
+  id: number;
+  title: string;
+  reason: string;
+  target_type: string;
+  target_id: number;
+  evidence: Record<string, number | string>;
+};
+
+export type Roadmap = {
+  id: number;
+  goal: string;
+  experience_level: string;
+  nodes: Array<{
+    id: number;
+    title: string;
+    subject_id: number;
+    lesson_id: number | null;
+    node_type: string;
+    order_index: number;
+    estimated_minutes: number;
+    prerequisite_ids: number[];
+  }>;
+};
+
+export type Quiz = {
+  id: number;
+  title: string;
+  difficulty: string;
+  questions: Array<{ id: number; prompt: string; options: string[]; explanation: string }>;
+};
+
+export async function getRecommendations() {
+  return authorizedFetch("/api/recommendations") as Promise<Recommendation[]>;
+}
+
+export async function getAnalytics() {
+  return authorizedFetch("/api/analytics") as Promise<{
+    measured: Record<string, number | Record<string, number>>;
+    insights: string[];
+  }>;
+}
+
+export async function createRoadmap(goal: string) {
+  return authorizedFetch("/api/roadmaps", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ goal }),
+  }) as Promise<Roadmap>;
+}
+
+export async function generateQuiz(payload: { subject_id?: number; difficulty?: string; question_count?: number }) {
+  return authorizedFetch("/api/quizzes", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  }) as Promise<Quiz>;
+}
+
+export async function submitQuiz(quizId: number, answers: Record<number, string>) {
+  return authorizedFetch(`/api/quizzes/${quizId}/attempts`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ answers: Object.fromEntries(Object.entries(answers).map(([id, answer]) => [String(id), answer])) }),
+  }) as Promise<{ id: number; score: number; total: number }>;
+}
+
+export async function getRevisionQueue() {
+  return authorizedFetch("/api/revision") as Promise<Array<{ id: number; topic: string; due_at: string; interval_days: number }>>;
+}
+
+export async function createRevision(topic: string) {
+  return authorizedFetch(`/api/revision?topic=${encodeURIComponent(topic)}`, { method: "POST" });
+}
+
+export async function completeRevision(revisionId: number) {
+  return authorizedFetch(`/api/revision/${revisionId}/complete`, { method: "POST" });
+}
+
 export type AIConversation = {
   id: number;
   title: string;
