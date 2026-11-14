@@ -14,7 +14,22 @@ class LoginRequest(BaseModel):
 
 class TokenResponse(BaseModel):
     access_token: str
+    refresh_token: str
     token_type: str = "bearer"
+
+
+class ProfileResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    experience_level: str | None = None
+    learning_goal: str | None = None
+    preferred_language: str | None = None
+    daily_minutes: int | None = None
+    subjects: list[str] = []
+    learning_hours: float = 0
+    topics_completed: int = 0
+    problems_solved: int = 0
+    current_streak: int = 0
 
 
 class UserResponse(BaseModel):
@@ -24,6 +39,7 @@ class UserResponse(BaseModel):
     full_name: str
     email: EmailStr
     role: str
+    profile: ProfileResponse | None = None
 
 
 class OnboardingRequest(BaseModel):
@@ -44,3 +60,20 @@ class SubjectResponse(BaseModel):
     description: str
     difficulty: str
     estimated_minutes: int
+
+
+class AuthResponse(TokenResponse):
+    user: UserResponse
+
+
+class RefreshRequest(BaseModel):
+    refresh_token: str = Field(min_length=1)
+
+
+class DashboardResponse(BaseModel):
+    learning_hours: float
+    topics_completed: int
+    problems_solved: int
+    current_streak: int
+    overall_progress: int
+    recommended_subjects: list[SubjectResponse]

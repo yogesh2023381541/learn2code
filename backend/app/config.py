@@ -10,6 +10,7 @@ class Settings:
     )
     jwt_secret: str = os.getenv("JWT_SECRET", "change-me-before-deploying")
     access_token_minutes: int = int(os.getenv("ACCESS_TOKEN_MINUTES", "30"))
+    refresh_token_days: int = int(os.getenv("REFRESH_TOKEN_DAYS", "30"))
     frontend_origin: str = os.getenv("FRONTEND_ORIGIN", "http://localhost:5173")
 
 

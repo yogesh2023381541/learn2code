@@ -11,8 +11,9 @@ npm install
 npm run dev
 ```
 
-The app is intentionally backed by local mock data in this first slice. The
-component boundaries are ready for a REST API and persistent progress service.
+The dashboard requires an authenticated API session. Subjects remain available
+from the public API, while dashboard metrics and onboarding are loaded from the
+authenticated PostgreSQL-backed service.
 
 ## API foundation
 
@@ -28,5 +29,17 @@ uvicorn app.main:app --reload --port 8000
 ```
 
 Set the values in `backend/.env.example` in your environment before deploying.
-The API currently provides health checks, signup/login, JWT-protected profile
-onboarding, and published subject listing endpoints.
+Apply the schema and seed catalog before starting the API:
+
+```bash
+alembic upgrade head
+uvicorn app.main:app --reload --port 8000
+```
+
+The API provides access and rotating refresh JWTs, secure password hashing,
+logout/revocation, authenticated profile/onboarding, dashboard metrics, and
+published subject listing endpoints. Run backend tests with:
+
+```bash
+python -m pytest -q
+```

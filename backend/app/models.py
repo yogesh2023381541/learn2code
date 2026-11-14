@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 from datetime import datetime
+from typing import Optional
 
 from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String, Text, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -16,7 +19,7 @@ class User(Base):
     role: Mapped[str] = mapped_column(String(20), default="student")
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
-    profile: Mapped["UserProfile | None"] = relationship(back_populates="user", cascade="all, delete-orphan")
+    profile: Mapped[Optional["UserProfile"]] = relationship(back_populates="user", cascade="all, delete-orphan")
 
 
 class UserProfile(Base):
@@ -24,11 +27,15 @@ class UserProfile(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), unique=True)
-    experience_level: Mapped[str | None] = mapped_column(String(30))
-    learning_goal: Mapped[str | None] = mapped_column(String(100))
-    preferred_language: Mapped[str | None] = mapped_column(String(40))
-    daily_minutes: Mapped[int | None] = mapped_column(Integer)
-    subjects: Mapped[str | None] = mapped_column(Text)
+    experience_level: Mapped[Optional[str]] = mapped_column(String(30))
+    learning_goal: Mapped[Optional[str]] = mapped_column(String(100))
+    preferred_language: Mapped[Optional[str]] = mapped_column(String(40))
+    daily_minutes: Mapped[Optional[int]] = mapped_column(Integer)
+    subjects: Mapped[Optional[str]] = mapped_column(Text)
+    learning_hours: Mapped[float] = mapped_column(default=0)
+    topics_completed: Mapped[int] = mapped_column(Integer, default=0)
+    problems_solved: Mapped[int] = mapped_column(Integer, default=0)
+    current_streak: Mapped[int] = mapped_column(Integer, default=0)
     user: Mapped[User] = relationship(back_populates="profile")
 
 
@@ -43,3 +50,15 @@ class Subject(Base):
     difficulty: Mapped[str] = mapped_column(String(20), default="beginner")
     estimated_minutes: Mapped[int] = mapped_column(Integer, default=60)
     is_published: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+
+
+class RefreshSession(Base):
+    __tablename__ = "refresh_sessions"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    token_id: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    token_hash: Mapped[str] = mapped_column(String(255))
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    revoked_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
