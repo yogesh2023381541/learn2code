@@ -779,6 +779,10 @@ def practice_response(problem: PracticeProblem, solved: bool = False) -> Practic
         id=problem.id, title=problem.title, slug=problem.slug, description=problem.description,
         difficulty=problem.difficulty, category=problem.category,
         acceptance_rate=problem.acceptance_rate, solved=solved,
+        topic=problem.topic, pattern=problem.pattern, constraints=problem.constraints,
+        examples=json.loads(problem.examples_json or "[]"),
+        hints=json.loads(problem.hints_json or "[]"),
+        editorial=problem.editorial, reference_url=problem.reference_url,
     )
 
 

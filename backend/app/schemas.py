@@ -115,6 +115,13 @@ class PracticeProblemResponse(BaseModel):
     category: str
     acceptance_rate: float
     solved: bool = False
+    topic: str | None = None
+    pattern: str | None = None
+    constraints: str | None = None
+    examples: list[dict[str, str]] = []
+    hints: list[str] = []
+    editorial: str | None = None
+    reference_url: str | None = None
 
 
 class SubmissionRequest(BaseModel):

@@ -101,6 +101,13 @@ class PracticeProblem(Base):
     difficulty: Mapped[str] = mapped_column(String(20))
     category: Mapped[str] = mapped_column(String(80))
     acceptance_rate: Mapped[float] = mapped_column(Float, default=0)
+    topic: Mapped[Optional[str]] = mapped_column(String(100))
+    pattern: Mapped[Optional[str]] = mapped_column(String(100))
+    constraints: Mapped[Optional[str]] = mapped_column(Text)
+    examples_json: Mapped[Optional[str]] = mapped_column(Text)
+    hints_json: Mapped[Optional[str]] = mapped_column(Text)
+    editorial: Mapped[Optional[str]] = mapped_column(Text)
+    reference_url: Mapped[Optional[str]] = mapped_column(String(500))
 
 
 class PracticeSubmission(Base):
