@@ -1,0 +1,2164 @@
+{
+  "problems": [
+    {
+      "title": "Graph Node Count",
+      "slug": "graphs-01-graph-node-count",
+      "difficulty": "Easy",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Return the number of distinct vertices in an edge list. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0-1 1-2 2-3 3-0",
+          "output": "4"
+        },
+        {
+          "input": "3 5-6",
+          "output": "3"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0-1 1-2 2-3 3-0",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 5-6",
+          "expected_output": "3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Graph Degree List",
+      "slug": "graphs-02-graph-degree-list",
+      "difficulty": "Easy",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Print the degree of every vertex from 0 through n-1. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0-1 1-2 2-3 3-0",
+          "output": "2 2 2 2"
+        },
+        {
+          "input": "3 0-1 1-2",
+          "output": "1 2 1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0-1 1-2 2-3 3-0",
+          "expected_output": "2 2 2 2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0-1 1-2",
+          "expected_output": "1 2 1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Undirected Connectivity",
+      "slug": "graphs-03-undirected-connectivity",
+      "difficulty": "Easy",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Determine whether every vertex is reachable from vertex 0. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0-1 1-2 2-3",
+          "output": "true"
+        },
+        {
+          "input": "4 0-1 2-3",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0-1 1-2 2-3",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0-1 2-3",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Directed Reachability",
+      "slug": "graphs-04-directed-reachability",
+      "difficulty": "Easy",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Determine whether a directed path exists from source to target. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0>1 1>2 2>3|0|3",
+          "output": "true"
+        },
+        {
+          "input": "4 0>1 2>3|0|3",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0>1 1>2 2>3|0|3",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0>1 2>3|0|3",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Breadth First Order",
+      "slug": "graphs-05-breadth-first-order",
+      "difficulty": "Easy",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Print vertices in BFS order from a starting vertex. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "5 0-1 0-2 1-3 2-4|0",
+          "output": "0 1 2 3 4"
+        },
+        {
+          "input": "4 0-1 1-2 2-3|3",
+          "output": "3 2 1 0"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "5 0-1 0-2 1-3 2-4|0",
+          "expected_output": "0 1 2 3 4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0-1 1-2 2-3|3",
+          "expected_output": "3 2 1 0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Depth First Order",
+      "slug": "graphs-06-depth-first-order",
+      "difficulty": "Easy",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Print vertices in recursive DFS preorder from a starting vertex. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "5 0-1 0-2 1-3 2-4|0",
+          "output": "0 1 3 2 4"
+        },
+        {
+          "input": "4 0-1 1-2 2-3|3",
+          "output": "3 2 1 0"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "5 0-1 0-2 1-3 2-4|0",
+          "expected_output": "0 1 3 2 4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0-1 1-2 2-3|3",
+          "expected_output": "3 2 1 0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Connected Component Count",
+      "slug": "graphs-07-connected-component-count",
+      "difficulty": "Easy",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Return the number of connected components in an undirected graph. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "5 0-1 1-2 3-4",
+          "output": "2"
+        },
+        {
+          "input": "4 0-1",
+          "output": "3"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "5 0-1 1-2 3-4",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0-1",
+          "expected_output": "3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Component Sizes",
+      "slug": "graphs-08-component-sizes",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Print connected-component sizes in ascending order. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "7 0-1 1-2 3-4 5-6",
+          "output": "2 2 3"
+        },
+        {
+          "input": "4 0-1 1-2",
+          "output": "1 3"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "7 0-1 1-2 3-4 5-6",
+          "expected_output": "2 2 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0-1 1-2",
+          "expected_output": "1 3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Cycle In Undirected Graph",
+      "slug": "graphs-09-cycle-in-undirected-graph",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Determine whether an undirected graph contains a cycle. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0-1 1-2 2-3",
+          "output": "false"
+        },
+        {
+          "input": "4 0-1 1-2 2-0",
+          "output": "true"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0-1 1-2 2-3",
+          "expected_output": "false",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0-1 1-2 2-0",
+          "expected_output": "true",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Cycle In Directed Graph",
+      "slug": "graphs-10-cycle-in-directed-graph",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Determine whether a directed graph contains a cycle. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "3 0>1 1>2",
+          "output": "false"
+        },
+        {
+          "input": "3 0>1 1>2 2>0",
+          "output": "true"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "3 0>1 1>2",
+          "expected_output": "false",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0>1 1>2 2>0",
+          "expected_output": "true",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Bipartite Check",
+      "slug": "graphs-11-bipartite-check",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Determine whether an undirected graph can be colored with two colors. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0-1 1-2 2-3 3-0",
+          "output": "true"
+        },
+        {
+          "input": "3 0-1 1-2 2-0",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0-1 1-2 2-3 3-0",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0-1 1-2 2-0",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Topological Order",
+      "slug": "graphs-12-topological-order",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Print one lexicographically smallest topological ordering, or -1 if impossible. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0>1 0>2 1>3 2>3",
+          "output": "0 1 2 3"
+        },
+        {
+          "input": "3 0>1 1>2 2>0",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0>1 0>2 1>3 2>3",
+          "expected_output": "0 1 2 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0>1 1>2 2>0",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Course Completion",
+      "slug": "graphs-13-course-completion",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Determine whether all courses can be completed given prerequisite edges. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "3 0>1 1>2",
+          "output": "true"
+        },
+        {
+          "input": "3 0>1 1>2 2>0",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "3 0>1 1>2",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0>1 1>2 2>0",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Transitive Reach Counts",
+      "slug": "graphs-14-transitive-reach-counts",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "For each vertex, count distinct vertices reachable by directed paths. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0>1 1>2 2>3",
+          "output": "3 2 1 0"
+        },
+        {
+          "input": "3 0>1 0>2",
+          "output": "2 0 0"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0>1 1>2 2>3",
+          "expected_output": "3 2 1 0",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0>1 0>2",
+          "expected_output": "2 0 0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Shortest Unweighted Path",
+      "slug": "graphs-15-shortest-unweighted-path",
+      "difficulty": "Easy",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Return the number of edges in a shortest undirected path, or -1. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "5 0-1 1-2 2-3 0-4|0|3",
+          "output": "3"
+        },
+        {
+          "input": "4 0-1 2-3|0|3",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "5 0-1 1-2 2-3 0-4|0|3",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0-1 2-3|0|3",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Shortest Directed Path",
+      "slug": "graphs-16-shortest-directed-path",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Return the number of edges in a shortest directed path, or -1. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "5 0>1 1>2 0>3 3>4 4>2|0|2",
+          "output": "2"
+        },
+        {
+          "input": "3 0>1 2>1|0|2",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "5 0>1 1>2 0>3 3>4 4>2|0|2",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0>1 2>1|0|2",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Dijkstra Distance",
+      "slug": "graphs-17-dijkstra-distance",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "weighted"
+      ],
+      "description": "Return the minimum non-negative weighted distance from source to target. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0-1:4 0-2:1 2-1:2 1-3:1 2-3:5|0|3",
+          "output": "4"
+        },
+        {
+          "input": "3 0-1:7 1-2:2|0|2",
+          "output": "9"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0-1:4 0-2:1 2-1:2 1-3:1 2-3:5|0|3",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0-1:7 1-2:2|0|2",
+          "expected_output": "9",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Bellman Ford Distance",
+      "slug": "graphs-18-bellman-ford-distance",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "weighted"
+      ],
+      "description": "Return a shortest distance allowing negative edges, or NEGATIVE_CYCLE. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "3 0>1:4 1>2:-2 0>2:5|0|2",
+          "output": "2"
+        },
+        {
+          "input": "3 0>1:1 1>2:-2 2>0:-2|0|2",
+          "output": "NEGATIVE_CYCLE"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "3 0>1:4 1>2:-2 0>2:5|0|2",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0>1:1 1>2:-2 2>0:-2|0|2",
+          "expected_output": "NEGATIVE_CYCLE",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Floyd Warshall Query",
+      "slug": "graphs-19-floyd-warshall-query",
+      "difficulty": "Hard",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "weighted"
+      ],
+      "description": "Return the all-pairs shortest distance for a source-target query, or -1. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "3 0-1:3 1-2:4 0-2:10|0|2",
+          "output": "7"
+        },
+        {
+          "input": "3 0-1:3|0|2",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "3 0-1:3 1-2:4 0-2:10|0|2",
+          "expected_output": "7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0-1:3|0|2",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Minimum Spanning Tree Weight",
+      "slug": "graphs-20-minimum-spanning-tree-weight",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Return the weight of a minimum spanning tree, or -1 if disconnected. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0-1:1 1-2:2 2-3:3 0-3:9",
+          "output": "6"
+        },
+        {
+          "input": "3 0-1:4 1-2:5",
+          "output": "9"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0-1:1 1-2:2 2-3:3 0-3:9",
+          "expected_output": "6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0-1:4 1-2:5",
+          "expected_output": "9",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Kruskal Edge Count",
+      "slug": "graphs-21-kruskal-edge-count",
+      "difficulty": "Easy",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "weighted"
+      ],
+      "description": "Return how many edges are selected by Kruskal before the graph becomes connected. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0-1:1 1-2:2 2-3:3 0-3:9",
+          "output": "3"
+        },
+        {
+          "input": "3 0-1:4 1-2:5",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0-1:1 1-2:2 2-3:3 0-3:9",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0-1:4 1-2:5",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Prim Frontier Sum",
+      "slug": "graphs-22-prim-frontier-sum",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "weighted"
+      ],
+      "description": "Compute an MST weight using a growing frontier, or -1 if disconnected. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "5 0-1:2 0-2:3 1-2:1 1-3:4 2-4:5 3-4:2",
+          "output": "10"
+        },
+        {
+          "input": "3 0-1:8",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "5 0-1:2 0-2:3 1-2:1 1-3:4 2-4:5 3-4:2",
+          "expected_output": "10",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0-1:8",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Bridge Count",
+      "slug": "graphs-23-bridge-count",
+      "difficulty": "Hard",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Count undirected edges whose removal increases the number of components. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "5 0-1 1-2 2-0 1-3 3-4",
+          "output": "2"
+        },
+        {
+          "input": "4 0-1 1-2 2-3 3-0",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "5 0-1 1-2 2-0 1-3 3-4",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0-1 1-2 2-3 3-0",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Articulation Count",
+      "slug": "graphs-24-articulation-count",
+      "difficulty": "Hard",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Count vertices whose removal disconnects an undirected graph. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "5 0-1 1-2 2-0 1-3 3-4",
+          "output": "2"
+        },
+        {
+          "input": "4 0-1 1-2 2-3",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "5 0-1 1-2 2-0 1-3 3-4",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0-1 1-2 2-3",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Strong Component Count",
+      "slug": "graphs-25-strong-component-count",
+      "difficulty": "Hard",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Return the number of strongly connected components in a directed graph. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "5 0>1 1>2 2>0 2>3 3>4",
+          "output": "3"
+        },
+        {
+          "input": "3 0>1 1>2 2>0",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "5 0>1 1>2 2>0 2>3 3>4",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0>1 1>2 2>0",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Strong Component Labels",
+      "slug": "graphs-26-strong-component-labels",
+      "difficulty": "Hard",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Print the component label of each vertex, with labels ordered by smallest member. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0>1 1>0 1>2 2>3 3>2",
+          "output": "0 0 2 2"
+        },
+        {
+          "input": "3 0>1 1>2",
+          "output": "0 1 2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0>1 1>0 1>2 2>3 3>2",
+          "expected_output": "0 0 2 2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0>1 1>2",
+          "expected_output": "0 1 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Word Ladder Distance",
+      "slug": "graphs-27-word-ladder-distance",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "weighted"
+      ],
+      "description": "Return the fewest one-letter changes between start and target using a supplied dictionary. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "hit|cog|hot dot dog lot log cog",
+          "output": "4"
+        },
+        {
+          "input": "cat|dog|cot cog dog",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "hit|cog|hot dot dog lot log cog",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "cat|dog|cot cog dog",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Grid Island Count",
+      "slug": "graphs-28-grid-island-count",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Count groups of adjacent land cells in a rectangular 0/1 grid. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "3 4 1100 1100 0010",
+          "output": "2"
+        },
+        {
+          "input": "2 3 111 010",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "3 4 1100 1100 0010",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 3 111 010",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Grid Flood Fill",
+      "slug": "graphs-29-grid-flood-fill",
+      "difficulty": "Easy",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Change a connected region of one color to another and print the grid. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "3 3 111 101 111|1|1|2",
+          "output": "222 202 222"
+        },
+        {
+          "input": "2 2 00 01|1|1|2",
+          "output": "00 02"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "3 3 111 101 111|1|1|2",
+          "expected_output": "222 202 222",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 00 01|1|1|2",
+          "expected_output": "00 02",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Grid Shortest Route",
+      "slug": "graphs-30-grid-shortest-route",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Return the shortest four-direction route from top-left to bottom-right, or -1. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "3 3 010 010 000",
+          "output": "4"
+        },
+        {
+          "input": "2 2 01 10",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "3 3 010 010 000",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 01 10",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Grid Walls And Gates",
+      "slug": "graphs-31-grid-walls-and-gates",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Fill each empty grid cell with distance to its nearest gate, leaving walls unchanged. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "3 4 G### .##. .G..",
+          "output": "G### 1##2 0G1"
+        },
+        {
+          "input": "2 2 G. .#",
+          "output": "G1 1#"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "3 4 G### .##. .G..",
+          "expected_output": "G### 1##2 0G1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 G. .#",
+          "expected_output": "G1 1#",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Grid Bipartite Regions",
+      "slug": "graphs-32-grid-bipartite-regions",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Return whether all adjacent open cells can be colored in two colors. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "3 3 010 101 010",
+          "output": "true"
+        },
+        {
+          "input": "2 2 11 11",
+          "output": "true"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "3 3 010 101 010",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 11 11",
+          "expected_output": "true",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Network Delay",
+      "slug": "graphs-33-network-delay",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "weighted"
+      ],
+      "description": "Return the time for a signal from source to reach every vertex, or -1. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 2 2>1:1 2>3:1 3>4:1|2",
+          "output": "2"
+        },
+        {
+          "input": "3 2 1>2:1|1",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 2 2>1:1 2>3:1 3>4:1|2",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 2 1>2:1|1",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Cheapest Flight Stops",
+      "slug": "graphs-34-cheapest-flight-stops",
+      "difficulty": "Hard",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "weighted"
+      ],
+      "description": "Return the cheapest directed route using at most k intermediate stops, or -1. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0>1:100 1>2:100 0>2:500 2>3:50|0|3|1",
+          "output": "250"
+        },
+        {
+          "input": "3 0>1:5 1>2:5|0|2|0",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0>1:100 1>2:100 0>2:500 2>3:50|0|3|1",
+          "expected_output": "250",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0>1:5 1>2:5|0|2|0",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Alien Alphabet Order",
+      "slug": "graphs-35-alien-alphabet-order",
+      "difficulty": "Hard",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Infer a valid character order from sorted alien words, or -1 if contradictory. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "3 baa abcd abca",
+          "output": "b a c d"
+        },
+        {
+          "input": "2 abc ab",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "3 baa abcd abca",
+          "expected_output": "b a c d",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 abc ab",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Euler Trail Check",
+      "slug": "graphs-36-euler-trail-check",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Determine whether an undirected graph has a trail using every edge exactly once. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0-1 1-2 2-3",
+          "output": "true"
+        },
+        {
+          "input": "4 0-1 1-2 2-0 0-3",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0-1 1-2 2-3",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0-1 1-2 2-0 0-3",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Hamiltonian Path Count",
+      "slug": "graphs-37-hamiltonian-path-count",
+      "difficulty": "Hard",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Count directed paths that visit every vertex exactly once. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0>1 1>2 2>3 0>2 1>3",
+          "output": "1"
+        },
+        {
+          "input": "3 0>1 1>0 1>2 2>1",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0>1 1>2 2>3 0>2 1>3",
+          "expected_output": "1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0>1 1>0 1>2 2>1",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Graph Clone Labels",
+      "slug": "graphs-38-graph-clone-labels",
+      "difficulty": "Easy",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Clone an undirected graph and print BFS labels of the clone from the supplied start. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "4 0-1 0-2 1-3 2-3|0",
+          "output": "0 1 2 3"
+        },
+        {
+          "input": "3 0-1|1",
+          "output": "1 0"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "4 0-1 0-2 1-3 2-3|0",
+          "expected_output": "0 1 2 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0-1|1",
+          "expected_output": "1 0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Reachable Weighted Budget",
+      "slug": "graphs-39-reachable-weighted-budget",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "weighted"
+      ],
+      "description": "Count vertices reachable from source with shortest distance at most budget. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "5 0-1:2 1-2:3 0-3:6 3-4:1|0|5",
+          "output": "3"
+        },
+        {
+          "input": "4 0-1:4 1-2:4 2-3:4|0|7",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "5 0-1:2 1-2:3 0-3:6 3-4:1|0|5",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0-1:4 1-2:4 2-3:4|0|7",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Grid Rotting Spread",
+      "slug": "graphs-40-grid-rotting-spread",
+      "difficulty": "Medium",
+      "category": "Graphs",
+      "topic": "Graphs",
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "description": "Return minutes needed for every fresh cell to become rotten through four-direction spread, or -1. Vertices are numbered from 0 and edges use the notation shown in the examples. Unless stated otherwise, repeated edges do not add new vertices.",
+      "input_format": "The input is a whitespace-separated edge record; directed edges use >, undirected edges use -, and weights use :.",
+      "output_format": "Print the requested number, boolean, ordering, or sequence on one line.",
+      "constraints": "1 <= vertices <= 100000; 0 <= edges <= 200000; weights fit signed 32-bit integers.",
+      "examples": [
+        {
+          "input": "3 3 210 111 011",
+          "output": "4"
+        },
+        {
+          "input": "2 2 20 01",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for unweighted distance and DFS for components or cycle discovery.",
+        "For weighted graphs, select the algorithm whose assumptions match edge weights and direction."
+      ],
+      "test_cases": [
+        {
+          "input": "3 3 210 111 011",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 20 01",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented graph input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented graph input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented graph input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented graph input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    }
+  ]
+}

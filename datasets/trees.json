@@ -1,0 +1,2164 @@
+{
+  "problems": [
+    {
+      "title": "Tree Node Count",
+      "slug": "trees-01-tree-node-count",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Return the number of nodes in a binary tree encoded in level order. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "7"
+        },
+        {
+          "input": "3 9 4 2",
+          "output": "3"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 9 4 2",
+          "expected_output": "3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Tree Height",
+      "slug": "trees-02-tree-height",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Return the number of nodes on the longest root-to-leaf path. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "3"
+        },
+        {
+          "input": "1 9 0",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1 9 0",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Tree Leaf Count",
+      "slug": "trees-03-tree-leaf-count",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Count nodes with no children. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "4"
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "3"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Preorder Walk",
+      "slug": "trees-04-preorder-walk",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Print a binary tree in root-left-right order. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "1 2 4 5 3 6 7"
+        },
+        {
+          "input": "3 9 4 2",
+          "output": "9 4 2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "1 2 4 5 3 6 7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 9 4 2",
+          "expected_output": "9 4 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Inorder Walk",
+      "slug": "trees-05-inorder-walk",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Print a binary tree in left-root-right order. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "4 2 5 1 6 3 7"
+        },
+        {
+          "input": "3 9 4 2",
+          "output": "4 9 2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "4 2 5 1 6 3 7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 9 4 2",
+          "expected_output": "4 9 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Postorder Walk",
+      "slug": "trees-06-postorder-walk",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Print a binary tree in left-right-root order. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "4 5 2 6 7 3 1"
+        },
+        {
+          "input": "3 9 4 2",
+          "output": "4 2 9"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "4 5 2 6 7 3 1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 9 4 2",
+          "expected_output": "4 2 9",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Level Order Walk",
+      "slug": "trees-07-level-order-walk",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Print values level by level from left to right. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "1 2 3 4 5 6 7"
+        },
+        {
+          "input": "5 8 4 10 2 6",
+          "output": "8 4 10 2 6"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "1 2 3 4 5 6 7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 8 4 10 2 6",
+          "expected_output": "8 4 10 2 6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Right Edge View",
+      "slug": "trees-08-right-edge-view",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Print the last visible node at every depth when viewed from the right. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "1 3 7"
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "1 2 5"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "1 3 7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "1 2 5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Left Edge View",
+      "slug": "trees-09-left-edge-view",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Print the first visible node at every depth when viewed from the left. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "1 2 4"
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "1 2 4"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "1 2 4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "1 2 4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Tree Width",
+      "slug": "trees-10-tree-width",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Return the largest number of nodes appearing at one depth. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "4"
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Balanced Tree Check",
+      "slug": "trees-11-balanced-tree-check",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Check whether every node has left and right subtree heights differing by at most one. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "true"
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "true"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "true",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Tree Diameter Edges",
+      "slug": "trees-12-tree-diameter-edges",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Return the greatest number of edges on a path between any two nodes. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "4"
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "3"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Mirror Tree Check",
+      "slug": "trees-13-mirror-tree-check",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Determine whether the tree is symmetric around its root. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 2 3 4 4 3",
+          "output": "true"
+        },
+        {
+          "input": "5 1 2 2 3 3",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 2 3 4 4 3",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 2 3 3",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Invert Tree",
+      "slug": "trees-14-invert-tree",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Swap left and right children at every node and print level order. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "1 3 2 7 6 5 4"
+        },
+        {
+          "input": "3 8 4 2",
+          "output": "8 4 2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "1 3 2 7 6 5 4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 8 4 2",
+          "expected_output": "8 4 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Root To Leaf Sum",
+      "slug": "trees-15-root-to-leaf-sum",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Determine whether some root-to-leaf path has the target sum. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 5 4 8 11 7 2 13|22",
+          "output": "true"
+        },
+        {
+          "input": "3 1 2 3|9",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 5 4 8 11 7 2 13|22",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 1 2 3|9",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Path Sum Count",
+      "slug": "trees-16-path-sum-count",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Count root-to-leaf paths whose values sum to target. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 5 4 8 11 7 2 13|22",
+          "output": "1"
+        },
+        {
+          "input": "5 1 2 3 4 5|6",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 5 4 8 11 7 2 13|22",
+          "expected_output": "1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 4 5|6",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "All Root Leaf Paths",
+      "slug": "trees-17-all-root-leaf-paths",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Print every root-to-leaf path in preorder, joining values with arrows. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "3 1 2 3",
+          "output": "1->2|1->3"
+        },
+        {
+          "input": "1 9",
+          "output": "9"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "3 1 2 3",
+          "expected_output": "1->2|1->3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1 9",
+          "expected_output": "9",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Lowest Common Ancestor",
+      "slug": "trees-18-lowest-common-ancestor",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Return the value of the lowest common ancestor of two values in a binary tree. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 3 5 1 6 2 4 0|1|4",
+          "output": "5"
+        },
+        {
+          "input": "5 1 2 3 4 5|3|5",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 3 5 1 6 2 4 0|1|4",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 4 5|3|5",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Distance Between Nodes",
+      "slug": "trees-19-distance-between-nodes",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Return the number of edges on the shortest path between two present values. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7|4|7",
+          "output": "4"
+        },
+        {
+          "input": "3 9 4 2|4|2",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7|4|7",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 9 4 2|4|2",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "BST Search",
+      "slug": "trees-20-bst-search",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "bst"
+      ],
+      "description": "Search a binary search tree and report whether target exists. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 5 3 7 2 4 6 8|6",
+          "output": "true"
+        },
+        {
+          "input": "5 5 3 7 2 4 6 8|1",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 5 3 7 2 4 6 8|6",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 5 3 7 2 4 6 8|1",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "BST Insert",
+      "slug": "trees-21-bst-insert",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "bst"
+      ],
+      "description": "Insert a value into a BST and print its inorder traversal. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "5 4 2 6 1 3|5",
+          "output": "1 2 3 4 5 6"
+        },
+        {
+          "input": "3 10 5 15|1",
+          "output": "1 5 10 15"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "5 4 2 6 1 3|5",
+          "expected_output": "1 2 3 4 5 6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 10 5 15|1",
+          "expected_output": "1 5 10 15",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "BST Validate",
+      "slug": "trees-22-bst-validate",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "bst"
+      ],
+      "description": "Check whether a level-order tree satisfies strict BST ordering. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 5 3 7 2 4 6 8",
+          "output": "true"
+        },
+        {
+          "input": "3 5 4 6",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 5 3 7 2 4 6 8",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 5 4 6",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "BST Kth Smallest",
+      "slug": "trees-23-bst-kth-smallest",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "bst"
+      ],
+      "description": "Return the k-th smallest value in a BST using one-based k. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 5 3 7 2 4 6 8|4",
+          "output": "5"
+        },
+        {
+          "input": "3 2 1 3|2",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 5 3 7 2 4 6 8|4",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 2 1 3|2",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "BST Range Sum",
+      "slug": "trees-24-bst-range-sum",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "bst"
+      ],
+      "description": "Sum all BST values within inclusive low and high bounds. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 5 3 7 2 4 6 8|4|7",
+          "output": "22"
+        },
+        {
+          "input": "3 10 5 15|6|20",
+          "output": "25"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 5 3 7 2 4 6 8|4|7",
+          "expected_output": "22",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 10 5 15|6|20",
+          "expected_output": "25",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Sorted Array To BST",
+      "slug": "trees-25-sorted-array-to-bst",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "bst"
+      ],
+      "description": "Build a height-balanced BST from a sorted array and print its level order. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "3 1 4 2 5"
+        },
+        {
+          "input": "3 -2 0 2",
+          "output": "0 -2 2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "3 1 4 2 5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 -2 0 2",
+          "expected_output": "0 -2 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Tree Serialization",
+      "slug": "trees-26-tree-serialization",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Serialize a level-order tree by retaining null markers for missing children. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "3 1 2 3",
+          "output": "1,2,3"
+        },
+        {
+          "input": "5 1 2 null 4 5",
+          "output": "1,2,null,4,5"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "3 1 2 3",
+          "expected_output": "1,2,3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 null 4 5",
+          "expected_output": "1,2,null,4,5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Tree Deserialization",
+      "slug": "trees-27-tree-deserialization",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Deserialize a comma-separated level record and print preorder values. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "1,2,3",
+          "output": "1 2 3"
+        },
+        {
+          "input": "1,2,null,4,5",
+          "output": "1 2 4 5"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "1,2,3",
+          "expected_output": "1 2 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1,2,null,4,5",
+          "expected_output": "1 2 4 5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Vertical Column Order",
+      "slug": "trees-28-vertical-column-order",
+      "difficulty": "Hard",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Print columns from left to right, and nodes top to bottom within each column. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "4 2 1 5 6 3 7"
+        },
+        {
+          "input": "3 9 4 2",
+          "output": "4 9 2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "4 2 1 5 6 3 7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 9 4 2",
+          "expected_output": "4 9 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Diagonal Tree Sum",
+      "slug": "trees-29-diagonal-tree-sum",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Return the sum of values on the requested root-right diagonal. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7|1",
+          "output": "10"
+        },
+        {
+          "input": "5 1 2 3 4 5|0",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7|1",
+          "expected_output": "10",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 4 5|0",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Boundary Walk",
+      "slug": "trees-30-boundary-walk",
+      "difficulty": "Hard",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Print root, left boundary, leaves, and reversed right boundary without duplicates. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "1 2 4 5 6 7 3"
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "1 2 4 5 3"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "1 2 4 5 6 7 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "1 2 4 5 3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Maximum Path Sum",
+      "slug": "trees-31-maximum-path-sum",
+      "difficulty": "Hard",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Return the maximum sum of a non-empty path between any two nodes. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 -10 9 20 null null 15 7",
+          "output": "42"
+        },
+        {
+          "input": "3 1 2 3",
+          "output": "6"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 -10 9 20 null null 15 7",
+          "expected_output": "42",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 1 2 3",
+          "expected_output": "6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Duplicate Subtree Signatures",
+      "slug": "trees-32-duplicate-subtree-signatures",
+      "difficulty": "Hard",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Count distinct subtree shapes with identical value structure appearing at least twice. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 4 3",
+          "output": "1"
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 4 3",
+          "expected_output": "1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Complete Tree Check",
+      "slug": "trees-33-complete-tree-check",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Check whether every level is full except possibly the last, which is filled left to right. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "true"
+        },
+        {
+          "input": "5 1 2 3 null 5",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 null 5",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Full Tree Check",
+      "slug": "trees-34-full-tree-check",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Check whether every node has either zero or two children. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "true"
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Nodes At Distance K",
+      "slug": "trees-35-nodes-at-distance-k",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Print values exactly k edges from target, sorted ascending. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 3 5 1 6 2 4 0|5|2",
+          "output": "1 4"
+        },
+        {
+          "input": "7 1 2 3 4 5 6 7|3|1",
+          "output": "2 4"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 3 5 1 6 2 4 0|5|2",
+          "expected_output": "1 4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "7 1 2 3 4 5 6 7|3|1",
+          "expected_output": "2 4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Tree Right Link Levels",
+      "slug": "trees-36-tree-right-link-levels",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Connect nodes across each level and print each level using next links. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "1|2 3|4 5 6 7"
+        },
+        {
+          "input": "3 8 4 2",
+          "output": "8|4 2"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "1|2 3|4 5 6 7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 8 4 2",
+          "expected_output": "8|4 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Expression Tree Value",
+      "slug": "trees-37-expression-tree-value",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Evaluate a binary expression tree whose leaves are integers and internal nodes are operators. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "5 + 2 * 3 4",
+          "output": "11"
+        },
+        {
+          "input": "3 - 10 4",
+          "output": "6"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "5 + 2 * 3 4",
+          "expected_output": "11",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 - 10 4",
+          "expected_output": "6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Tree Color Frequency",
+      "slug": "trees-38-tree-color-frequency",
+      "difficulty": "Medium",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Return the most frequent value in a tree, choosing the smallest value on ties. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 2 1 2 3 1 2 3",
+          "output": "2"
+        },
+        {
+          "input": "3 5 4 5",
+          "output": "5"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 2 1 2 3 1 2 3",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 5 4 5",
+          "expected_output": "5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Forest After Deletion",
+      "slug": "trees-39-forest-after-deletion",
+      "difficulty": "Hard",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Delete listed values from a tree and print the roots of resulting trees in ascending order. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7|3 5",
+          "output": "1 6"
+        },
+        {
+          "input": "3 1 2 3|1",
+          "output": "2 3"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7|3 5",
+          "expected_output": "1 6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 1 2 3|1",
+          "expected_output": "2 3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Tree Level Averages",
+      "slug": "trees-40-tree-level-averages",
+      "difficulty": "Easy",
+      "category": "Trees",
+      "topic": "Trees",
+      "tags": [
+        "trees",
+        "binary-tree"
+      ],
+      "description": "Print the average value at each depth, rounded to two decimal places. Trees use level-order notation with `null` for an absent child when needed. Node values are integers unless an expression or serialization task states otherwise.",
+      "input_format": "The input is a whitespace-separated level-order record; the examples show optional parameters and null markers.",
+      "output_format": "Print the requested value or traversal using single spaces, pipes, or commas exactly as described.",
+      "constraints": "1 <= number of nodes <= 100000; -1000000000 <= node value <= 1000000000; referenced values exist when required.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "output": "1.00 2.50 5.50"
+        },
+        {
+          "input": "3 9 4 2",
+          "output": "9.00 3.00"
+        }
+      ],
+      "hints": [
+        "Choose BFS for level-based views and DFS for path, height, and subtree properties.",
+        "For BST tasks, use the ordering invariant to prune entire subtrees."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7",
+          "expected_output": "1.00 2.50 5.50",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 9 4 2",
+          "expected_output": "9.00 3.00",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented tree input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented tree input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented tree input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented tree input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    }
+  ]
+}

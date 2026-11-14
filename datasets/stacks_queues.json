@@ -1,0 +1,1624 @@
+{
+  "problems": [
+    {
+      "title": "Bracket Validator",
+      "slug": "stacks-queues-01-bracket-validator",
+      "difficulty": "Easy",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "stack",
+        "bracket"
+      ],
+      "description": "Check whether brackets are properly nested. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "([]{})",
+          "output": "true"
+        },
+        {
+          "input": "([)]",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "([]{})",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "([)]",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Stack Minimum",
+      "slug": "stacks-queues-02-stack-minimum",
+      "difficulty": "Easy",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "stack",
+        "stack"
+      ],
+      "description": "Return the smallest value in a stack after all listed pushes. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "5 4 2 9 -1 6",
+          "output": "-1"
+        },
+        {
+          "input": "3 7 8 9",
+          "output": "7"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "5 4 2 9 -1 6",
+          "expected_output": "-1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 7 8 9",
+          "expected_output": "7",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Stack Maximum",
+      "slug": "stacks-queues-03-stack-maximum",
+      "difficulty": "Easy",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "stack",
+        "stack"
+      ],
+      "description": "Return the largest value in a stack. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "4 -3 8 1 5",
+          "output": "8"
+        },
+        {
+          "input": "2 -9 -4",
+          "output": "-4"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "4 -3 8 1 5",
+          "expected_output": "8",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 -9 -4",
+          "expected_output": "-4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Queue Front",
+      "slug": "stacks-queues-04-queue-front",
+      "difficulty": "Easy",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "queue"
+      ],
+      "description": "Return the front value after enqueueing the listed values. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "4 8 1 6 3",
+          "output": "8"
+        },
+        {
+          "input": "1 42",
+          "output": "42"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "4 8 1 6 3",
+          "expected_output": "8",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1 42",
+          "expected_output": "42",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Queue Reversal",
+      "slug": "stacks-queues-05-queue-reversal",
+      "difficulty": "Easy",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "queue"
+      ],
+      "description": "Reverse the order of every value in a queue. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "5 4 3 2 1"
+        },
+        {
+          "input": "3 9 0 -2",
+          "output": "-2 0 9"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "5 4 3 2 1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 9 0 -2",
+          "expected_output": "-2 0 9",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Evaluate Postfix",
+      "slug": "stacks-queues-06-evaluate-postfix",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "evaluate"
+      ],
+      "description": "Evaluate a space-separated postfix expression using integer arithmetic. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "5 2 3 + 4 *",
+          "output": "20"
+        },
+        {
+          "input": "7 2 / 3 +",
+          "output": "6"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "5 2 3 + 4 *",
+          "expected_output": "20",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "7 2 / 3 +",
+          "expected_output": "6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Infix To Postfix",
+      "slug": "stacks-queues-07-infix-to-postfix",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "infix"
+      ],
+      "description": "Convert an expression with +, -, *, /, and parentheses to postfix tokens. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "a+b*c",
+          "output": "a b c * +"
+        },
+        {
+          "input": "(a+b)*c",
+          "output": "a b + c *"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "a+b*c",
+          "expected_output": "a b c * +",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "(a+b)*c",
+          "expected_output": "a b + c *",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Next Greater Stream",
+      "slug": "stacks-queues-08-next-greater-stream",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "next"
+      ],
+      "description": "For each value, print the first greater value to its right, or -1. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "5 2 1 4 3 5",
+          "output": "4 4 5 5 -1"
+        },
+        {
+          "input": "4 9 8 7 6",
+          "output": "-1 -1 -1 -1"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "5 2 1 4 3 5",
+          "expected_output": "4 4 5 5 -1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 9 8 7 6",
+          "expected_output": "-1 -1 -1 -1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Stock Span",
+      "slug": "stacks-queues-09-stock-span",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "stock"
+      ],
+      "description": "For each price, return the number of consecutive earlier prices no greater than it, including today. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "7 100 80 60 70 60 75 85",
+          "output": "1 1 1 2 1 4 6"
+        },
+        {
+          "input": "4 10 20 30 40",
+          "output": "1 2 3 4"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "7 100 80 60 70 60 75 85",
+          "expected_output": "1 1 1 2 1 4 6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 10 20 30 40",
+          "expected_output": "1 2 3 4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Largest Histogram Rectangle",
+      "slug": "stacks-queues-10-largest-histogram-rectangle",
+      "difficulty": "Hard",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "largest"
+      ],
+      "description": "Return the largest rectangle area under a histogram. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "6 2 1 5 6 2 3",
+          "output": "10"
+        },
+        {
+          "input": "4 2 4 2 4",
+          "output": "8"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "6 2 1 5 6 2 3",
+          "expected_output": "10",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 2 4 2 4",
+          "expected_output": "8",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Sliding Window Maximum",
+      "slug": "stacks-queues-11-sliding-window-maximum",
+      "difficulty": "Hard",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "sliding"
+      ],
+      "description": "Print the maximum of every contiguous window of width k. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "8 3 1 3 -1 -3 5 3 6 7|3",
+          "output": "3 3 5 5 6 7"
+        },
+        {
+          "input": "4 2 4 1 0|2",
+          "output": "4 4 1"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "8 3 1 3 -1 -3 5 3 6 7|3",
+          "expected_output": "3 3 5 5 6 7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 2 4 1 0|2",
+          "expected_output": "4 4 1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Sliding Window Minimum",
+      "slug": "stacks-queues-12-sliding-window-minimum",
+      "difficulty": "Hard",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "sliding"
+      ],
+      "description": "Print the minimum of every contiguous window of width k. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "6 2 1 5 3 4 0|3",
+          "output": "1 1 3 0"
+        },
+        {
+          "input": "4 8 7 9 6|2",
+          "output": "7 7 6"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "6 2 1 5 3 4 0|3",
+          "expected_output": "1 1 3 0",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 8 7 9 6|2",
+          "expected_output": "7 7 6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Queue Using Two Stacks",
+      "slug": "stacks-queues-13-queue-using-two-stacks",
+      "difficulty": "Easy",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "stack",
+        "queue"
+      ],
+      "description": "Process enqueue and dequeue commands and print each dequeued value. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "5 E1 E2 D E3 D",
+          "output": "1 2"
+        },
+        {
+          "input": "4 E9 D D D",
+          "output": "9 -1 -1"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "5 E1 E2 D E3 D",
+          "expected_output": "1 2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 E9 D D D",
+          "expected_output": "9 -1 -1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Stack Using Two Queues",
+      "slug": "stacks-queues-14-stack-using-two-queues",
+      "difficulty": "Easy",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "stack",
+        "stack"
+      ],
+      "description": "Process push and pop commands and print each popped value. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "5 P1 P2 O P3 O",
+          "output": "2 3"
+        },
+        {
+          "input": "3 O P7 O",
+          "output": "-1 7"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "5 P1 P2 O P3 O",
+          "expected_output": "2 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 O P7 O",
+          "expected_output": "-1 7",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Min-Stack Operations",
+      "slug": "stacks-queues-15-min-stack-operations",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "stack",
+        "min"
+      ],
+      "description": "Process push, pop, and minimum commands; print each requested minimum. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "6 P5 P2 M O M P1 M",
+          "output": "2 5 1"
+        },
+        {
+          "input": "4 P9 O M O",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "6 P5 P2 M O M P1 M",
+          "expected_output": "2 5 1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 P9 O M O",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Circular Queue Simulation",
+      "slug": "stacks-queues-16-circular-queue-simulation",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "circular"
+      ],
+      "description": "Simulate a fixed-capacity circular queue and print dequeue results. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "3 E1 E2 D E3 E4 D D",
+          "output": "1 2 3"
+        },
+        {
+          "input": "2 E7 E8 E9 D D",
+          "output": "7 8"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "3 E1 E2 D E3 E4 D D",
+          "expected_output": "1 2 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 E7 E8 E9 D D",
+          "expected_output": "7 8",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Recent Request Counter",
+      "slug": "stacks-queues-17-recent-request-counter",
+      "difficulty": "Easy",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "recent"
+      ],
+      "description": "For each timestamp, count timestamps in the last window inclusive. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "5 1 2 3 10 11|3",
+          "output": "1 2 3 1 2"
+        },
+        {
+          "input": "4 100 101 105 106|5",
+          "output": "1 2 2 2"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 3 10 11|3",
+          "expected_output": "1 2 3 1 2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 100 101 105 106|5",
+          "expected_output": "1 2 2 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Asteroid Collision",
+      "slug": "stacks-queues-18-asteroid-collision",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "asteroid"
+      ],
+      "description": "Positive values move right and negative values move left; resolve collisions and print survivors. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "3 5 10 -5",
+          "output": "5 10"
+        },
+        {
+          "input": "4 8 -8 2 -3",
+          "output": "-3"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "3 5 10 -5",
+          "expected_output": "5 10",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 8 -8 2 -3",
+          "expected_output": "-3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Remove Adjacent Digits",
+      "slug": "stacks-queues-19-remove-adjacent-digits",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "remove"
+      ],
+      "description": "Remove adjacent equal digits repeatedly and print the remaining digit text. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "abbaca",
+          "output": "ca"
+        },
+        {
+          "input": "azxxzy",
+          "output": "ay"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "abbaca",
+          "expected_output": "ca",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "azxxzy",
+          "expected_output": "ay",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Decode Repetition",
+      "slug": "stacks-queues-20-decode-repetition",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "decode"
+      ],
+      "description": "Decode nested k[segment] notation where k is a positive integer. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "3[a2[c]]",
+          "output": "accaccacc"
+        },
+        {
+          "input": "2[ab3[c]]",
+          "output": "abcccabccc"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "3[a2[c]]",
+          "expected_output": "accaccacc",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2[ab3[c]]",
+          "expected_output": "abcccabccc",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Train Platform Order",
+      "slug": "stacks-queues-21-train-platform-order",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "train"
+      ],
+      "description": "Check whether a target departure order can be produced using one stack siding. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "1 2 3 4 5|5 4 3 2 1",
+          "output": "true"
+        },
+        {
+          "input": "1 2 3 4|2 1 4 3",
+          "output": "true"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "1 2 3 4 5|5 4 3 2 1",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1 2 3 4|2 1 4 3",
+          "expected_output": "true",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Daily Temperature Wait",
+      "slug": "stacks-queues-22-daily-temperature-wait",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "daily"
+      ],
+      "description": "For each temperature, report days until a warmer temperature, or 0. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "8 73 74 75 71 69 72 76 73",
+          "output": "1 1 4 2 1 1 0 0"
+        },
+        {
+          "input": "4 30 20 10 5",
+          "output": "0 0 0 0"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "8 73 74 75 71 69 72 76 73",
+          "expected_output": "1 1 4 2 1 1 0 0",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 30 20 10 5",
+          "expected_output": "0 0 0 0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Expression Parenthesis Score",
+      "slug": "stacks-queues-23-expression-parenthesis-score",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "expression"
+      ],
+      "description": "Score balanced parentheses: () is 1, concatenation adds, and nesting doubles. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "()(()())",
+          "output": "5"
+        },
+        {
+          "input": "((()))",
+          "output": "4"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "()(()())",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "((()))",
+          "expected_output": "4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Queue Interleave Halves",
+      "slug": "stacks-queues-24-queue-interleave-halves",
+      "difficulty": "Easy",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "queue"
+      ],
+      "description": "Interleave the first and second halves of an even-sized queue. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "6 1 2 3 4 5 6",
+          "output": "1 4 2 5 3 6"
+        },
+        {
+          "input": "4 8 7 6 5",
+          "output": "8 6 7 5"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "6 1 2 3 4 5 6",
+          "expected_output": "1 4 2 5 3 6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 8 7 6 5",
+          "expected_output": "8 6 7 5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "First Nonrepeating Stream",
+      "slug": "stacks-queues-25-first-nonrepeating-stream",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "first"
+      ],
+      "description": "After each arriving lowercase character, print the first character seen once, or #. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "a a b c",
+          "output": "a # b b"
+        },
+        {
+          "input": "a b a c",
+          "output": "a a b b"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "a a b c",
+          "expected_output": "a # b b",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "a b a c",
+          "expected_output": "a a b b",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Undo Redo History",
+      "slug": "stacks-queues-26-undo-redo-history",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "undo"
+      ],
+      "description": "Process edit, undo, and redo commands and print the final text. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "E:a E:b U R E:c",
+          "output": "abc"
+        },
+        {
+          "input": "E:x E:y U U R",
+          "output": "x"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "E:a E:b U R E:c",
+          "expected_output": "abc",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "E:x E:y U U R",
+          "expected_output": "x",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "K-th Queue Person",
+      "slug": "stacks-queues-27-k-th-queue-person",
+      "difficulty": "Easy",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "k"
+      ],
+      "description": "Return the value at one-based queue position k without changing the queue. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "5 4 8 1 9 2|3",
+          "output": "1"
+        },
+        {
+          "input": "2 7 6|1",
+          "output": "7"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "5 4 8 1 9 2|3",
+          "expected_output": "1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 7 6|1",
+          "expected_output": "7",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Task Round Robin",
+      "slug": "stacks-queues-28-task-round-robin",
+      "difficulty": "Medium",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "task"
+      ],
+      "description": "Process positive task durations with one unit per turn and print completion order. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "3 2 1 3",
+          "output": "2 1 3"
+        },
+        {
+          "input": "2 4 2",
+          "output": "1 2"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "3 2 1 3",
+          "expected_output": "2 1 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 4 2",
+          "expected_output": "1 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Multi-Level Queue Merge",
+      "slug": "stacks-queues-29-multi-level-queue-merge",
+      "difficulty": "Hard",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "multi"
+      ],
+      "description": "Merge queues by taking one item from each non-empty queue in repeated rounds. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "2 1 2 3|3 4 5 6",
+          "output": "1 4 2 5 3 6"
+        },
+        {
+          "input": "3 a b c|1 x",
+          "output": "a x b c"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "2 1 2 3|3 4 5 6",
+          "expected_output": "1 4 2 5 3 6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 a b c|1 x",
+          "expected_output": "a x b c",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Queue Median Snapshot",
+      "slug": "stacks-queues-30-queue-median-snapshot",
+      "difficulty": "Hard",
+      "category": "Stacks and Queues",
+      "topic": "Stacks and Queues",
+      "tags": [
+        "queue",
+        "queue"
+      ],
+      "description": "After each enqueue, print the lower median of all values currently in the queue. Commands and multiple logical values use the notation shown in the examples. Preserve the order required by the data structure and print only requested results.",
+      "input_format": "The input is a whitespace-separated record; the examples show command, parameter, and value boundaries.",
+      "output_format": "Print the requested value or sequence on one line, using single spaces between sequence items.",
+      "constraints": "1 <= number of operations or values <= 100000; integer values fit in signed 32-bit range.",
+      "examples": [
+        {
+          "input": "5 5 1 9 2 7",
+          "output": "5 1 5 2 5"
+        },
+        {
+          "input": "3 4 6 8",
+          "output": "4 4 6"
+        }
+      ],
+      "hints": [
+        "A monotonic stack can answer nearest-greater or nearest-smaller questions in one pass.",
+        "For a queue, separate the arrival order from the order in which removals are observed."
+      ],
+      "test_cases": [
+        {
+          "input": "5 5 1 9 2 7",
+          "expected_output": "5 1 5 2 5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 4 6 8",
+          "expected_output": "4 4 6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented stack/queue input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented stack/queue input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented stack/queue input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented stack/queue input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    }
+  ]
+}

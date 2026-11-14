@@ -1,0 +1,2704 @@
+{
+  "problems": [
+    {
+      "title": "Vowel Census",
+      "slug": "strings-01-vowel-census",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "vowel"
+      ],
+      "description": "Count English vowels in a string, ignoring letter case. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "Education",
+          "output": "5"
+        },
+        {
+          "input": "rhythm",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "Education",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "rhythm",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Reverse Word Order",
+      "slug": "strings-02-reverse-word-order",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "reverse"
+      ],
+      "description": "Print the words in reverse order while preserving each word's spelling. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "learn code daily",
+          "output": "daily code learn"
+        },
+        {
+          "input": "one two three",
+          "output": "three two one"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "learn code daily",
+          "expected_output": "daily code learn",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "one two three",
+          "expected_output": "three two one",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Run-Length Encoding",
+      "slug": "strings-03-run-length-encoding",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "run"
+      ],
+      "description": "Compress each consecutive run as its character followed by its count. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "aaabbc",
+          "output": "a3b2c1"
+        },
+        {
+          "input": "xyzzzz",
+          "output": "x1y1z4"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "aaabbc",
+          "expected_output": "a3b2c1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "xyzzzz",
+          "expected_output": "x1y1z4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Run-Length Expansion",
+      "slug": "strings-04-run-length-expansion",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "run"
+      ],
+      "description": "Expand a string made of letter-count pairs into its original repeated form. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "a3b2c1",
+          "output": "aaabbc"
+        },
+        {
+          "input": "x1y1z4",
+          "output": "xyzzzz"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "a3b2c1",
+          "expected_output": "aaabbc",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "x1y1z4",
+          "expected_output": "xyzzzz",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "First Unique Character",
+      "slug": "strings-05-first-unique-character",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "first"
+      ],
+      "description": "Return the zero-based index of the first character occurring once, or -1. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "swiss",
+          "output": "1"
+        },
+        {
+          "input": "aabbcc",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "swiss",
+          "expected_output": "1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "aabbcc",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Anagram Signature",
+      "slug": "strings-06-anagram-signature",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "anagram"
+      ],
+      "description": "Print the lowercase letters sorted alphabetically to form a comparison signature. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "Listen",
+          "output": "eilnst"
+        },
+        {
+          "input": "binary",
+          "output": "abinry"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "Listen",
+          "expected_output": "eilnst",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "binary",
+          "expected_output": "abinry",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Anagram Decision",
+      "slug": "strings-07-anagram-decision",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "anagram"
+      ],
+      "description": "Determine whether two strings contain the same characters with the same frequencies. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "secure rescue",
+          "output": "true"
+        },
+        {
+          "input": "stone notes",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "secure rescue",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "stone notes",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Palindrome Sentence",
+      "slug": "strings-08-palindrome-sentence",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "palindrome"
+      ],
+      "description": "Check whether letters and digits read the same in both directions, ignoring case and punctuation. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "A man, a plan",
+          "output": "false"
+        },
+        {
+          "input": "Never odd or even",
+          "output": "true"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "A man, a plan",
+          "expected_output": "false",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "Never odd or even",
+          "expected_output": "true",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Longest Token",
+      "slug": "strings-09-longest-token",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "longest"
+      ],
+      "description": "Print the longest whitespace-separated token; choose the earliest on ties. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "write clean code",
+          "output": "write"
+        },
+        {
+          "input": "red blue green",
+          "output": "green"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "write clean code",
+          "expected_output": "write",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "red blue green",
+          "expected_output": "green",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Word Frequency",
+      "slug": "strings-10-word-frequency",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "word"
+      ],
+      "description": "Count case-insensitive occurrences of a target word in a sentence. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "Code code makes progress|code",
+          "output": "2"
+        },
+        {
+          "input": "A tiny test|large",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "Code code makes progress|code",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "A tiny test|large",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Remove Adjacent Pairs",
+      "slug": "strings-11-remove-adjacent-pairs",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "remove"
+      ],
+      "description": "Repeatedly delete equal adjacent character pairs until no such pair remains. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "abbaca",
+          "output": "ca"
+        },
+        {
+          "input": "azxxzy",
+          "output": "ay"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "abbaca",
+          "expected_output": "ca",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "azxxzy",
+          "expected_output": "ay",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Balanced Bracket Text",
+      "slug": "strings-12-balanced-bracket-text",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "balanced"
+      ],
+      "description": "Check whether (), [], and {} are correctly nested while ignoring other characters. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "a[(b)]",
+          "output": "true"
+        },
+        {
+          "input": "([)]",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "a[(b)]",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "([)]",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Common Prefix",
+      "slug": "strings-13-common-prefix",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "common"
+      ],
+      "description": "Return the longest prefix shared by every pipe-separated word. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "flower|flow|flight",
+          "output": "fl"
+        },
+        {
+          "input": "dog|racecar|car",
+          "output": ""
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "flower|flow|flight",
+          "expected_output": "fl",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "dog|racecar|car",
+          "expected_output": "",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Common Suffix",
+      "slug": "strings-14-common-suffix",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "common"
+      ],
+      "description": "Return the longest suffix shared by every pipe-separated word. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "running|jogging|walking",
+          "output": "ing"
+        },
+        {
+          "input": "cat|bat|car",
+          "output": ""
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "running|jogging|walking",
+          "expected_output": "ing",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "cat|bat|car",
+          "expected_output": "",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Character Class Count",
+      "slug": "strings-15-character-class-count",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "character"
+      ],
+      "description": "Print counts of lowercase letters, uppercase letters, digits, and other characters. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "Ab3!",
+          "output": "1 1 1 1"
+        },
+        {
+          "input": "Hello 42",
+          "output": "4 0 2 1"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "Ab3!",
+          "expected_output": "1 1 1 1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "Hello 42",
+          "expected_output": "4 0 2 1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Lexicographic Rotation",
+      "slug": "strings-16-lexicographic-rotation",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "lexicographic"
+      ],
+      "description": "Print the lexicographically smallest circular rotation of a string. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "baca",
+          "output": "abac"
+        },
+        {
+          "input": "aaaa",
+          "output": "aaaa"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "baca",
+          "expected_output": "abac",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "aaaa",
+          "expected_output": "aaaa",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Reverse Vowels",
+      "slug": "strings-17-reverse-vowels",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "reverse"
+      ],
+      "description": "Reverse only vowels while leaving every consonant and position otherwise unchanged. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "education",
+          "output": "oducatein"
+        },
+        {
+          "input": "hello",
+          "output": "holle"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "education",
+          "expected_output": "oducatein",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "hello",
+          "expected_output": "holle",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Isomorphic Words",
+      "slug": "strings-18-isomorphic-words",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "isomorphic"
+      ],
+      "description": "Check whether a one-to-one character mapping transforms the first word into the second. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "egg add",
+          "output": "true"
+        },
+        {
+          "input": "foo bar",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "egg add",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "foo bar",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Edit Distance One",
+      "slug": "strings-19-edit-distance-one",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "edit"
+      ],
+      "description": "Determine whether two strings differ by at most one insertion, deletion, or replacement. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "pale ple",
+          "output": "true"
+        },
+        {
+          "input": "abc axcde",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "pale ple",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "abc axcde",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Smallest Cover Window",
+      "slug": "strings-20-smallest-cover-window",
+      "difficulty": "Hard",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "smallest"
+      ],
+      "description": "Find the shortest substring containing every character of a target with required multiplicity. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "ADOBECODEBANC|ABC",
+          "output": "BANC"
+        },
+        {
+          "input": "a|aa",
+          "output": ""
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "ADOBECODEBANC|ABC",
+          "expected_output": "BANC",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "a|aa",
+          "expected_output": "",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Subsequence Decision",
+      "slug": "strings-21-subsequence-decision",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "subsequence"
+      ],
+      "description": "Check whether the first string appears as a subsequence of the second. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "ace|abcde",
+          "output": "true"
+        },
+        {
+          "input": "aec|abcde",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "ace|abcde",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "aec|abcde",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Interleaving Decision",
+      "slug": "strings-22-interleaving-decision",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "interleaving"
+      ],
+      "description": "Check whether a third string preserves the internal order of two source strings while interleaving them. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "ab|cd|acbd",
+          "output": "true"
+        },
+        {
+          "input": "ab|cd|adbc",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "ab|cd|acbd",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "ab|cd|adbc",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Longest Palindromic Slice",
+      "slug": "strings-23-longest-palindromic-slice",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "longest"
+      ],
+      "description": "Return the longest palindromic substring; choose the earliest one on equal lengths. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "babad",
+          "output": "bab"
+        },
+        {
+          "input": "cbbd",
+          "output": "bb"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "babad",
+          "expected_output": "bab",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "cbbd",
+          "expected_output": "bb",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Count Palindromic Slices",
+      "slug": "strings-24-count-palindromic-slices",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "count"
+      ],
+      "description": "Count all non-empty substrings that are palindromes. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "aaa",
+          "output": "6"
+        },
+        {
+          "input": "abc",
+          "output": "3"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "aaa",
+          "expected_output": "6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "abc",
+          "expected_output": "3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Distinct Substring Count",
+      "slug": "strings-25-distinct-substring-count",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "distinct"
+      ],
+      "description": "Count distinct non-empty substrings of a string. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "ababa",
+          "output": "9"
+        },
+        {
+          "input": "aaaa",
+          "output": "4"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "ababa",
+          "expected_output": "9",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "aaaa",
+          "expected_output": "4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Longest Repeated-Free Slice",
+      "slug": "strings-26-longest-repeated-free-slice",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "longest"
+      ],
+      "description": "Return the length of the longest substring with no repeated character. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "abcabcbb",
+          "output": "3"
+        },
+        {
+          "input": "bbbbb",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "abcabcbb",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "bbbbb",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "At-Most-K Distinct Slice",
+      "slug": "strings-27-at-most-k-distinct-slice",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "at"
+      ],
+      "description": "Return the longest substring containing at most k distinct characters. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "eceba|2",
+          "output": "3"
+        },
+        {
+          "input": "aa|1",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "eceba|2",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "aa|1",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Letter Inventory Difference",
+      "slug": "strings-28-letter-inventory-difference",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "letter"
+      ],
+      "description": "Print characters whose count is larger in the first string than the second, alphabetically with counts. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "banana|band",
+          "output": "a1"
+        },
+        {
+          "input": "abc|xyz",
+          "output": "abc1"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "banana|band",
+          "expected_output": "a1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "abc|xyz",
+          "expected_output": "abc1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Pattern Word Match",
+      "slug": "strings-29-pattern-word-match",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "pattern"
+      ],
+      "description": "Check whether a pattern's symbols map one-to-one to the words in a sentence. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "abba|dog cat cat dog",
+          "output": "true"
+        },
+        {
+          "input": "abba|dog cat cat fish",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "abba|dog cat cat dog",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "abba|dog cat cat fish",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "URL-safe Normalizer",
+      "slug": "strings-30-url-safe-normalizer",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "url"
+      ],
+      "description": "Lowercase text, replace every run of non-letters or digits with one hyphen, and trim hyphens. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "Hello, New World!",
+          "output": "hello-new-world"
+        },
+        {
+          "input": "  C++ / Java  ",
+          "output": "c-java"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "Hello, New World!",
+          "expected_output": "hello-new-world",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "  C++ / Java  ",
+          "expected_output": "c-java",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Reverse Each Token",
+      "slug": "strings-31-reverse-each-token",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "reverse"
+      ],
+      "description": "Reverse characters inside each whitespace-separated token without changing token order. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "learn fast now",
+          "output": "nrael tsaf won"
+        },
+        {
+          "input": "one",
+          "output": "eno"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "learn fast now",
+          "expected_output": "nrael tsaf won",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "one",
+          "expected_output": "eno",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Minimal Delete Palindrome",
+      "slug": "strings-32-minimal-delete-palindrome",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "minimal"
+      ],
+      "description": "Return the minimum number of character deletions needed to make a string a palindrome. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "aebcbda",
+          "output": "2"
+        },
+        {
+          "input": "racecar",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "aebcbda",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "racecar",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Longest Balanced Binary Text",
+      "slug": "strings-33-longest-balanced-binary-text",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "longest"
+      ],
+      "description": "Return the longest substring containing equal numbers of 0 and 1. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "00110",
+          "output": "4"
+        },
+        {
+          "input": "1111",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "00110",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1111",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Binary Text Addition",
+      "slug": "strings-34-binary-text-addition",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "binary"
+      ],
+      "description": "Add two non-negative binary strings and print the binary result without leading zeroes. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "1011|110",
+          "output": "10001"
+        },
+        {
+          "input": "0|0",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "1011|110",
+          "expected_output": "10001",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "0|0",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Base-36 Digit Sum",
+      "slug": "strings-35-base-36-digit-sum",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "base"
+      ],
+      "description": "Sum the values of lowercase base-36 digits, where a-z represent 10-35. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "az09",
+          "output": "70"
+        },
+        {
+          "input": "hello",
+          "output": "62"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "az09",
+          "expected_output": "70",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "hello",
+          "expected_output": "62",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Roman Token Value",
+      "slug": "strings-36-roman-token-value",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "roman"
+      ],
+      "description": "Convert a valid Roman numeral token using subtractive notation into its integer value. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "MCM",
+          "output": "1900"
+        },
+        {
+          "input": "XLII",
+          "output": "42"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "MCM",
+          "expected_output": "1900",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "XLII",
+          "expected_output": "42",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Zigzag Text Rows",
+      "slug": "strings-37-zigzag-text-rows",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "zigzag"
+      ],
+      "description": "Write characters across the requested zigzag row count and read rows from top to bottom. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "PAYPALISHIRING|3",
+          "output": "PAHNAPLSIIGYIR"
+        },
+        {
+          "input": "HELLO|4",
+          "output": "HOELL"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "PAYPALISHIRING|3",
+          "expected_output": "PAHNAPLSIIGYIR",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "HELLO|4",
+          "expected_output": "HOELL",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "String Rotation Offset",
+      "slug": "strings-38-string-rotation-offset",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "string"
+      ],
+      "description": "Return the left rotation offset that changes the first string into the second, or -1. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "waterbottle|erbottlewat",
+          "output": "3"
+        },
+        {
+          "input": "abc|acb",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "waterbottle|erbottlewat",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "abc|acb",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Longest Common Subsequence Length",
+      "slug": "strings-39-longest-common-subsequence-length",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "longest"
+      ],
+      "description": "Return the length of a longest subsequence shared by two strings. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "abcde|ace",
+          "output": "3"
+        },
+        {
+          "input": "abc|def",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "abcde|ace",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "abc|def",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Shortest Common Supersequence Length",
+      "slug": "strings-40-shortest-common-supersequence-length",
+      "difficulty": "Hard",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "shortest"
+      ],
+      "description": "Return the shortest length of a string containing both inputs as subsequences. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "abac|cab",
+          "output": "5"
+        },
+        {
+          "input": "geek|eke",
+          "output": "5"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "abac|cab",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "geek|eke",
+          "expected_output": "5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Wildcard Text Match",
+      "slug": "strings-41-wildcard-text-match",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "wildcard"
+      ],
+      "description": "Match text against a pattern where ? matches one character and * matches any sequence. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "adceb|*a*b",
+          "output": "true"
+        },
+        {
+          "input": "cb|?a",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "adceb|*a*b",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "cb|?a",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Prefix Function Border",
+      "slug": "strings-42-prefix-function-border",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "prefix"
+      ],
+      "description": "Return the length of the longest proper prefix that is also a suffix. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "ababa",
+          "output": "3"
+        },
+        {
+          "input": "abcd",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "ababa",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "abcd",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Repeated Pattern Root",
+      "slug": "strings-43-repeated-pattern-root",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "repeated"
+      ],
+      "description": "Check whether a string can be built by repeating one shorter non-empty pattern. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "abab",
+          "output": "true"
+        },
+        {
+          "input": "aba",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "abab",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "aba",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Text Justification Width",
+      "slug": "strings-44-text-justification-width",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "text"
+      ],
+      "description": "Pack pipe-separated words into lines of exactly width characters, left-aligning the final line. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "This|is|a|test|10",
+          "output": "This  is a|test      "
+        },
+        {
+          "input": "A|short|line|8",
+          "output": "A short|line    "
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "This|is|a|test|10",
+          "expected_output": "This  is a|test      ",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "A|short|line|8",
+          "expected_output": "A short|line    ",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Minimum Parenthesis Insertions",
+      "slug": "strings-45-minimum-parenthesis-insertions",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "minimum"
+      ],
+      "description": "Return insertions needed to balance a string containing only opening and closing parentheses. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "()))",
+          "output": "1"
+        },
+        {
+          "input": "(((",
+          "output": "3"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "()))",
+          "expected_output": "1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "(((",
+          "expected_output": "3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Remove Duplicate Letters",
+      "slug": "strings-46-remove-duplicate-letters",
+      "difficulty": "Hard",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "remove"
+      ],
+      "description": "Keep one copy of each letter and produce the lexicographically smallest possible result. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "cbacdcbc",
+          "output": "acdb"
+        },
+        {
+          "input": "bcabc",
+          "output": "abc"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "cbacdcbc",
+          "expected_output": "acdb",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "bcabc",
+          "expected_output": "abc",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Count Digit Substrings",
+      "slug": "strings-47-count-digit-substrings",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "count"
+      ],
+      "description": "Count contiguous substrings consisting only of digits. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "a12bc345",
+          "output": "5"
+        },
+        {
+          "input": "abc",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "a12bc345",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "abc",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Reverse Words In Place",
+      "slug": "strings-48-reverse-words-in-place",
+      "difficulty": "Medium",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "reverse"
+      ],
+      "description": "Reverse the order of words and collapse repeated whitespace to single spaces. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "  hello   world  ",
+          "output": "world hello"
+        },
+        {
+          "input": "learn code",
+          "output": "code learn"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "  hello   world  ",
+          "expected_output": "world hello",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "learn code",
+          "expected_output": "code learn",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Character Shift Cipher",
+      "slug": "strings-49-character-shift-cipher",
+      "difficulty": "Easy",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "character"
+      ],
+      "description": "Shift each English letter forward by k cyclically while preserving case and other characters. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "Abc-z|2",
+          "output": "Cde-b"
+        },
+        {
+          "input": "Zoo!|1",
+          "output": "App!"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "Abc-z|2",
+          "expected_output": "Cde-b",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "Zoo!|1",
+          "expected_output": "App!",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Longest Common Prefix After Removal",
+      "slug": "strings-50-longest-common-prefix-after-removal",
+      "difficulty": "Hard",
+      "category": "Strings",
+      "topic": "Strings",
+      "tags": [
+        "strings",
+        "longest"
+      ],
+      "description": "For each word, print the common-prefix length of all remaining pipe-separated words. Inputs use the pipe-separated notation shown in the examples when more than one logical value is supplied. Treat characters exactly as stated, and print only the requested result.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order for the operation.",
+      "output_format": "Print the requested string, integer, boolean, or sequence on one line.",
+      "constraints": "1 <= length of each string <= 100000; input uses printable ASCII characters unless the operation says otherwise.",
+      "examples": [
+        {
+          "input": "flower|flow|flight",
+          "output": "4 2 2"
+        },
+        {
+          "input": "aa|ab|ac",
+          "output": "1 1 1"
+        }
+      ],
+      "hints": [
+        "Track frequencies or a left and right boundary instead of repeatedly rebuilding substrings.",
+        "Preserve the distinction between character order and character frequency."
+      ],
+      "test_cases": [
+        {
+          "input": "flower|flow|flight",
+          "expected_output": "4 2 2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "aa|ab|ac",
+          "expected_output": "1 1 1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    }
+  ]
+}

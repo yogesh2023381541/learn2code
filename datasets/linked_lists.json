@@ -1,0 +1,1624 @@
+{
+  "problems": [
+    {
+      "title": "List Length",
+      "slug": "linked-lists-01-list-length",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "list"
+      ],
+      "description": "Return the number of nodes in a singly linked list. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "4 3 8 1 6",
+          "output": "4"
+        },
+        {
+          "input": "1 9",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "4 3 8 1 6",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1 9",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "List Sum",
+      "slug": "linked-lists-02-list-sum",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "list"
+      ],
+      "description": "Return the sum of every node value. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 2 4 -1 7 3",
+          "output": "15"
+        },
+        {
+          "input": "3 -4 0 9",
+          "output": "5"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 2 4 -1 7 3",
+          "expected_output": "15",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 -4 0 9",
+          "expected_output": "5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "List Search",
+      "slug": "linked-lists-03-list-search",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "list"
+      ],
+      "description": "Return the first zero-based index containing target, or -1. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 4 8 2 8 1|8",
+          "output": "1"
+        },
+        {
+          "input": "3 5 6 7|4",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 4 8 2 8 1|8",
+          "expected_output": "1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 5 6 7|4",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Reverse Chain",
+      "slug": "linked-lists-04-reverse-chain",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "reverse"
+      ],
+      "description": "Reverse a singly linked list and print its values. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "5 4 3 2 1"
+        },
+        {
+          "input": "3 9 0 -2",
+          "output": "-2 0 9"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "5 4 3 2 1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 9 0 -2",
+          "expected_output": "-2 0 9",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Middle Node Value",
+      "slug": "linked-lists-05-middle-node-value",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "middle"
+      ],
+      "description": "Return the middle value; for even length choose the second middle node. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "3"
+        },
+        {
+          "input": "4 8 6 2 0",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 8 6 2 0",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Remove First Target",
+      "slug": "linked-lists-06-remove-first-target",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "remove"
+      ],
+      "description": "Remove only the first node equal to target and print the remaining list. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 2 4 2 7 9|2",
+          "output": "4 2 7 9"
+        },
+        {
+          "input": "3 1 2 3|8",
+          "output": "1 2 3"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 2 4 2 7 9|2",
+          "expected_output": "4 2 7 9",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 1 2 3|8",
+          "expected_output": "1 2 3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Remove All Targets",
+      "slug": "linked-lists-07-remove-all-targets",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "remove"
+      ],
+      "description": "Remove every node equal to target. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "6 1 3 3 2 3 4|3",
+          "output": "1 2 4"
+        },
+        {
+          "input": "4 5 5 5 5|5",
+          "output": ""
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "6 1 3 3 2 3 4|3",
+          "expected_output": "1 2 4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 5 5 5 5|5",
+          "expected_output": "",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Insert At Position",
+      "slug": "linked-lists-08-insert-at-position",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "insert"
+      ],
+      "description": "Insert a value before the node at zero-based position; position n appends. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "4 4 6 8 10|2|7",
+          "output": "4 6 7 8 10"
+        },
+        {
+          "input": "2 1 2|0|9",
+          "output": "9 1 2"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "4 4 6 8 10|2|7",
+          "expected_output": "4 6 7 8 10",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 1 2|0|9",
+          "expected_output": "9 1 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Delete At Position",
+      "slug": "linked-lists-09-delete-at-position",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "delete"
+      ],
+      "description": "Delete the node at a valid zero-based position. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 7 8 9 10 11|3",
+          "output": "7 8 9 11"
+        },
+        {
+          "input": "1 4|0",
+          "output": ""
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 7 8 9 10 11|3",
+          "expected_output": "7 8 9 11",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1 4|0",
+          "expected_output": "",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Merge Sorted Chains",
+      "slug": "linked-lists-10-merge-sorted-chains",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "merge"
+      ],
+      "description": "Merge two non-decreasing lists into one non-decreasing list. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "3 1 4 7|4 2 3 8 9",
+          "output": "1 2 3 4 7 8 9"
+        },
+        {
+          "input": "0 |3 -2 0 5",
+          "output": "-2 0 5"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "3 1 4 7|4 2 3 8 9",
+          "expected_output": "1 2 3 4 7 8 9",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "0 |3 -2 0 5",
+          "expected_output": "-2 0 5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Remove Consecutive Duplicates",
+      "slug": "linked-lists-11-remove-consecutive-duplicates",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "remove"
+      ],
+      "description": "In a sorted list, keep one node from each equal-value run. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "7 1 1 2 2 2 4 5",
+          "output": "1 2 4 5"
+        },
+        {
+          "input": "4 9 9 9 9",
+          "output": "9"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 1 2 2 2 4 5",
+          "expected_output": "1 2 4 5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 9 9 9 9",
+          "expected_output": "9",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Palindrome Chain",
+      "slug": "linked-lists-12-palindrome-chain",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "palindrome"
+      ],
+      "description": "Determine whether the list values read identically from both ends. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 1 2 3 2 1",
+          "output": "true"
+        },
+        {
+          "input": "4 1 2 2 3",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 3 2 1",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 2 2 3",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Cycle Entry Index",
+      "slug": "linked-lists-13-cycle-entry-index",
+      "difficulty": "Medium",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "cycle"
+      ],
+      "description": "The final node points to the node at index entry; return entry, or -1 for no cycle. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 10 20 30 40 50|1",
+          "output": "1"
+        },
+        {
+          "input": "4 3 6 9 12|-1",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 10 20 30 40 50|1",
+          "expected_output": "1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 3 6 9 12|-1",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Cycle Presence",
+      "slug": "linked-lists-14-cycle-presence",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "cycle"
+      ],
+      "description": "Determine whether a next-pointer cycle exists. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "3 7 8 9|0",
+          "output": "true"
+        },
+        {
+          "input": "3 7 8 9|-1",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "3 7 8 9|0",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 7 8 9|-1",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Intersection Index",
+      "slug": "linked-lists-15-intersection-index",
+      "difficulty": "Medium",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "intersection"
+      ],
+      "description": "Two lists share a suffix beginning at the supplied value; return its first index in list A, or -1. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 1 2 8 9 10|4 3 4 8 9 10",
+          "output": "2"
+        },
+        {
+          "input": "3 1 2 3|2 4 5",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 8 9 10|4 3 4 8 9 10",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 1 2 3|2 4 5",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Nth From End",
+      "slug": "linked-lists-16-nth-from-end",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "nth"
+      ],
+      "description": "Return the value n positions from the end, where n is one-based. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 4 8 1 6 3|2",
+          "output": "6"
+        },
+        {
+          "input": "3 9 5 2|3",
+          "output": "9"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 4 8 1 6 3|2",
+          "expected_output": "6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 9 5 2|3",
+          "expected_output": "9",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Rotate Chain",
+      "slug": "linked-lists-17-rotate-chain",
+      "difficulty": "Medium",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "rotate"
+      ],
+      "description": "Rotate a list to the right by k positions. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 1 2 3 4 5|2",
+          "output": "4 5 1 2 3"
+        },
+        {
+          "input": "4 7 8 9 0|5",
+          "output": "9 0 7 8"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 3 4 5|2",
+          "expected_output": "4 5 1 2 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 7 8 9 0|5",
+          "expected_output": "9 0 7 8",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Pairwise Swap",
+      "slug": "linked-lists-18-pairwise-swap",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "pairwise"
+      ],
+      "description": "Swap adjacent nodes in pairs without changing node values. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "2 1 4 3 5"
+        },
+        {
+          "input": "4 8 7 6 5",
+          "output": "7 8 5 6"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "2 1 4 3 5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 8 7 6 5",
+          "expected_output": "7 8 5 6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Reverse Fixed Groups",
+      "slug": "linked-lists-19-reverse-fixed-groups",
+      "difficulty": "Medium",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "reverse"
+      ],
+      "description": "Reverse every complete group of k nodes; leave a short final group unchanged. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "7 1 2 3 4 5 6 7|3",
+          "output": "3 2 1 6 5 4 7"
+        },
+        {
+          "input": "5 9 8 7 6 5|2",
+          "output": "8 9 6 7 5"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 3 4 5 6 7|3",
+          "expected_output": "3 2 1 6 5 4 7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 9 8 7 6 5|2",
+          "expected_output": "8 9 6 7 5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Sort Linked Values",
+      "slug": "linked-lists-20-sort-linked-values",
+      "difficulty": "Medium",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "sort"
+      ],
+      "description": "Rearrange nodes into non-decreasing value order. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 4 1 5 2 3",
+          "output": "1 2 3 4 5"
+        },
+        {
+          "input": "4 0 -1 -1 2",
+          "output": "-1 -1 0 2"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 4 1 5 2 3",
+          "expected_output": "1 2 3 4 5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0 -1 -1 2",
+          "expected_output": "-1 -1 0 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Add Number Chains",
+      "slug": "linked-lists-21-add-number-chains",
+      "difficulty": "Medium",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "add"
+      ],
+      "description": "Each list stores one digit per node in forward order; print their sum in forward order. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "3 7 2 4|4 5 6 4",
+          "output": "1 2 8 8"
+        },
+        {
+          "input": "2 9 9|1 1",
+          "output": "1 0 0"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "3 7 2 4|4 5 6 4",
+          "expected_output": "1 2 8 8",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 9 9|1 1",
+          "expected_output": "1 0 0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Odd Even Node Order",
+      "slug": "linked-lists-22-odd-even-node-order",
+      "difficulty": "Medium",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "odd"
+      ],
+      "description": "Place nodes at odd positions first, followed by nodes at even positions. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "6 1 2 3 4 5 6",
+          "output": "1 3 5 2 4 6"
+        },
+        {
+          "input": "5 9 8 7 6 5",
+          "output": "9 7 5 8 6"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "6 1 2 3 4 5 6",
+          "expected_output": "1 3 5 2 4 6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 9 8 7 6 5",
+          "expected_output": "9 7 5 8 6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Partition Around Pivot",
+      "slug": "linked-lists-23-partition-around-pivot",
+      "difficulty": "Medium",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "partition"
+      ],
+      "description": "Move values below pivot before values at least pivot while preserving order inside both groups. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "6 1 4 3 2 5 2|3",
+          "output": "1 2 2 4 3 5"
+        },
+        {
+          "input": "4 5 1 8 0|4",
+          "output": "1 0 5 8"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "6 1 4 3 2 5 2|3",
+          "expected_output": "1 2 2 4 3 5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 5 1 8 0|4",
+          "expected_output": "1 0 5 8",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Remove Zero-Sum Runs",
+      "slug": "linked-lists-24-remove-zero-sum-runs",
+      "difficulty": "Medium",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "remove"
+      ],
+      "description": "Repeatedly remove contiguous runs whose values sum to zero. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 1 2 -3 3 1",
+          "output": "3 1"
+        },
+        {
+          "input": "4 1 -1 2 2",
+          "output": "2 2"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 -3 3 1",
+          "expected_output": "3 1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 -1 2 2",
+          "expected_output": "2 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Duplicate Chain",
+      "slug": "linked-lists-25-duplicate-chain",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "duplicate"
+      ],
+      "description": "Create a list containing each input value twice consecutively. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "3 4 1 9",
+          "output": "4 4 1 1 9 9"
+        },
+        {
+          "input": "1 -5",
+          "output": "-5 -5"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "3 4 1 9",
+          "expected_output": "4 4 1 1 9 9",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1 -5",
+          "expected_output": "-5 -5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Split Alternating Chains",
+      "slug": "linked-lists-26-split-alternating-chains",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "split"
+      ],
+      "description": "Print nodes at odd positions, then nodes at even positions. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "1 3 5|2 4"
+        },
+        {
+          "input": "4 8 6 4 2",
+          "output": "8 4|6 2"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "1 3 5|2 4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 8 6 4 2",
+          "expected_output": "8 4|6 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Compare Chains",
+      "slug": "linked-lists-27-compare-chains",
+      "difficulty": "Easy",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "compare"
+      ],
+      "description": "Compare two lists lexicographically by values and return -1, 0, or 1. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "3 1 4 6|3 1 5 0",
+          "output": "-1"
+        },
+        {
+          "input": "2 7 8|2 7 8",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "3 1 4 6|3 1 5 0",
+          "expected_output": "-1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 7 8|2 7 8",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Flatten Sorted Levels",
+      "slug": "linked-lists-28-flatten-sorted-levels",
+      "difficulty": "Hard",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "flatten"
+      ],
+      "description": "Merge k sorted linked lists supplied as pipe-separated rows. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "2 1 4|3 0 2 5|1 3",
+          "output": "0 1 2 3 4 5"
+        },
+        {
+          "input": "2 -1 7|2 0 8",
+          "output": "-1 0 7 8"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "2 1 4|3 0 2 5|1 3",
+          "expected_output": "0 1 2 3 4 5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 -1 7|2 0 8",
+          "expected_output": "-1 0 7 8",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Reverse Between Bounds",
+      "slug": "linked-lists-29-reverse-between-bounds",
+      "difficulty": "Medium",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "reverse"
+      ],
+      "description": "Reverse nodes from one-based position left through right, leaving the rest unchanged. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "5 1 2 3 4 5|2|4",
+          "output": "1 4 3 2 5"
+        },
+        {
+          "input": "4 7 8 9 0|1|2",
+          "output": "8 7 9 0"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 3 4 5|2|4",
+          "expected_output": "1 4 3 2 5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 7 8 9 0|1|2",
+          "expected_output": "8 7 9 0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Twin Sum Maximum",
+      "slug": "linked-lists-30-twin-sum-maximum",
+      "difficulty": "Medium",
+      "category": "Linked Lists",
+      "topic": "Linked Lists",
+      "tags": [
+        "linked-list",
+        "twin"
+      ],
+      "description": "For an even-length list, pair node i with node n-1-i and return the largest pair sum. Inputs use the pipe-separated notation shown in the examples for parameters or multiple lists. Values are integers and output values must be separated by single spaces.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact token order and list boundaries.",
+      "output_format": "Print the requested value or linked-list sequence on one line.",
+      "constraints": "1 <= list length <= 100000; -1000000000 <= node value <= 1000000000; parameters are valid.",
+      "examples": [
+        {
+          "input": "6 5 4 3 2 1 0",
+          "output": "5"
+        },
+        {
+          "input": "4 8 1 9 2",
+          "output": "10"
+        }
+      ],
+      "hints": [
+        "Use a dummy node when an operation may change the head.",
+        "For two-ended operations, compare a forward traversal with a reversed or fast/slow traversal."
+      ],
+      "test_cases": [
+        {
+          "input": "6 5 4 3 2 1 0",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 8 1 9 2",
+          "expected_output": "10",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().splitlines()\n    # Parse the documented linked-list input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));\n        // Parse the documented linked-list input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented linked-list input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\r?\\n/);\n// Parse the documented linked-list input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    }
+  ]
+}

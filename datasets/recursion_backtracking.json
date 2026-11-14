@@ -1,0 +1,1624 @@
+{
+  "problems": [
+    {
+      "title": "Factorial Value",
+      "slug": "recursion-backtracking-01-factorial-value",
+      "difficulty": "Easy",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "recursion"
+      ],
+      "description": "Return n factorial. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "5",
+          "output": "120"
+        },
+        {
+          "input": "0",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "5",
+          "expected_output": "120",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "0",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Recursive Digit Sum",
+      "slug": "recursion-backtracking-02-recursive-digit-sum",
+      "difficulty": "Easy",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Repeatedly sum decimal digits until one digit remains. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "9875",
+          "output": "2"
+        },
+        {
+          "input": "0",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "9875",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "0",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Power Fast",
+      "slug": "recursion-backtracking-03-power-fast",
+      "difficulty": "Easy",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Return x raised to non-negative exponent n using recursive exponentiation. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "2|10",
+          "output": "1024"
+        },
+        {
+          "input": "5|0",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "2|10",
+          "expected_output": "1024",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5|0",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Fibonacci Recursion Count",
+      "slug": "recursion-backtracking-04-fibonacci-recursion-count",
+      "difficulty": "Easy",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "recursion"
+      ],
+      "description": "Return the n-th Fibonacci value. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "8",
+          "output": "21"
+        },
+        {
+          "input": "1",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "8",
+          "expected_output": "21",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Tower Of Hanoi Moves",
+      "slug": "recursion-backtracking-05-tower-of-hanoi-moves",
+      "difficulty": "Easy",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Return the number of moves needed to transfer n disks. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "4",
+          "output": "15"
+        },
+        {
+          "input": "1",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "4",
+          "expected_output": "15",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Generate Binary Strings",
+      "slug": "recursion-backtracking-06-generate-binary-strings",
+      "difficulty": "Easy",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print all binary strings of length n in lexicographic order. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "3",
+          "output": "000 001 010 011 100 101 110 111"
+        },
+        {
+          "input": "2",
+          "output": "00 01 10 11"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "3",
+          "expected_output": "000 001 010 011 100 101 110 111",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2",
+          "expected_output": "00 01 10 11",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Generate Parentheses",
+      "slug": "recursion-backtracking-07-generate-parentheses",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print all valid parenthesis strings containing n pairs. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "3",
+          "output": "((())) (()()) (())() ()(()) ()()()"
+        },
+        {
+          "input": "1",
+          "output": "()"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "3",
+          "expected_output": "((())) (()()) (())() ()(()) ()()()",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1",
+          "expected_output": "()",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Permutations Distinct",
+      "slug": "recursion-backtracking-08-permutations-distinct",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print all permutations of distinct values in lexicographic order. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "3 1 2 3",
+          "output": "1 2 3|1 3 2|2 1 3|2 3 1|3 1 2|3 2 1"
+        },
+        {
+          "input": "2 4 5",
+          "output": "4 5|5 4"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "3 1 2 3",
+          "expected_output": "1 2 3|1 3 2|2 1 3|2 3 1|3 1 2|3 2 1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 4 5",
+          "expected_output": "4 5|5 4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Permutations With Duplicates",
+      "slug": "recursion-backtracking-09-permutations-with-duplicates",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print unique permutations of values in lexicographic order. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "3 1 1 2",
+          "output": "1 1 2|1 2 1|2 1 1"
+        },
+        {
+          "input": "3 2 2 2",
+          "output": "2 2 2"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "3 1 1 2",
+          "expected_output": "1 1 2|1 2 1|2 1 1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 2 2 2",
+          "expected_output": "2 2 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Combinations K",
+      "slug": "recursion-backtracking-10-combinations-k",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print all k-element combinations from 1 through n. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "4|2",
+          "output": "1 2|1 3|1 4|2 3|2 4|3 4"
+        },
+        {
+          "input": "3|1",
+          "output": "1|2|3"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "4|2",
+          "expected_output": "1 2|1 3|1 4|2 3|2 4|3 4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3|1",
+          "expected_output": "1|2|3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Subsets Distinct",
+      "slug": "recursion-backtracking-11-subsets-distinct",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print every subset of distinct values in increasing size then lexicographic order. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "3 1 2 3",
+          "output": "[]|1|2|3|1 2|1 3|2 3|1 2 3"
+        },
+        {
+          "input": "2 4 5",
+          "output": "[]|4|5|4 5"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "3 1 2 3",
+          "expected_output": "[]|1|2|3|1 2|1 3|2 3|1 2 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 4 5",
+          "expected_output": "[]|4|5|4 5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Subsets With Duplicates",
+      "slug": "recursion-backtracking-12-subsets-with-duplicates",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print unique subsets when input values may repeat. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "3 1 2 2",
+          "output": "[]|1|2|1 2|2 2|1 2 2"
+        },
+        {
+          "input": "2 3 3",
+          "output": "[]|3|3 3"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "3 1 2 2",
+          "expected_output": "[]|1|2|1 2|2 2|1 2 2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 3 3",
+          "expected_output": "[]|3|3 3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Combination Target Sum",
+      "slug": "recursion-backtracking-13-combination-target-sum",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print combinations of reusable candidate values that sum to target. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "3 2 3 6|7",
+          "output": "2 2 3"
+        },
+        {
+          "input": "2 2 5|4",
+          "output": "2 2"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "3 2 3 6|7",
+          "expected_output": "2 2 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 5|4",
+          "expected_output": "2 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Combination Unique Target",
+      "slug": "recursion-backtracking-14-combination-unique-target",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print unique combinations using each candidate at most once to reach target. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "4 10 1 2 7 6|8",
+          "output": "1 7|2 6"
+        },
+        {
+          "input": "5 2 5 2 1 2|5",
+          "output": "1 2 2|5"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "4 10 1 2 7 6|8",
+          "expected_output": "1 7|2 6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 2 5 2 1 2|5",
+          "expected_output": "1 2 2|5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Palindrome Partitions",
+      "slug": "recursion-backtracking-15-palindrome-partitions",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print every partition whose pieces are palindromes. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "aab",
+          "output": "a|a|b|aa|b"
+        },
+        {
+          "input": "efe",
+          "output": "e|f|e|efe"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "aab",
+          "expected_output": "a|a|b|aa|b",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "efe",
+          "expected_output": "e|f|e|efe",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Restore IP Addresses",
+      "slug": "recursion-backtracking-16-restore-ip-addresses",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Insert three dots to form valid IPv4 addresses. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "25525511135",
+          "output": "255.255.11.135|255.255.111.35"
+        },
+        {
+          "input": "0000",
+          "output": "0.0.0.0"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "25525511135",
+          "expected_output": "255.255.11.135|255.255.111.35",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "0000",
+          "expected_output": "0.0.0.0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Letter Phone Combinations",
+      "slug": "recursion-backtracking-17-letter-phone-combinations",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print keypad letter combinations for a digit string. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "23",
+          "output": "ad ae af bd be bf cd ce cf"
+        },
+        {
+          "input": "2",
+          "output": "a b c"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "23",
+          "expected_output": "ad ae af bd be bf cd ce cf",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2",
+          "expected_output": "a b c",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Word Search Grid",
+      "slug": "recursion-backtracking-18-word-search-grid",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Determine whether a word can be traced through adjacent unused grid cells. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "3 4 ABCE SFCS ADEE|ABCCED",
+          "output": "true"
+        },
+        {
+          "input": "2 2 AB BA|ABA",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "3 4 ABCE SFCS ADEE|ABCCED",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 AB BA|ABA",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Rat Maze Paths",
+      "slug": "recursion-backtracking-19-rat-maze-paths",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print all paths from top-left to bottom-right through one-cells, using D and R moves. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "3 3 111 110 111",
+          "output": "DDRDR DRDD"
+        },
+        {
+          "input": "2 2 10 01",
+          "output": ""
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "3 3 111 110 111",
+          "expected_output": "DDRDR DRDD",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 10 01",
+          "expected_output": "",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "N Queens Count",
+      "slug": "recursion-backtracking-20-n-queens-count",
+      "difficulty": "Hard",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "recursion"
+      ],
+      "description": "Count ways to place n queens so no pair attacks. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "4",
+          "output": "2"
+        },
+        {
+          "input": "1",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "4",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "N Queens Boards",
+      "slug": "recursion-backtracking-21-n-queens-boards",
+      "difficulty": "Hard",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print all valid n-queen boards using Q and . rows. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "4",
+          "output": ".Q.. ...Q Q... ..Q."
+        },
+        {
+          "input": "1",
+          "output": "Q"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "4",
+          "expected_output": ".Q.. ...Q Q... ..Q.",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1",
+          "expected_output": "Q",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Sudoku Valid Fill",
+      "slug": "recursion-backtracking-22-sudoku-valid-fill",
+      "difficulty": "Hard",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Determine whether a partially filled 9x9 Sudoku has at least one valid completion. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "9 53..7.... 6..195... .98....6. 8...6...3 4..8.3..1 7...2...6 .6....28. ...419..5 ....8..79",
+          "output": "true"
+        },
+        {
+          "input": "9 11....... ......... ......... ......... ......... ......... ......... ......... .........",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "9 53..7.... 6..195... .98....6. 8...6...3 4..8.3..1 7...2...6 .6....28. ...419..5 ....8..79",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "9 11....... ......... ......... ......... ......... ......... ......... ......... .........",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Word Break Sentences",
+      "slug": "recursion-backtracking-23-word-break-sentences",
+      "difficulty": "Hard",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print every dictionary-word sentence that reconstructs a string. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "catsanddog|cat cats and sand dog",
+          "output": "cat sand dog|cats and dog"
+        },
+        {
+          "input": "pineapple|pine apple",
+          "output": "pine apple"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "catsanddog|cat cats and sand dog",
+          "expected_output": "cat sand dog|cats and dog",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "pineapple|pine apple",
+          "expected_output": "pine apple",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Expression Operators",
+      "slug": "recursion-backtracking-24-expression-operators",
+      "difficulty": "Hard",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Insert +, -, or * between digits to reach target and print expressions. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "123|6",
+          "output": "1*2*3|1+2+3"
+        },
+        {
+          "input": "105|5",
+          "output": "10-5"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "123|6",
+          "expected_output": "1*2*3|1+2+3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "105|5",
+          "expected_output": "10-5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Binary Watch Times",
+      "slug": "recursion-backtracking-25-binary-watch-times",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Print times whose binary watch has exactly turned-on count LEDs. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "1",
+          "output": "0:01 0:02 0:04 0:08 0:16 0:32 1:00 2:00 4:00 8:00"
+        },
+        {
+          "input": "0",
+          "output": "0:00"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "1",
+          "expected_output": "0:01 0:02 0:04 0:08 0:16 0:32 1:00 2:00 4:00 8:00",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "0",
+          "expected_output": "0:00",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Gray Code Sequence",
+      "slug": "recursion-backtracking-26-gray-code-sequence",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Generate a cyclic n-bit Gray code sequence. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "2",
+          "output": "0 1 3 2"
+        },
+        {
+          "input": "1",
+          "output": "0 1"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "2",
+          "expected_output": "0 1 3 2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1",
+          "expected_output": "0 1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Kth Permutation",
+      "slug": "recursion-backtracking-27-kth-permutation",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Return the k-th lexicographic permutation of values 1 through n. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "3|4",
+          "output": "231"
+        },
+        {
+          "input": "4|1",
+          "output": "1234"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "3|4",
+          "expected_output": "231",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4|1",
+          "expected_output": "1234",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Unique Paths With Blocks",
+      "slug": "recursion-backtracking-28-unique-paths-with-blocks",
+      "difficulty": "Medium",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Count paths through a blocked grid using recursive memoization. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "3 3 000 010 000",
+          "output": "2"
+        },
+        {
+          "input": "2 2 00 01",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "3 3 000 010 000",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 00 01",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Partition Into K Equal Groups",
+      "slug": "recursion-backtracking-29-partition-into-k-equal-groups",
+      "difficulty": "Hard",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Determine whether values can be partitioned into k groups with equal sums. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "5 4 3 2 3 5|4",
+          "output": "true"
+        },
+        {
+          "input": "4 1 2 3 4|3",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "5 4 3 2 3 5|4",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 2 3 4|3",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Crossword Placement",
+      "slug": "recursion-backtracking-30-crossword-placement",
+      "difficulty": "Hard",
+      "category": "Recursion and Backtracking",
+      "topic": "Recursion and Backtracking",
+      "tags": [
+        "recursion",
+        "backtracking"
+      ],
+      "description": "Determine whether every supplied word can be placed in open horizontal or vertical slots. Inputs use the pipe-separated notation shown in examples for separate parameters. When multiple answers exist, print them in the stated deterministic order.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested value or each generated answer using the stated separators.",
+      "constraints": "1 <= n and input length <= 15 for exhaustive generation; grid dimensions are at most 12 by 12.",
+      "examples": [
+        {
+          "input": "3 3 ... .#. ...|cat dog",
+          "output": "true"
+        },
+        {
+          "input": "2 2 ## ##|a",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Choose a base case that represents one complete answer and undo each choice before returning.",
+        "Prune a branch as soon as its partial state cannot satisfy the remaining constraints."
+      ],
+      "test_cases": [
+        {
+          "input": "3 3 ... .#. ...|cat dog",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 ## ##|a",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented recursion/backtracking input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented recursion/backtracking input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented recursion/backtracking input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented recursion/backtracking input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    }
+  ]
+}

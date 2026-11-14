@@ -1,0 +1,2704 @@
+{
+  "problems": [
+    {
+      "title": "Climb Steps",
+      "slug": "dynamic-programming-01-climb-steps",
+      "difficulty": "Easy",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "climb"
+      ],
+      "description": "Count ways to reach step n using jumps of one or two. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "5",
+          "output": "8"
+        },
+        {
+          "input": "1",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "5",
+          "expected_output": "8",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Minimum Climb Cost",
+      "slug": "dynamic-programming-02-minimum-climb-cost",
+      "difficulty": "Easy",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "minimum"
+      ],
+      "description": "Return the minimum cost to pass the top when each step has a landing cost. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "3 10 15 20",
+          "output": "15"
+        },
+        {
+          "input": "4 1 100 1 1",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "3 10 15 20",
+          "expected_output": "15",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 100 1 1",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "House Robber",
+      "slug": "dynamic-programming-03-house-robber",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "house"
+      ],
+      "description": "Choose non-adjacent house values for the largest total. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "5 2 7 9 3 1",
+          "output": "11"
+        },
+        {
+          "input": "4 2 1 1 2",
+          "output": "4"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "5 2 7 9 3 1",
+          "expected_output": "11",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 2 1 1 2",
+          "expected_output": "4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Circular House Robber",
+      "slug": "dynamic-programming-04-circular-house-robber",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "circular"
+      ],
+      "description": "Choose non-adjacent values on a circle for the largest total. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "4 2 3 2 5",
+          "output": "5"
+        },
+        {
+          "input": "3 1 2 3",
+          "output": "3"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "4 2 3 2 5",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 1 2 3",
+          "expected_output": "3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Fibonacci Modulo",
+      "slug": "dynamic-programming-05-fibonacci-modulo",
+      "difficulty": "Easy",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "fibonacci"
+      ],
+      "description": "Return the n-th Fibonacci number modulo m. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "10|1000",
+          "output": "55"
+        },
+        {
+          "input": "20|7",
+          "output": "5"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "10|1000",
+          "expected_output": "55",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "20|7",
+          "expected_output": "5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Tribonacci Steps",
+      "slug": "dynamic-programming-06-tribonacci-steps",
+      "difficulty": "Easy",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "tribonacci"
+      ],
+      "description": "Return T(n), where T(0)=0, T(1)=1, T(2)=1, modulo m. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "5|1000",
+          "output": "7"
+        },
+        {
+          "input": "7|100",
+          "output": "44"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "5|1000",
+          "expected_output": "7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "7|100",
+          "expected_output": "44",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Decode Digit Text",
+      "slug": "dynamic-programming-07-decode-digit-text",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "decode"
+      ],
+      "description": "Count decodings of a digit string where 1-26 map to letters. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "226",
+          "output": "3"
+        },
+        {
+          "input": "06",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "226",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "06",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Word Break Count",
+      "slug": "dynamic-programming-08-word-break-count",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "word"
+      ],
+      "description": "Count ways to split a string into dictionary words. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "catsanddog|cat cats and sand dog",
+          "output": "2"
+        },
+        {
+          "input": "apple|app",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "catsanddog|cat cats and sand dog",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "apple|app",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Longest Increasing Subsequence",
+      "slug": "dynamic-programming-09-longest-increasing-subsequence",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "longest"
+      ],
+      "description": "Return the length of a longest strictly increasing subsequence. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "8 10 9 2 5 3 7 101 18",
+          "output": "4"
+        },
+        {
+          "input": "5 5 4 3 2 1",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "8 10 9 2 5 3 7 101 18",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 5 4 3 2 1",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Number Of LIS",
+      "slug": "dynamic-programming-10-number-of-lis",
+      "difficulty": "Hard",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "number"
+      ],
+      "description": "Count longest increasing subsequences. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "5 1 3 5 4 7",
+          "output": "2"
+        },
+        {
+          "input": "4 2 2 2 2",
+          "output": "4"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 3 5 4 7",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 2 2 2 2",
+          "expected_output": "4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Longest Bitonic Subsequence",
+      "slug": "dynamic-programming-11-longest-bitonic-subsequence",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "longest"
+      ],
+      "description": "Return the longest subsequence that first rises then falls. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "8 1 4 2 3 5 2 1 0",
+          "output": "6"
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "5"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "8 1 4 2 3 5 2 1 0",
+          "expected_output": "6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Longest Common Subsequence",
+      "slug": "dynamic-programming-12-longest-common-subsequence",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "longest"
+      ],
+      "description": "Return the length of a longest subsequence shared by two strings. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "abcde|ace",
+          "output": "3"
+        },
+        {
+          "input": "abc|def",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "abcde|ace",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "abc|def",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Longest Common Substring",
+      "slug": "dynamic-programming-13-longest-common-substring",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "longest"
+      ],
+      "description": "Return the length of the longest contiguous substring shared by two strings. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "ababc|babca",
+          "output": "4"
+        },
+        {
+          "input": "xyz|abc",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "ababc|babca",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "xyz|abc",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Edit Distance",
+      "slug": "dynamic-programming-14-edit-distance",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "edit"
+      ],
+      "description": "Return minimum insertions, deletions, and replacements to transform one word into another. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "horse|ros",
+          "output": "3"
+        },
+        {
+          "input": "intention|execution",
+          "output": "5"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "horse|ros",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "intention|execution",
+          "expected_output": "5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Delete For Equal",
+      "slug": "dynamic-programming-15-delete-for-equal",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "delete"
+      ],
+      "description": "Return minimum deletions from two strings to make them equal. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "sea|eat",
+          "output": "2"
+        },
+        {
+          "input": "abc|abc",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "sea|eat",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "abc|abc",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Distinct Subsequences",
+      "slug": "dynamic-programming-16-distinct-subsequences",
+      "difficulty": "Hard",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "distinct"
+      ],
+      "description": "Count subsequences of source equal to target. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "rabbbit|rabbit",
+          "output": "3"
+        },
+        {
+          "input": "babgbag|bag",
+          "output": "5"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "rabbbit|rabbit",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "babgbag|bag",
+          "expected_output": "5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Wildcard Pattern DP",
+      "slug": "dynamic-programming-17-wildcard-pattern-dp",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "wildcard"
+      ],
+      "description": "Match text against ? and * using dynamic programming. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "adceb|*a*b",
+          "output": "true"
+        },
+        {
+          "input": "cb|?a",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "adceb|*a*b",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "cb|?a",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Regex Dot Star",
+      "slug": "dynamic-programming-18-regex-dot-star",
+      "difficulty": "Hard",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "regex"
+      ],
+      "description": "Match text against a pattern where . is any character and * repeats the previous token. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "aab|c*a*b",
+          "output": "true"
+        },
+        {
+          "input": "mississippi|mis*is*p*.",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "aab|c*a*b",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "mississippi|mis*is*p*.",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Partition Equal Sum",
+      "slug": "dynamic-programming-19-partition-equal-sum",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "partition"
+      ],
+      "description": "Determine whether values can be split into two subsets with equal sum. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "4 1 5 11 5",
+          "output": "true"
+        },
+        {
+          "input": "4 1 2 3 5",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "4 1 5 11 5",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 2 3 5",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Target Sum Signs",
+      "slug": "dynamic-programming-20-target-sum-signs",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "target"
+      ],
+      "description": "Count plus/minus assignments reaching target. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "5 1 1 1 1 1|3",
+          "output": "5"
+        },
+        {
+          "input": "3 1 2 3|1",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 1 1 1 1|3",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 1 2 3|1",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Subset Sum Decision",
+      "slug": "dynamic-programming-21-subset-sum-decision",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "subset"
+      ],
+      "description": "Determine whether some subset sums to target. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "4 3 34 4 12|9",
+          "output": "true"
+        },
+        {
+          "input": "3 2 4 6|5",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "4 3 34 4 12|9",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 2 4 6|5",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Count Subset Sum",
+      "slug": "dynamic-programming-22-count-subset-sum",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "count"
+      ],
+      "description": "Count subsets whose values sum to target. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "4 1 2 3 3|6",
+          "output": "3"
+        },
+        {
+          "input": "3 2 2 2|3",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "4 1 2 3 3|6",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 2 2 2|3",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Zero One Knapsack",
+      "slug": "dynamic-programming-23-zero-one-knapsack",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "zero"
+      ],
+      "description": "Maximize value under a weight capacity, using each item at most once. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "3 2:3 3:4 4:5|5",
+          "output": "7"
+        },
+        {
+          "input": "2 4:10 5:11|3",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "3 2:3 3:4 4:5|5",
+          "expected_output": "7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 4:10 5:11|3",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Unbounded Knapsack",
+      "slug": "dynamic-programming-24-unbounded-knapsack",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "unbounded"
+      ],
+      "description": "Maximize value when each item may be selected repeatedly. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "2 2:3 3:4|7",
+          "output": "10"
+        },
+        {
+          "input": "1 5:8|4",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "2 2:3 3:4|7",
+          "expected_output": "10",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1 5:8|4",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Coin Change Minimum",
+      "slug": "dynamic-programming-25-coin-change-minimum",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "coin"
+      ],
+      "description": "Return the fewest coins needed to make amount, or -1. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "3 1 2 5|11",
+          "output": "3"
+        },
+        {
+          "input": "2 2 4|3",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "3 1 2 5|11",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 4|3",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Coin Change Ways",
+      "slug": "dynamic-programming-26-coin-change-ways",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "coin"
+      ],
+      "description": "Count combinations of unlimited coins that make amount. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "3 1 2 5|5",
+          "output": "4"
+        },
+        {
+          "input": "2 2 4|3",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "3 1 2 5|5",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 4|3",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Rod Cutting",
+      "slug": "dynamic-programming-27-rod-cutting",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "rod"
+      ],
+      "description": "Maximize revenue by cutting a rod with prices for lengths 1 through n. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "4 2 5 7 8",
+          "output": "10"
+        },
+        {
+          "input": "3 1 5 8",
+          "output": "8"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "4 2 5 7 8",
+          "expected_output": "10",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 1 5 8",
+          "expected_output": "8",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Minimum Cost Tickets",
+      "slug": "dynamic-programming-28-minimum-cost-tickets",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "minimum"
+      ],
+      "description": "Buy one, seven, or thirty-day passes for minimum travel cost. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "4 1 4 6 7|2 7 15",
+          "output": "11"
+        },
+        {
+          "input": "3 1 2 3|2 5 9",
+          "output": "6"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "4 1 4 6 7|2 7 15",
+          "expected_output": "11",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 1 2 3|2 5 9",
+          "expected_output": "6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Grid Unique Paths",
+      "slug": "dynamic-programming-29-grid-unique-paths",
+      "difficulty": "Easy",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "grid"
+      ],
+      "description": "Count right/down paths through an empty m by n grid. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "3|7",
+          "output": "28"
+        },
+        {
+          "input": "1|5",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "3|7",
+          "expected_output": "28",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1|5",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Grid Obstacles Paths",
+      "slug": "dynamic-programming-30-grid-obstacles-paths",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "grid"
+      ],
+      "description": "Count right/down paths avoiding blocked cells. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "3 3 000 010 000",
+          "output": "2"
+        },
+        {
+          "input": "2 2 10 01",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "3 3 000 010 000",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 10 01",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Grid Minimum Path",
+      "slug": "dynamic-programming-31-grid-minimum-path",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "grid"
+      ],
+      "description": "Return the minimum top-left to bottom-right path sum. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "3 3 1 3 1 1 5 1 4 2 1",
+          "output": "7"
+        },
+        {
+          "input": "2 2 1 2 3 4",
+          "output": "7"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "3 3 1 3 1 1 5 1 4 2 1",
+          "expected_output": "7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 1 2 3 4",
+          "expected_output": "7",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Triangle Minimum Path",
+      "slug": "dynamic-programming-32-triangle-minimum-path",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "triangle"
+      ],
+      "description": "Return the minimum sum from triangle top to bottom using adjacent children. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "4 2 3 4 6 5 7 4 1 8 3",
+          "output": "11"
+        },
+        {
+          "input": "2 1 2 3",
+          "output": "4"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "4 2 3 4 6 5 7 4 1 8 3",
+          "expected_output": "11",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 1 2 3",
+          "expected_output": "4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Dungeon Health",
+      "slug": "dynamic-programming-33-dungeon-health",
+      "difficulty": "Hard",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "dungeon"
+      ],
+      "description": "Return minimum starting health needed to cross a grid while never reaching zero. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "3 3 -2 -3 3 -5 -10 1 10 30 -5",
+          "output": "7"
+        },
+        {
+          "input": "1 1 -5",
+          "output": "6"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "3 3 -2 -3 3 -5 -10 1 10 30 -5",
+          "expected_output": "7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1 1 -5",
+          "expected_output": "6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Cherry Collection",
+      "slug": "dynamic-programming-34-cherry-collection",
+      "difficulty": "Hard",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "cherry"
+      ],
+      "description": "Two synchronized travelers collect maximum values moving down or diagonally in a grid. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "3 3 3 1 1 2 5 1 5 5 5",
+          "output": "24"
+        },
+        {
+          "input": "2 2 1 1 1 1",
+          "output": "4"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "3 3 3 1 1 2 5 1 5 5 5",
+          "expected_output": "24",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 1 1 1 1",
+          "expected_output": "4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Maximal Square",
+      "slug": "dynamic-programming-35-maximal-square",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "maximal"
+      ],
+      "description": "Return the area of the largest all-one square in a binary grid. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "4 5 10100 10111 11111 10010",
+          "output": "4"
+        },
+        {
+          "input": "2 2 00 01",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "4 5 10100 10111 11111 10010",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 00 01",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Largest One Rectangle",
+      "slug": "dynamic-programming-36-largest-one-rectangle",
+      "difficulty": "Hard",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "largest"
+      ],
+      "description": "Return the area of the largest all-one rectangle in a binary grid. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "2 5 10101 11111",
+          "output": "5"
+        },
+        {
+          "input": "1 4 1111",
+          "output": "4"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "2 5 10101 11111",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1 4 1111",
+          "expected_output": "4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Stock One Trade",
+      "slug": "dynamic-programming-37-stock-one-trade",
+      "difficulty": "Easy",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "stock"
+      ],
+      "description": "Maximize profit from one buy followed by one sell. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "6 7 1 5 3 6 4",
+          "output": "5"
+        },
+        {
+          "input": "5 5 4 3 2 1",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "6 7 1 5 3 6 4",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 5 4 3 2 1",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Stock Unlimited Trades",
+      "slug": "dynamic-programming-38-stock-unlimited-trades",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "stock"
+      ],
+      "description": "Maximize profit with unlimited non-overlapping buy/sell trades. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "6 7 1 5 3 6 4",
+          "output": "7"
+        },
+        {
+          "input": "5 5 4 3 2 1",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "6 7 1 5 3 6 4",
+          "expected_output": "7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 5 4 3 2 1",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Stock Cooldown",
+      "slug": "dynamic-programming-39-stock-cooldown",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "stock"
+      ],
+      "description": "Maximize trading profit when selling forces one cooldown day. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "5 1 2 3 0 2",
+          "output": "3"
+        },
+        {
+          "input": "3 2 1 0",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 3 0 2",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 2 1 0",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Stock Transaction Fee",
+      "slug": "dynamic-programming-40-stock-transaction-fee",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "stock"
+      ],
+      "description": "Maximize unlimited trading profit with a fee per sale. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "6 1 3 2 8 4 9|2",
+          "output": "8"
+        },
+        {
+          "input": "4 1 3 7 5|3",
+          "output": "3"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "6 1 3 2 8 4 9|2",
+          "expected_output": "8",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 3 7 5|3",
+          "expected_output": "3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Burst Balloons",
+      "slug": "dynamic-programming-41-burst-balloons",
+      "difficulty": "Hard",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "burst"
+      ],
+      "description": "Maximize coins from removing balloons in an optimal order. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "4 3 1 5 8",
+          "output": "167"
+        },
+        {
+          "input": "3 1 5 3",
+          "output": "35"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "4 3 1 5 8",
+          "expected_output": "167",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 1 5 3",
+          "expected_output": "35",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Matrix Chain Cost",
+      "slug": "dynamic-programming-42-matrix-chain-cost",
+      "difficulty": "Hard",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "matrix"
+      ],
+      "description": "Return the minimum scalar multiplications needed to multiply a matrix chain. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "4 10 30 5 60",
+          "output": "4500"
+        },
+        {
+          "input": "3 10 20 30",
+          "output": "6000"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "4 10 30 5 60",
+          "expected_output": "4500",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 10 20 30",
+          "expected_output": "6000",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Boolean Parenthesization",
+      "slug": "dynamic-programming-43-boolean-parenthesization",
+      "difficulty": "Hard",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "boolean"
+      ],
+      "description": "Count parenthesizations of T/F operands and &|^ operators that evaluate true. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "5 T|F&T^T|F",
+          "output": "5"
+        },
+        {
+          "input": "3 T^F|T",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "5 T|F&T^T|F",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 T^F|T",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Palindrome Partition Cuts",
+      "slug": "dynamic-programming-44-palindrome-partition-cuts",
+      "difficulty": "Hard",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "palindrome"
+      ],
+      "description": "Return minimum cuts needed to partition a string into palindromes. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "aab",
+          "output": "1"
+        },
+        {
+          "input": "racecar",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "aab",
+          "expected_output": "1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "racecar",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Word Wrap Cost",
+      "slug": "dynamic-programming-45-word-wrap-cost",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "word"
+      ],
+      "description": "Place words within width and minimize squared unused spaces on non-final lines. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "4 3 2 2 5|6",
+          "output": "10"
+        },
+        {
+          "input": "3 2 2 2|4",
+          "output": "4"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "4 3 2 2 5|6",
+          "expected_output": "10",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 2 2 2|4",
+          "expected_output": "4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Egg Drop Moves",
+      "slug": "dynamic-programming-46-egg-drop-moves",
+      "difficulty": "Hard",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "egg"
+      ],
+      "description": "Return minimum trials in the worst case to test floors with eggs. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "2|10",
+          "output": "4"
+        },
+        {
+          "input": "3|14",
+          "output": "4"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "2|10",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3|14",
+          "expected_output": "4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Burst Sequence Count",
+      "slug": "dynamic-programming-47-burst-sequence-count",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "burst"
+      ],
+      "description": "Count ways to parenthesize a sequence of n operations, modulo m. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "5|1000000007",
+          "output": "14"
+        },
+        {
+          "input": "4|1000",
+          "output": "5"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "5|1000000007",
+          "expected_output": "14",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4|1000",
+          "expected_output": "5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Minimum Palindrome Insertions",
+      "slug": "dynamic-programming-48-minimum-palindrome-insertions",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "minimum"
+      ],
+      "description": "Return minimum insertions needed to make a string a palindrome. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "mbadm",
+          "output": "2"
+        },
+        {
+          "input": "race",
+          "output": "3"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "mbadm",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "race",
+          "expected_output": "3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Longest Palindromic Subsequence",
+      "slug": "dynamic-programming-49-longest-palindromic-subsequence",
+      "difficulty": "Medium",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "longest"
+      ],
+      "description": "Return the length of a longest palindromic subsequence. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "bbbab",
+          "output": "4"
+        },
+        {
+          "input": "cbbd",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "bbbab",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "cbbd",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Interleaving Strings",
+      "slug": "dynamic-programming-50-interleaving-strings",
+      "difficulty": "Hard",
+      "category": "Dynamic Programming",
+      "topic": "Dynamic Programming",
+      "tags": [
+        "dynamic-programming",
+        "interleaving"
+      ],
+      "description": "Determine whether a target is an order-preserving interleaving of two strings. Inputs use the pipe-separated notation shown in examples for separate parameters. Return the exact count, cost, length, or boolean requested by the statement.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested integer, boolean, or sequence on one line.",
+      "constraints": "1 <= n and string length <= 100000; values fit signed 32-bit integers; modulo is used where specified.",
+      "examples": [
+        {
+          "input": "aabcc|dbbca|aadbbcbcac",
+          "output": "true"
+        },
+        {
+          "input": "aabcc|dbbca|aadbbbaccc",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Define the smallest subproblem and the information needed to extend it.",
+        "Look for overlapping states and decide whether a rolling array can reduce memory."
+      ],
+      "test_cases": [
+        {
+          "input": "aabcc|dbbca|aadbbcbcac",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "aabcc|dbbca|aadbbbaccc",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented dynamic-programming input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented dynamic-programming input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented dynamic-programming input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented dynamic-programming input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    }
+  ]
+}

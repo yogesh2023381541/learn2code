@@ -1,5 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { authenticate, clearSession, completeLesson as apiCompleteLesson, createAIConversation, getAIConversation, getAIConversations, getBookmarks, getCurrentUser, getDashboard, getHistory, getLessons, getPracticeProblems, getSubjects, hasSession, logout, recordActivity, runPractice, saveOnboarding, sendAIMessage, submitPractice, updateProfile, type AIConversation, type Dashboard, type Lesson, type PracticeProblem, type User } from "./api";
+import { MonacoCodeEditor } from "./components/MonacoCodeEditor";
+import { AdminPage, CodingAnalyticsPage, SubmissionHistoryPage } from "./components/CodeManagementPages";
 
 type Subject = {
   name: string;
@@ -20,6 +22,32 @@ const initialSubjects: Subject[] = [
   { name: "SQL & Databases", slug: "sql-databases", category: "Backend", description: "Design reliable data models and write queries with confidence.", progress: 0, lessons: 0, duration: "14h", color: "orange", icon: "DB" },
 ];
 
+const languageStarterTemplates: Record<string, string> = {
+  python: "def solve():\n    pass\n\n\nif __name__ == \"__main__\":\n    solve()\n",
+  javascript: "function solve() {\n  // Write your solution here\n}\n\nsolve();\n",
+  typescript: "function solve(): void {\n  // Write your solution here\n}\n\nsolve();\n",
+  java: "import java.util.*;\n\nclass Main {\n    public static void main(String[] args) {\n        // Write your solution here\n    }\n}\n",
+  c: "#include <stdio.h>\n\nint main(void) {\n    /* Write your solution here */\n    return 0;\n}\n",
+  cpp: "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    // Write your solution here\n    return 0;\n}\n",
+  csharp: "using System;\n\nclass Program {\n    static void Main() {\n        // Write your solution here\n    }\n}\n",
+};
+
+function getProblemStarterCode(problem: PracticeProblem | null, language: string): string {
+  const raw = problem?.starter_code ?? "";
+  if (!raw.trim()) return "";
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      const templates = parsed as Record<string, unknown>;
+      const selected = templates[language] ?? templates.python;
+      return typeof selected === "string" ? selected : "";
+    }
+  } catch {
+    // Older problems store one plain starter-code string.
+  }
+  return raw;
+}
+
 const roadmap = [
   { title: "Python basics", subtitle: "Variables & syntax", state: "completed", x: 8, y: 22 },
   { title: "Control flow", subtitle: "Make decisions", state: "completed", x: 29, y: 11 },
@@ -35,8 +63,8 @@ function Icon({ children }: { children: string }) {
 
 function pageFromHash() {
   const page = window.location.hash.slice(1).toLowerCase();
-  if (page === "explore" || page === "my-learning" || page === "practice" || page === "bookmarks" || page === "history" || page === "settings" || page === "ai-assistant") {
-    return page === "my-learning" ? "My learning" : page === "ai-assistant" ? "AI Assistant" : page[0].toUpperCase() + page.slice(1);
+  if (page === "explore" || page === "my-learning" || page === "practice" || page === "bookmarks" || page === "history" || page === "settings" || page === "ai-assistant" || page === "submissions" || page === "analytics" || page === "admin") {
+    return page === "my-learning" ? "My learning" : page === "ai-assistant" ? "AI Assistant" : page === "submissions" ? "Submission History" : page[0].toUpperCase() + page.slice(1);
   }
   return "Overview";
 }
@@ -104,9 +132,9 @@ function WorkspacePage({ active, subjects, onSelect, dashboard, practiceProblems
   async function submitSelectedProblem() {
     if (!selectedProblem || !code.trim()) return;
     try {
-      await submitPractice(selectedProblem.id, language, code);
-      setSubmissionMessage("Submitted successfully.");
-      setRunOutput("Accepted — submission recorded.");
+      const result = await submitPractice(selectedProblem.id, language, code);
+      setSubmissionMessage(`${result.status.replaceAll("_", " ")} · ${result.passed_tests}/${result.total_tests} tests · ${result.duration_ms}ms`);
+      setRunOutput(result.stdout || result.stderr || "No output returned.");
     } catch (error) {
       setSubmissionMessage(error instanceof Error ? error.message : "Submission failed.");
     }
@@ -123,11 +151,18 @@ function WorkspacePage({ active, subjects, onSelect, dashboard, practiceProblems
       setRunOutput(error instanceof Error ? error.message : "Code execution failed.");
     }
   }
+  function changeLanguage(nextLanguage: string) {
+    const currentStarter = getProblemStarterCode(selectedProblem, language).trim();
+    if (!code.trim() || code.trim() === currentStarter) {
+      setCode(getProblemStarterCode(selectedProblem, nextLanguage) || languageStarterTemplates[nextLanguage] || "");
+    }
+    setLanguage(nextLanguage);
+  }
   if (active === "Explore") {
     return <section className="alternate-view"><div className="page-heading"><div><p className="eyebrow">LEARNING LIBRARY</p><h1>Explore your next skill</h1><p className="muted">Structured paths built to take you from curious to capable.</p></div><button className="filter-button">All categories <span>⌄</span></button></div><div className="explore-hero"><div><span className="hero-label">CURATED FOR YOU</span><h2>Build skills that<br /><em>compound.</em></h2><p>Choose a path, show up consistently, and let your progress do the talking.</p></div><div className="path-orbit">✦</div></div><div className="section-heading"><div><h3>All subjects</h3><p className="muted">{subjects.length} learning paths available</p></div></div><div className="explore-grid">{subjects.map((subject) => <button className="explore-card" key={subject.name} onClick={() => onSelect(subject)}><div className={`subject-symbol ${subject.color}`}>{subject.icon}</div><span className="tag">{subject.category}</span><h3>{subject.name}</h3><p>{subject.description}</p><div className="explore-meta"><span>{subject.lessons} lessons</span><span>{subject.duration}</span><b>View path →</b></div></button>)}</div></section>;
   }
   if (active === "Practice") {
-    return <section className="alternate-view"><div className="page-heading"><div><p className="eyebrow">CODING PRACTICE</p><h1>Sharpen your problem solving</h1><p className="muted">Practice deliberately. Build confidence one problem at a time.</p></div></div><div className="practice-stats"><div><strong>{dashboard?.problems_solved ?? 0}</strong><span>Problems solved</span></div><div><strong>{visibleProblems.length ? `${Math.round(visibleProblems.reduce((sum, problem) => sum + problem.acceptance_rate, 0) / visibleProblems.length)}%` : "—"}</strong><span>Acceptance rate</span></div><div><strong>{dashboard?.current_streak ?? 0}</strong><span>Day streak</span></div><div><strong>{dashboard?.problems_solved ? language : "—"}</strong><span>Languages used</span></div></div><div className="section-heading"><div><h3>Problem set</h3><p className="muted">{visibleProblems.length} problems in this view</p></div><div className="practice-filters"><select value={difficultyFilter} onChange={(event) => setDifficultyFilter(event.target.value)}><option value="all">All levels</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select><select value={topicFilter} onChange={(event) => setTopicFilter(event.target.value)}><option value="all">All topics</option>{Array.from(new Set(practiceProblems.map((problem) => problem.topic).filter(Boolean))).map((topic) => <option value={topic ?? ""} key={topic}>{topic}</option>)}</select></div></div><div className="problem-table"><div className="problem-header"><span>PROBLEM</span><span>DIFFICULTY</span><span>CATEGORY</span><span>ACCEPTANCE</span><span /></div>{visibleProblems.map((problem) => <button className="problem-row" key={problem.id} onClick={() => {     setSelectedProblem(problem); setCode(problem.starter_code ?? ""); setLanguage("python"); setProblemTab("problem"); setTestInput(""); setRunOutput(""); setSubmissionMessage(""); }}><span><i className={problem.solved ? "solved" : "○"}>{problem.solved ? "✓" : "○"}</i><strong>{problem.title}</strong></span><span className={`problem-difficulty ${problem.difficulty.toLowerCase()}`}>{problem.difficulty}</span><span className="muted">{problem.category}</span><span className="muted">{problem.acceptance_rate || "—"}%</span><b>→</b></button>)}</div>{selectedProblem && <div className="lesson-backdrop" onClick={() => setSelectedProblem(null)}><section className="leetcode-modal" onClick={(event) => event.stopPropagation()}><div className="modal-header"><div><p className="eyebrow">DSA PROBLEM WORKSPACE</p><h2>{selectedProblem.title}</h2><p className="muted">{selectedProblem.topic ?? selectedProblem.category} · {selectedProblem.pattern ?? "Practice pattern"} · {selectedProblem.difficulty}</p></div><button className="close-button" onClick={() => setSelectedProblem(null)}>×</button></div><div className="problem-tabs"><button className={problemTab === "problem" ? "active" : ""} onClick={() => setProblemTab("problem")}>Description</button><button className={problemTab === "hints" ? "active" : ""} onClick={() => setProblemTab("hints")}>Hints</button><button className={problemTab === "editorial" ? "active" : ""} onClick={() => setProblemTab("editorial")}>Editorial</button></div><div className="leetcode-grid"><article className="problem-pane">{problemTab === "problem" && <div className="problem-learning-content"><p>{selectedProblem.description}</p>{selectedProblem.constraints && <><h3>Constraints</h3><p>{selectedProblem.constraints}</p></>}{selectedProblem.examples?.map((example, index) => <div className="example-block" key={example.input}><strong>Example {index + 1}</strong><pre><code>Input: {example.input}{"\n"}Output: {example.output}</code></pre></div>)}</div>}{problemTab === "hints" && <ol className="problem-learning-content">{(selectedProblem.hints ?? []).map((hint) => <li key={hint}>{hint}</li>)}</ol>}{problemTab === "editorial" && <div className="problem-learning-content"><p>{selectedProblem.editorial ?? "Editorial will be added for this problem."}</p>{selectedProblem.reference_url && <a href={selectedProblem.reference_url} target="_blank" rel="noreferrer">Open public reference ↗</a>}</div>}</article><article className="editor-pane"><div className="editor-toolbar"><span>Code</span><select value={language} onChange={(event) => setLanguage(event.target.value)}><option value="python">Python</option><option value="javascript">JavaScript</option><option value="typescript">TypeScript</option><option value="java">Java</option><option value="c">C</option><option value="cpp">C++</option><option value="csharp">C#</option></select></div>    <textarea className="leetcode-editor" value={code} onChange={(event) => setCode(event.target.value)} spellCheck={false} placeholder={`Write your ${language} solution here...`} /><div className="testcase-panel"><strong>Testcase input</strong><textarea value={testInput} onChange={(event) => setTestInput(event.target.value)} placeholder="Example: 2 7 11 15\n9" rows={3} /><div className="editor-actions"><button className="secondary-button" onClick={() => void runSelectedProblem()}>Run Code</button><button className="primary-button" onClick={() => void submitSelectedProblem()}>Submit</button></div>{runOutput && <p className="editor-result" role="status">{runOutput}</p>}{submissionMessage && <p className="editor-result" role="status">{submissionMessage}</p>}</div></article></div></section></div>}</section>;
+    return <section className="alternate-view"><div className="page-heading"><div><p className="eyebrow">CODING PRACTICE</p><h1>Sharpen your problem solving</h1><p className="muted">Practice deliberately. Build confidence one problem at a time.</p></div></div><div className="practice-stats"><div><strong>{dashboard?.problems_solved ?? 0}</strong><span>Problems solved</span></div><div><strong>{visibleProblems.length ? `${Math.round(visibleProblems.reduce((sum, problem) => sum + problem.acceptance_rate, 0) / visibleProblems.length)}%` : "—"}</strong><span>Acceptance rate</span></div><div><strong>{dashboard?.current_streak ?? 0}</strong><span>Day streak</span></div><div><strong>{dashboard?.problems_solved ? language : "—"}</strong><span>Languages used</span></div></div><div className="section-heading"><div><h3>Problem set</h3><p className="muted">{visibleProblems.length} problems in this view</p></div><div className="practice-filters"><select value={difficultyFilter} onChange={(event) => setDifficultyFilter(event.target.value)}><option value="all">All levels</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select><select value={topicFilter} onChange={(event) => setTopicFilter(event.target.value)}><option value="all">All topics</option>{Array.from(new Set(practiceProblems.map((problem) => problem.topic).filter(Boolean))).map((topic) => <option value={topic ?? ""} key={topic}>{topic}</option>)}</select></div></div><div className="problem-table"><div className="problem-header"><span>PROBLEM</span><span>DIFFICULTY</span><span>CATEGORY</span><span>ACCEPTANCE</span><span /></div>{visibleProblems.map((problem) => <button className="problem-row" key={problem.id} onClick={() => {     setSelectedProblem(problem); setCode(getProblemStarterCode(problem, "python")); setLanguage("python"); setProblemTab("problem"); setTestInput(""); setRunOutput(""); setSubmissionMessage(""); }}><span><i className={problem.solved ? "solved" : "○"}>{problem.solved ? "✓" : "○"}</i><strong>{problem.title}</strong></span><span className={`problem-difficulty ${problem.difficulty.toLowerCase()}`}>{problem.difficulty}</span><span className="muted">{problem.category}</span><span className="muted">{problem.acceptance_rate || "—"}%</span><b>→</b></button>)}</div>{selectedProblem && <div className="lesson-backdrop" onClick={() => setSelectedProblem(null)}><section className="leetcode-modal" onClick={(event) => event.stopPropagation()}><div className="modal-header"><div><p className="eyebrow">DSA PROBLEM WORKSPACE</p><h2>{selectedProblem.title}</h2><p className="muted">{selectedProblem.topic ?? selectedProblem.category} · {selectedProblem.pattern ?? "Practice pattern"} · {selectedProblem.difficulty}</p></div><button className="close-button" onClick={() => setSelectedProblem(null)}>×</button></div><div className="problem-tabs"><button className={problemTab === "problem" ? "active" : ""} onClick={() => setProblemTab("problem")}>Description</button><button className={problemTab === "hints" ? "active" : ""} onClick={() => setProblemTab("hints")}>Hints</button><button className={problemTab === "editorial" ? "active" : ""} onClick={() => setProblemTab("editorial")}>Editorial</button></div><div className="leetcode-grid"><article className="problem-pane">{problemTab === "problem" && <div className="problem-learning-content"><p>{selectedProblem.description}</p>{selectedProblem.constraints && <><h3>Constraints</h3><p>{selectedProblem.constraints}</p></>}{selectedProblem.examples?.map((example, index) => <div className="example-block" key={example.input}><strong>Example {index + 1}</strong><pre><code>Input: {example.input}{"\n"}Output: {example.output}</code></pre></div>)}</div>}{problemTab === "hints" && <ol className="problem-learning-content">{(selectedProblem.hints ?? []).map((hint) => <li key={hint}>{hint}</li>)}</ol>}{problemTab === "editorial" && <div className="problem-learning-content"><p>{selectedProblem.editorial ?? "Editorial will be added for this problem."}</p>{selectedProblem.reference_url && <a href={selectedProblem.reference_url} target="_blank" rel="noreferrer">Open public reference ↗</a>}</div>}</article><article className="editor-pane"><div className="editor-toolbar"><span>Code</span>    <select value={language} onChange={(event) => changeLanguage(event.target.value)}><option value="python">Python</option><option value="javascript">JavaScript</option><option value="typescript">TypeScript</option><option value="java">Java</option><option value="c">C</option><option value="cpp">C++</option><option value="csharp">C#</option></select>    </div><MonacoCodeEditor value={code} language={language} starterCode={getProblemStarterCode(selectedProblem, language)} storageKey={`learn2code:draft:${selectedProblem.id}:${language}`} onChange={setCode} /><div className="testcase-panel"><strong>Testcase input</strong><textarea value={testInput} onChange={(event) => setTestInput(event.target.value)} placeholder="Example: 2 7 11 15\n9" rows={3} /><div className="editor-actions"><button className="secondary-button" onClick={() => void runSelectedProblem()}>Run Code</button><button className="primary-button" onClick={() => void submitSelectedProblem()}>Submit</button></div>{runOutput && <p className="editor-result" role="status">{runOutput}</p>}{submissionMessage && <p className="editor-result" role="status">{submissionMessage}</p>}</div></article></div></section></div>}</section>;
   }
   return <section className="alternate-view"><div className="page-heading"><div><p className="eyebrow">YOUR PROGRESS</p><h1>My learning</h1><p className="muted">A clear view of everything you&apos;re building.</p></div><button className="secondary-button">Edit daily goal</button></div><div className="learning-overview"><div className="overview-ring"><strong>{dashboard?.overall_progress ?? 0}%</strong><span>overall progress</span></div><div><h3>You&apos;re building a habit.</h3><p className="muted">You&apos;ve learned for {dashboard?.learning_hours ?? 0} hours across {subjects.length} active paths. Keep your streak alive today.</p><div className="progress-track"><div style={{ width: `${dashboard?.overall_progress ?? 0}%` }} /></div><small>{dashboard?.topics_completed ?? 0} topics completed</small></div></div><div className="section-heading"><div><h3>Active learning paths</h3><p className="muted">Continue where you left off</p></div></div><div className="my-learning-list">{subjects.map((subject) => <button className="my-learning-row" key={subject.name} onClick={() => onSelect(subject)}><div className={`subject-symbol ${subject.color}`}>{subject.icon}</div><div><strong>{subject.name}</strong><span>{subject.progress}% complete · {subject.lessons} lessons</span></div><div className="progress-track"><div style={{ width: `${subject.progress}%` }} /></div><b>→</b></button>)}</div></section>;
 }
@@ -218,7 +253,11 @@ export function App() {
   };
   function navigate(page: string) {
     setActive(page);
-    window.history.pushState({}, "", `#${page === "My learning" ? "my-learning" : page === "AI Assistant" ? "ai-assistant" : page.toLowerCase()}`);
+    const hash = page === "My learning" ? "my-learning"
+      : page === "AI Assistant" ? "ai-assistant"
+      : page === "Submission History" ? "submissions"
+      : page.toLowerCase();
+    window.history.pushState({}, "", `#${hash}`);
   }
   useEffect(() => {
     if (user && selectedSubject.slug) {
@@ -292,6 +331,9 @@ export function App() {
             </button>
           ))}
           <button className={active === "AI Assistant" ? "nav-item active" : "nav-item"} onClick={() => navigate("AI Assistant")}><Icon>✦</Icon>AI Assistant</button>
+          <button className={active === "Submission History" ? "nav-item active" : "nav-item"} onClick={() => navigate("Submission History")}><Icon>◷</Icon>Submissions</button>
+          <button className={active === "Analytics" ? "nav-item active" : "nav-item"} onClick={() => navigate("Analytics")}><Icon>◒</Icon>Analytics</button>
+          {user?.role === "admin" && <button className={active === "Admin" ? "nav-item active" : "nav-item"} onClick={() => navigate("Admin")}><Icon>▤</Icon>Admin</button>}
         </nav>
         <div className="workspace-label library-label">YOUR LIBRARY</div>
         <nav className="nav-list">
@@ -313,7 +355,7 @@ export function App() {
 
         <div className={`content ${active === "Overview" ? "" : "alternate"}`}>
           {apiError && <div className="api-notice" role="status"><span>!</span><p><strong>Using local subject data</strong>{apiError}</p><button onClick={() => setApiError("")}>×</button></div>}
-          {active === "AI Assistant" ? <AssistantPage user={user} /> : ["Bookmarks", "History", "Settings"].includes(active) ? <AccountPage active={active} user={user} onUser={setUser} /> : <WorkspacePage active={active} subjects={filteredSubjects} dashboard={dashboard} practiceProblems={practiceProblems} onSelect={(subject) => { setSelectedSubject(subject); setShowRoadmap(true); }} />}
+          {active === "AI Assistant" ? <AssistantPage user={user} /> : active === "Submission History" ? <SubmissionHistoryPage /> : active === "Analytics" ? <CodingAnalyticsPage /> : active === "Admin" ? <AdminPage /> : ["Bookmarks", "History", "Settings"].includes(active) ? <AccountPage active={active} user={user} onUser={setUser} /> : <WorkspacePage active={active} subjects={filteredSubjects} dashboard={dashboard} practiceProblems={practiceProblems} onSelect={(subject) => { setSelectedSubject(subject); setShowRoadmap(true); }} />}
           <section className="welcome-row">
             <div><p className="eyebrow">FRIDAY, NOVEMBER 14, 2026</p><h1>Good morning, {user?.full_name.split(" ")[0] ?? "Learner"} <span>✦</span></h1><p className="muted">Small steps every day lead to big results. Let&apos;s keep building.</p></div>
             <button className="streak"><span>♨</span><strong>12 day streak</strong><small>Keep it going!</small></button>

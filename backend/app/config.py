@@ -17,6 +17,10 @@ class Settings:
     ai_provider_model: str = os.getenv("AI_PROVIDER_MODEL", "gpt-4o-mini")
     ai_max_tokens: int = int(os.getenv("AI_MAX_TOKENS", "1200"))
     ai_requests_per_minute: int = int(os.getenv("AI_REQUESTS_PER_MINUTE", "20"))
+    execution_backend: str = os.getenv("EXECUTION_BACKEND", "local")
+    judge0_url: str = os.getenv("JUDGE0_URL", "")
+    judge0_api_key: str = os.getenv("JUDGE0_API_KEY", "")
+    judge0_wait_seconds: int = int(os.getenv("JUDGE0_WAIT_SECONDS", "8"))
 
 
 settings = Settings()

@@ -28,6 +28,13 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 ```
 
+### Isolated code execution
+
+Code execution supports `EXECUTION_BACKEND=judge0` for a self-hosted Judge0 endpoint or
+`EXECUTION_BACKEND=docker` for local containers. Docker mode requires the Docker daemon and
+uses network-disabled containers with CPU, memory, process, read-only filesystem, and timeout
+limits. Do not use the `local` backend outside development.
+
 Set the values in `backend/.env.example` in your environment before deploying.
 Apply the schema and seed catalog before starting the API:
 

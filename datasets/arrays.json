@@ -1,0 +1,2704 @@
+{
+  "problems": [
+    {
+      "title": "Array Sum Beacon",
+      "slug": "arrays-01-sum",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "return"
+      ],
+      "description": "Return the sum of all values in an integer array. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "3 5 2",
+          "output": "10"
+        },
+        {
+          "input": "4 0 -2 9",
+          "output": "11"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "3 5 2",
+          "expected_output": "10",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0 -2 9",
+          "expected_output": "11",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Alternating Sign Total",
+      "slug": "arrays-02-alternating-sign-total",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "add"
+      ],
+      "description": "Add values at even indexes and subtract values at odd indexes. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "4 7 3 2",
+          "output": "5"
+        },
+        {
+          "input": "5 10 1 4 2",
+          "output": "-6"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "4 7 3 2",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 10 1 4 2",
+          "expected_output": "-6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Count Above Threshold",
+      "slug": "arrays-03-count-above-threshold",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "count"
+      ],
+      "description": "Count how many array values are strictly greater than a supplied threshold. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 2 7 1 8 3",
+          "output": "2"
+        },
+        {
+          "input": "4 0 -1 0 2",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 2 7 1 8 3",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0 -1 0 2",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "First Valley Position",
+      "slug": "arrays-04-first-valley-position",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "find"
+      ],
+      "description": "Find the first index whose value is smaller than both immediate neighbours, or return -1. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 8 4 6 7 3",
+          "output": "1"
+        },
+        {
+          "input": "4 1 2 3 4",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 8 4 6 7 3",
+          "expected_output": "1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 2 3 4",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Stable Zero Shift",
+      "slug": "arrays-05-stable-zero-shift",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "move"
+      ],
+      "description": "Move every zero to the end while preserving the relative order of non-zero values. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "6 0 4 0 2 7 0",
+          "output": "4 2 7 0 0 0"
+        },
+        {
+          "input": "5 0 0 1 0 3",
+          "output": "1 3 0 0 0"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "6 0 4 0 2 7 0",
+          "expected_output": "4 2 7 0 0 0",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 0 0 1 0 3",
+          "expected_output": "1 3 0 0 0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Unique Run Length",
+      "slug": "arrays-06-unique-run-length",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "return"
+      ],
+      "description": "Return the length of the longest contiguous run containing no repeated value. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "7 1 2 1 3 4 3 5",
+          "output": "3"
+        },
+        {
+          "input": "5 9 9 9 2 3",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 1 3 4 3 5",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 9 9 9 2 3",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Nearest Greater Distance",
+      "slug": "arrays-07-nearest-greater-distance",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "for"
+      ],
+      "description": "For each position, report the distance to the first strictly greater value on its right, or 0. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 2 1 3 2 4",
+          "output": "0 1 1 0 0"
+        },
+        {
+          "input": "4 4 3 2 1",
+          "output": "0 0 0 0"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 2 1 3 2 4",
+          "expected_output": "0 1 1 0 0",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 4 3 2 1",
+          "expected_output": "0 0 0 0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Peak Count",
+      "slug": "arrays-08-peak-count",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "count"
+      ],
+      "description": "Count positions that are greater than both neighbours; endpoints are never peaks. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "7 1 4 2 5 3 6 2",
+          "output": "3"
+        },
+        {
+          "input": "5 2 2 2 2 2",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 4 2 5 3 6 2",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 2 2 2 2 2",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Circular Rotation",
+      "slug": "arrays-09-circular-rotation",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "rotate"
+      ],
+      "description": "Rotate an array to the right by k positions and print the resulting sequence. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 1 2 3 4 5 2",
+          "output": "4 5 1 2 3"
+        },
+        {
+          "input": "4 9 8 7 6 6",
+          "output": "7 6 9 8"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 3 4 5 2",
+          "expected_output": "4 5 1 2 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 9 8 7 6 6",
+          "expected_output": "7 6 9 8",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Minimum Window Sum",
+      "slug": "arrays-10-minimum-window-sum",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "return"
+      ],
+      "description": "Return the smallest sum among all contiguous windows of width k. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 4 6 1 3 8 2",
+          "output": "10"
+        },
+        {
+          "input": "4 2 -1 5 0 3",
+          "output": "4"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 4 6 1 3 8 2",
+          "expected_output": "10",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 2 -1 5 0 3",
+          "expected_output": "4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Maximum Window Sum",
+      "slug": "arrays-11-maximum-window-sum",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "return"
+      ],
+      "description": "Return the largest sum among all contiguous windows of width k. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 3 4 -2 7 1 2",
+          "output": "10"
+        },
+        {
+          "input": "4 -3 -1 -4 -2 2",
+          "output": "-3"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 3 4 -2 7 1 2",
+          "expected_output": "10",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 -3 -1 -4 -2 2",
+          "expected_output": "-3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Prefix Balance Index",
+      "slug": "arrays-12-prefix-balance-index",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "return"
+      ],
+      "description": "Return the first index where the sum on the left equals the sum on the right. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 1 3 2 4 1",
+          "output": "2"
+        },
+        {
+          "input": "4 2 1 1 2",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 3 2 4 1",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 2 1 1 2",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Pair Difference Count",
+      "slug": "arrays-13-pair-difference-count",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "count"
+      ],
+      "description": "Count index pairs with i less than j whose absolute difference equals d. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 1 5 3 4 2 2",
+          "output": "3"
+        },
+        {
+          "input": "4 1 1 1 1 0",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 5 3 4 2 2",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 1 1 1 0",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Three-Way Partition",
+      "slug": "arrays-14-three-way-partition",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "partition"
+      ],
+      "description": "Partition values into those below, equal to, and above pivot, preserving order inside each group. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "7 4 2 5 3 5 1 5 4",
+          "output": "2 3 1 4 5 5 5 4"
+        },
+        {
+          "input": "5 3 0 2 3 1 3 2",
+          "output": "0 2 1 3 3"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "7 4 2 5 3 5 1 5 4",
+          "expected_output": "2 3 1 4 5 5 5 4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 3 0 2 3 1 3 2",
+          "expected_output": "0 2 1 3 3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Duplicate Distance",
+      "slug": "arrays-15-duplicate-distance",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "return"
+      ],
+      "description": "Return the minimum distance between equal values, or -1 when every value is unique. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "6 8 3 8 2 3 5",
+          "output": "2"
+        },
+        {
+          "input": "4 1 2 3 4",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "6 8 3 8 2 3 5",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 2 3 4",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Longest Increasing Streak",
+      "slug": "arrays-16-longest-increasing-streak",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "find"
+      ],
+      "description": "Find the longest contiguous strictly increasing run. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "8 1 2 2 3 4 1 5 6",
+          "output": "3"
+        },
+        {
+          "input": "5 5 4 3 2 1",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "8 1 2 2 3 4 1 5 6",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 5 4 3 2 1",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Rain Basin Total",
+      "slug": "arrays-17-rain-basin-total",
+      "difficulty": "Hard",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "given"
+      ],
+      "description": "Given bar heights, calculate total trapped water between bars. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "8 0 2 0 3 0 1 0 2",
+          "output": "7"
+        },
+        {
+          "input": "6 3 0 2 0 4 1",
+          "output": "7"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "8 0 2 0 3 0 1 0 2",
+          "expected_output": "7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "6 3 0 2 0 4 1",
+          "expected_output": "7",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Product Except Position",
+      "slug": "arrays-18-product-except-position",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "for"
+      ],
+      "description": "For every index, output the product of all values except the value at that index; do not use division. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "4 1 2 3 4",
+          "output": "24 12 8 6"
+        },
+        {
+          "input": "3 0 4 5",
+          "output": "20 0 0"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "4 1 2 3 4",
+          "expected_output": "24 12 8 6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 0 4 5",
+          "expected_output": "20 0 0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Majority Candidate",
+      "slug": "arrays-19-majority-candidate",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "return"
+      ],
+      "description": "Return the value occurring more than half the time, or -1 if no such value exists. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "7 2 2 1 2 3 2 2",
+          "output": "2"
+        },
+        {
+          "input": "4 1 2 1 2",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "7 2 2 1 2 3 2 2",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 2 1 2",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Sorted Merge",
+      "slug": "arrays-20-sorted-merge",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "merge"
+      ],
+      "description": "Merge two already sorted arrays into one sorted array. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "3 1 4 7 4 2 3 8 9",
+          "output": "1 2 3 4 7 8 9"
+        },
+        {
+          "input": "2 -2 5 3 -1 0 6",
+          "output": "-2 -1 0 5 6"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "3 1 4 7 4 2 3 8 9",
+          "expected_output": "1 2 3 4 7 8 9",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 -2 5 3 -1 0 6",
+          "expected_output": "-2 -1 0 5 6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Interval Coverage Length",
+      "slug": "arrays-21-interval-coverage-length",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "given"
+      ],
+      "description": "Given inclusive integer intervals, return the number of covered integer points after merging overlaps. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "3 1 3 2 5 8 9",
+          "output": "7"
+        },
+        {
+          "input": "2 4 4 6",
+          "output": "3"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "3 1 3 2 5 8 9",
+          "expected_output": "7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 4 4 6",
+          "expected_output": "3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Subarray Product Limit",
+      "slug": "arrays-22-subarray-product-limit",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "count"
+      ],
+      "description": "Count positive contiguous subarrays whose product is at most limit. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "4 10 5 2 6 5",
+          "output": "6"
+        },
+        {
+          "input": "3 3 1 2 10",
+          "output": "5"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "4 10 5 2 6 5",
+          "expected_output": "6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 3 1 2 10",
+          "expected_output": "5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Equal Parity Blocks",
+      "slug": "arrays-23-equal-parity-blocks",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "count"
+      ],
+      "description": "Count contiguous blocks in which the number of even and odd values is equal. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "6 1 2 4 3 5 6",
+          "output": "3"
+        },
+        {
+          "input": "4 2 4 6 8",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "6 1 2 4 3 5 6",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 2 4 6 8",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Valley Fill Height",
+      "slug": "arrays-24-valley-fill-height",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "for"
+      ],
+      "description": "For each inner position, compute the smaller boundary maximum minus its height, summed over all positions. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "7 3 0 2 0 4 1 2",
+          "output": "9"
+        },
+        {
+          "input": "5 1 0 2 1 4",
+          "output": "5"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "7 3 0 2 0 4 1 2",
+          "expected_output": "9",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 0 2 1 4",
+          "expected_output": "5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Adjacent Difference Maximum",
+      "slug": "arrays-25-adjacent-difference-maximum",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "return"
+      ],
+      "description": "Return the largest absolute difference between neighbouring values. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 4 10 3 8 1",
+          "output": "7"
+        },
+        {
+          "input": "3 -5 -1 -9",
+          "output": "8"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 4 10 3 8 1",
+          "expected_output": "7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 -5 -1 -9",
+          "expected_output": "8",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Target Pair Indices",
+      "slug": "arrays-26-target-pair-indices",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "return"
+      ],
+      "description": "Return the first pair of zero-based indices whose values add to target, or -1 -1. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 4 7 1 9 2 10",
+          "output": "0 3"
+        },
+        {
+          "input": "4 5 6 7 8 20",
+          "output": "0 2"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 4 7 1 9 2 10",
+          "expected_output": "0 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 5 6 7 8 20",
+          "expected_output": "0 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Triplet Target Count",
+      "slug": "arrays-27-triplet-target-count",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "count"
+      ],
+      "description": "Count distinct index triples whose values sum to target. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 0 1 2 3 4 3",
+          "output": "2"
+        },
+        {
+          "input": "4 -1 0 1 2 1",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 0 1 2 3 4 3",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 -1 0 1 2 1",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Merge Alternating Halves",
+      "slug": "arrays-28-merge-alternating-halves",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "interleave"
+      ],
+      "description": "Interleave the first half and second half of an even-length array. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "6 1 2 3 10 20 30",
+          "output": "1 10 2 20 3 30"
+        },
+        {
+          "input": "4 4 5 8 9",
+          "output": "4 8 5 9"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "6 1 2 3 10 20 30",
+          "expected_output": "1 10 2 20 3 30",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 4 5 8 9",
+          "expected_output": "4 8 5 9",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Missing Range Values",
+      "slug": "arrays-29-missing-range-values",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "for"
+      ],
+      "description": "For values in 0 through n, return the missing values in ascending order. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 0 1 3 4 5 2",
+          "output": "[]"
+        },
+        {
+          "input": "4 0 1 3 4",
+          "output": "[2]"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 0 1 3 4 5 2",
+          "expected_output": "[]",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0 1 3 4",
+          "expected_output": "[2]",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Local Minimum Index",
+      "slug": "arrays-30-local-minimum-index",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "return"
+      ],
+      "description": "Return any index whose value is no greater than its available neighbours, preferring the smallest index. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "6 3 2 4 1 5 6",
+          "output": "1"
+        },
+        {
+          "input": "4 1 2 3 4",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "6 3 2 4 1 5 6",
+          "expected_output": "1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 2 3 4",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Duplicate-Free Window Count",
+      "slug": "arrays-31-duplicate-free-window-count",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "count"
+      ],
+      "description": "Count contiguous subarrays that contain no repeated value. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "4 1 2 1 3",
+          "output": "7"
+        },
+        {
+          "input": "3 5 5 5",
+          "output": "3"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "4 1 2 1 3",
+          "expected_output": "7",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 5 5 5",
+          "expected_output": "3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Sign Segment Count",
+      "slug": "arrays-32-sign-segment-count",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "count"
+      ],
+      "description": "Count maximal contiguous segments of equal sign; zero starts its own sign segment. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "7 -2 -1 0 0 4 3 -1",
+          "output": "4"
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "7 -2 -1 0 0 4 3 -1",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 2 3 4 5",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Kth Smallest Value",
+      "slug": "arrays-33-kth-smallest-value",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "return"
+      ],
+      "description": "Return the k-th smallest value using one-based k. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 7 1 5 3 9 3",
+          "output": "3"
+        },
+        {
+          "input": "4 -2 8 0 4 2",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 7 1 5 3 9 3",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 -2 8 0 4 2",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Range Additions",
+      "slug": "arrays-34-range-additions",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "apply"
+      ],
+      "description": "Apply inclusive range additions to an initially zero array and print the final values. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 2 1 3 4 2 5 1 5",
+          "output": "0 4 4 5 1"
+        },
+        {
+          "input": "4 1 0 2 3",
+          "output": "0 0 3 3"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 2 1 3 4 2 5 1 5",
+          "expected_output": "0 4 4 5 1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 0 2 3",
+          "expected_output": "0 0 3 3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Circular Local Peaks",
+      "slug": "arrays-35-circular-local-peaks",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "count"
+      ],
+      "description": "Count values greater than both circular neighbours; a length-one array has zero peaks. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 1 3 2 4 1 2",
+          "output": "2"
+        },
+        {
+          "input": "4 5 1 2 3 4",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 3 2 4 1 2",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 5 1 2 3 4",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Stable Absolute Sort",
+      "slug": "arrays-36-stable-absolute-sort",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "sort"
+      ],
+      "description": "Sort values by absolute value while preserving original order for equal absolute values. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "6 -3 2 -2 1 3 -1",
+          "output": "1 -1 2 -2 -3 3"
+        },
+        {
+          "input": "4 -4 2 -2 1 0",
+          "output": "0 1 -2 2 -4"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "6 -3 2 -2 1 3 -1",
+          "expected_output": "1 -1 2 -2 -3 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 -4 2 -2 1 0",
+          "expected_output": "0 1 -2 2 -4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Longest Bounded Segment",
+      "slug": "arrays-37-longest-bounded-segment",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "find"
+      ],
+      "description": "Find the longest contiguous segment whose maximum minus minimum is at most limit. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "6 1 3 6 4 2 5 3",
+          "output": "4"
+        },
+        {
+          "input": "5 1 10 2 9 3 1",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "6 1 3 6 4 2 5 3",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 10 2 9 3 1",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Alternating Parity Run",
+      "slug": "arrays-38-alternating-parity-run",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "find"
+      ],
+      "description": "Find the longest contiguous run where neighbouring values have opposite parity. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "7 2 5 8 3 7 4 6",
+          "output": "5"
+        },
+        {
+          "input": "5 1 3 5 7 9",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "7 2 5 8 3 7 4 6",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 1 3 5 7 9",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Array Wave Form",
+      "slug": "arrays-39-array-wave-form",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "rearrange"
+      ],
+      "description": "Rearrange values so adjacent values alternate low-high, starting with a low value. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "6 3 1 5 2 4 6",
+          "output": "1 3 2 5 4 6"
+        },
+        {
+          "input": "4 4 3 2 1",
+          "output": "1 4 2 3"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "6 3 1 5 2 4 6",
+          "expected_output": "1 3 2 5 4 6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 4 3 2 1",
+          "expected_output": "1 4 2 3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Circular Distance Sum",
+      "slug": "arrays-40-circular-distance-sum",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "for"
+      ],
+      "description": "For each position, sum circular distances to every other position with the same value. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 1 2 1 3 1",
+          "output": "2 0 2 0 4"
+        },
+        {
+          "input": "4 7 7 8 7",
+          "output": "4 2 4 0"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 1 3 1",
+          "expected_output": "2 0 2 0 4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 7 7 8 7",
+          "expected_output": "4 2 4 0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Best Single Trade",
+      "slug": "arrays-41-best-single-trade",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "choose"
+      ],
+      "description": "Choose one earlier value to buy and a later value to sell for maximum positive gain, or return 0. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "6 7 1 5 3 6 4",
+          "output": "5"
+        },
+        {
+          "input": "5 5 4 3 2 1",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "6 7 1 5 3 6 4",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 5 4 3 2 1",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Two-Color Balance",
+      "slug": "arrays-42-two-color-balance",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "find"
+      ],
+      "description": "Find the longest prefix where counts of values marked 0 and 1 are equal. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "6 0 1 0 0 1 1",
+          "output": "6"
+        },
+        {
+          "input": "4 0 0 1 0",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "6 0 1 0 0 1 1",
+          "expected_output": "6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0 0 1 0",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Subarray Sum Target Count",
+      "slug": "arrays-43-subarray-sum-target-count",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "count"
+      ],
+      "description": "Count contiguous subarrays whose sum equals target; values may be negative. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 1 2 1 2 1 3",
+          "output": "4"
+        },
+        {
+          "input": "4 1 -1 1 -1 0",
+          "output": "4"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 1 2 1 3",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 -1 1 -1 0",
+          "expected_output": "4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Maximum Circular Sum",
+      "slug": "arrays-44-maximum-circular-sum",
+      "difficulty": "Hard",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "return"
+      ],
+      "description": "Return the largest sum of a non-empty contiguous circular subarray. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 5 -3 5 1 -2 4",
+          "output": "12"
+        },
+        {
+          "input": "4 -2 -3 -1 -5",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 5 -3 5 1 -2 4",
+          "expected_output": "12",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 -2 -3 -1 -5",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Matrix Diagonal Flatten",
+      "slug": "arrays-45-matrix-diagonal-flatten",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "read"
+      ],
+      "description": "Read a square matrix stored row-wise and print its main diagonal. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "3 1 2 3 4 5 6 7 8 9",
+          "output": "1 5 9"
+        },
+        {
+          "input": "2 -1 4 7 3",
+          "output": "-1 3"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "3 1 2 3 4 5 6 7 8 9",
+          "expected_output": "1 5 9",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 -1 4 7 3",
+          "expected_output": "-1 3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Row Rotation Check",
+      "slug": "arrays-46-row-rotation-check",
+      "difficulty": "Easy",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "determine"
+      ],
+      "description": "Determine whether the second array is a circular rotation of the first. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "5 1 2 3 4 5 4 5 1 2 3",
+          "output": "true"
+        },
+        {
+          "input": "3 1 2 3 3 1 3 2",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 2 3 4 5 4 5 1 2 3",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 1 2 3 3 1 3 2",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Dominant Suffix Values",
+      "slug": "arrays-47-dominant-suffix-values",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "print"
+      ],
+      "description": "Print values that are strictly greater than every value to their right, preserving left-to-right order. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "6 16 17 4 3 5 2",
+          "output": "17 5 2"
+        },
+        {
+          "input": "4 1 2 3 4",
+          "output": "4"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "6 16 17 4 3 5 2",
+          "expected_output": "17 5 2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 2 3 4",
+          "expected_output": "4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Index Gap Maximum",
+      "slug": "arrays-48-index-gap-maximum",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "return"
+      ],
+      "description": "Return the maximum j-i where i is before j and values[i] is no greater than values[j]. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "6 6 0 8 2 1 5 7",
+          "output": "5"
+        },
+        {
+          "input": "4 9 8 7 6 5",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "6 6 0 8 2 1 5 7",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 9 8 7 6 5",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Three Segment Equal Sum",
+      "slug": "arrays-49-three-segment-equal-sum",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "determine"
+      ],
+      "description": "Determine whether an array can be split into three non-empty contiguous parts with equal sums. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "6 1 2 3 0 3 3 0",
+          "output": "true"
+        },
+        {
+          "input": "4 1 1 1 3",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "6 1 2 3 0 3 3 0",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 1 1 3",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Frequency Sorted Array",
+      "slug": "arrays-50-frequency-sorted-array",
+      "difficulty": "Medium",
+      "category": "Arrays",
+      "topic": "Arrays",
+      "tags": [
+        "arrays",
+        "sort"
+      ],
+      "description": "Sort by increasing frequency, then by increasing value when frequencies tie. Read the values using the input format below and produce exactly the requested result. Do not change the order of values unless the statement explicitly asks for a rearrangement. Solutions should handle negative values and repeated values where the constraints permit them.",
+      "input_format": "The first line contains n followed by the required integer parameters and n integer values, as described by the examples.",
+      "output_format": "Print the requested value or sequence on one line. Separate sequence values with single spaces.",
+      "constraints": "1 <= n <= 100000; -1000000000 <= value <= 1000000000; all extra parameters are valid for the described operation.",
+      "examples": [
+        {
+          "input": "7 4 4 1 2 2 2 3 3",
+          "output": "1 3 3 4 4 2 2 2"
+        },
+        {
+          "input": "5 5 1 1 2 3",
+          "output": "2 3 5 5 1 1"
+        }
+      ],
+      "hints": [
+        "Write down the invariant that must remain true after processing each value.",
+        "Consider whether a prefix, suffix, frequency map, two pointers, or a monotonic structure removes repeated work."
+      ],
+      "test_cases": [
+        {
+          "input": "7 4 4 1 2 2 2 3 3",
+          "expected_output": "1 3 3 4 4 2 2 2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 5 1 1 2 3",
+          "expected_output": "2 3 5 5 1 1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    }
+  ]
+}

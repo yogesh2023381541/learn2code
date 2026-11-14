@@ -81,6 +81,19 @@ export type PracticeProblem = {
   editorial?: string | null;
   reference_url?: string | null;
   starter_code?: string | null;
+  is_published?: boolean;
+};
+
+export type PracticeSubmission = {
+  id: number;
+  status: string;
+  language: string;
+  stdout: string;
+  stderr: string;
+  duration_ms: number;
+  passed_tests: number;
+  total_tests: number;
+  memory_kb: number;
 };
 
 function setTokens(accessToken: string, refreshToken: string) {
@@ -223,7 +236,7 @@ export async function submitPractice(problemId: number, language: string, code: 
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ language, code }),
-  }) as Promise<{ id: number; status: string; language: string }>;
+  }) as Promise<PracticeSubmission>;
 }
 
 export async function runPractice(problemId: number, language: string, code: string, stdin: string) {
@@ -231,7 +244,113 @@ export async function runPractice(problemId: number, language: string, code: str
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ language, code, stdin }),
-  }) as Promise<{ status: string; stdout: string; stderr: string; duration_ms: number }>;
+  }) as Promise<{ status: string; stdout: string; stderr: string; duration_ms: number; memory_kb: number }>;
+}
+
+export async function getSubmissions() {
+  return authorizedFetch("/api/submissions") as Promise<Array<PracticeSubmission & {
+    problem_id: number; problem_title: string; code: string; submitted_at: string;
+  }>>;
+}
+
+export async function getCodingAnalytics() {
+  return authorizedFetch("/api/analytics/coding") as Promise<{
+    attempted: number; solved: number; total_submissions: number; accepted_submissions: number;
+    acceptance_rate: number; by_difficulty: Record<string, { attempted: number; solved: number }>;
+    by_language: Record<string, number>; by_topic: Record<string, { attempted: number; solved: number }>;
+  }>;
+}
+
+export async function getAdminDashboard() {
+  return authorizedFetch("/api/admin/dashboard") as Promise<{
+    total_problems: number; published_problems: number; draft_problems: number;
+    total_submissions: number; accepted_submissions: number; imports: number;
+    by_difficulty: Record<string, number>; by_category: Record<string, number>;
+  }>;
+}
+
+export async function getAdminProblems() {
+  return authorizedFetch("/api/admin/problems") as Promise<PracticeProblem[]>;
+}
+
+export async function createAdminProblem(payload: {
+  title: string; slug: string; description: string; difficulty: string; category: string;
+}) {
+  return authorizedFetch("/api/admin/problems", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...payload, examples: [], hints: [], is_published: true }),
+  }) as Promise<PracticeProblem>;
+}
+
+export async function updateAdminProblem(problem: PracticeProblem, is_published: boolean) {
+  return authorizedFetch(`/api/admin/problems/${problem.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      title: problem.title,
+      slug: problem.slug,
+      description: problem.description,
+      difficulty: problem.difficulty,
+      category: problem.category,
+      topic: problem.topic ?? null,
+      constraints: problem.constraints ?? null,
+      starter_code: problem.starter_code ?? null,
+      examples: problem.examples ?? [],
+      hints: problem.hints ?? [],
+      editorial: problem.editorial ?? null,
+      reference_url: problem.reference_url ?? null,
+      is_published,
+    }),
+  }) as Promise<PracticeProblem>;
+}
+
+export async function deleteAdminProblem(problemId: number) {
+  return authorizedFetch(`/api/admin/problems/${problemId}`, { method: "DELETE" });
+}
+
+export async function importAdminProblems(file_format: "json" | "csv", content: string, mode: "skip" | "update" | "fail" = "skip") {
+  return authorizedFetch("/api/admin/problems/import", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ file_format, content, mode }),
+  }) as Promise<{ id: number; status: string; imported_count: number; skipped_count: number; error_count: number; errors: string[] }>;
+}
+
+export async function downloadAdminProblems(file_format: "json" | "csv", template = false) {
+  const token = localStorage.getItem(ACCESS_TOKEN_KEY);
+  const response = await fetch(`${API_URL}/api/admin/problems/${template ? "import/template" : "export"}?file_format=${file_format}`, {
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  });
+  if (!response.ok) throw new Error((await response.json().catch(() => null))?.detail ?? "Download failed.");
+  const blob = await response.blob();
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `learn2code-problems.${file_format}`;
+  link.click();
+  URL.revokeObjectURL(link.href);
+}
+
+export type AdminTestCase = {
+  id?: number;
+  stdin: string;
+  expected_stdout: string;
+  is_hidden: boolean;
+  time_limit_ms: number;
+  memory_limit_mb: number;
+  order_index?: number;
+};
+
+export async function getAdminTestCases(problemId: number) {
+  return authorizedFetch(`/api/admin/problems/${problemId}/test-cases`) as Promise<AdminTestCase[]>;
+}
+
+export async function replaceAdminTestCases(problemId: number, testCases: AdminTestCase[]) {
+  return authorizedFetch(`/api/admin/problems/${problemId}/test-cases`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(testCases),
+  }) as Promise<AdminTestCase[]>;
 }
 
 export async function getPracticeProgress() {

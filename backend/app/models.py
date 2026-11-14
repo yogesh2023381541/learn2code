@@ -100,6 +100,7 @@ class PracticeProblem(Base):
     description: Mapped[str] = mapped_column(Text)
     difficulty: Mapped[str] = mapped_column(String(20))
     category: Mapped[str] = mapped_column(String(80))
+    is_published: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
     acceptance_rate: Mapped[float] = mapped_column(Float, default=0)
     topic: Mapped[Optional[str]] = mapped_column(String(100))
     pattern: Mapped[Optional[str]] = mapped_column(String(100))
@@ -109,6 +110,23 @@ class PracticeProblem(Base):
     editorial: Mapped[Optional[str]] = mapped_column(Text)
     reference_url: Mapped[Optional[str]] = mapped_column(String(500))
     starter_code: Mapped[Optional[str]] = mapped_column(Text)
+    test_cases: Mapped[list["PracticeTestCase"]] = relationship(
+        back_populates="problem", cascade="all, delete-orphan", order_by="PracticeTestCase.order_index",
+    )
+
+
+class PracticeTestCase(Base):
+    __tablename__ = "practice_test_cases"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    problem_id: Mapped[int] = mapped_column(ForeignKey("practice_problems.id", ondelete="CASCADE"), index=True)
+    stdin: Mapped[str] = mapped_column(Text, default="")
+    expected_stdout: Mapped[str] = mapped_column(Text)
+    is_hidden: Mapped[bool] = mapped_column(Boolean, default=False)
+    order_index: Mapped[int] = mapped_column(Integer, default=0)
+    time_limit_ms: Mapped[int] = mapped_column(Integer, default=3000)
+    memory_limit_mb: Mapped[int] = mapped_column(Integer, default=256)
+    problem: Mapped[PracticeProblem] = relationship(back_populates="test_cases")
 
 
 class PracticeSubmission(Base):
@@ -120,6 +138,12 @@ class PracticeSubmission(Base):
     language: Mapped[str] = mapped_column(String(40))
     code: Mapped[str] = mapped_column(Text)
     status: Mapped[str] = mapped_column(String(30), default="submitted")
+    stdout: Mapped[Optional[str]] = mapped_column(Text)
+    stderr: Mapped[Optional[str]] = mapped_column(Text)
+    duration_ms: Mapped[int] = mapped_column(Integer, default=0)
+    memory_kb: Mapped[Optional[int]] = mapped_column(Integer)
+    passed_tests: Mapped[int] = mapped_column(Integer, default=0)
+    total_tests: Mapped[int] = mapped_column(Integer, default=0)
     submitted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
@@ -156,6 +180,21 @@ class UserHistory(Base):
     target_type: Mapped[str] = mapped_column(String(30))
     target_id: Mapped[int] = mapped_column(Integer)
     viewed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class ProblemImportJob(Base):
+    __tablename__ = "problem_import_jobs"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    admin_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    file_format: Mapped[str] = mapped_column(String(10))
+    mode: Mapped[str] = mapped_column(String(20), default="skip")
+    status: Mapped[str] = mapped_column(String(20), default="completed")
+    imported_count: Mapped[int] = mapped_column(Integer, default=0)
+    skipped_count: Mapped[int] = mapped_column(Integer, default=0)
+    error_count: Mapped[int] = mapped_column(Integer, default=0)
+    errors_json: Mapped[Optional[str]] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
 class AIConversation(Base):

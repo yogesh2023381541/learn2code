@@ -1,7 +1,9 @@
 from datetime import UTC, date, datetime, timedelta
+import csv
+import io
 import json
 
-from fastapi import Depends, FastAPI, HTTPException, Query, status
+from fastapi import Depends, FastAPI, HTTPException, Query, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy import func, select
@@ -21,8 +23,10 @@ from .models import (
     Lesson,
     LessonProgress,
     PracticeProblem,
+    PracticeTestCase,
     PracticeProblemProgress,
     PracticeSubmission,
+    ProblemImportJob,
     PersonalizedRoadmap,
     PersonalizedRoadmapNode,
     Quiz,
@@ -50,6 +54,8 @@ from .schemas import (
     CodeAssistantRequest,
     CodeRunRequest,
     CodeRunResponse,
+    V1CodeRunRequest,
+    V1SubmissionRequest,
     ActivityRequest,
     AuthResponse,
     BookmarkRequest,
@@ -62,6 +68,14 @@ from .schemas import (
     PracticeProblemResponse,
     ProblemProgressRequest,
     ProblemProgressResponse,
+    SubmissionHistoryResponse,
+    ProblemImportRequest,
+    ProblemImportResponse,
+    AdminProblemUpdateRequest,
+    AdminDashboardResponse,
+    AdminTestCaseRequest,
+    AdminTestCaseResponse,
+    CodingAnalyticsResponse,
     ProfileUpdateRequest,
     QuizAttemptRequest,
     QuizAttemptResponse,
@@ -125,6 +139,12 @@ def profile_response(user: User) -> UserResponse:
         role=user.role,
         profile=profile_data,
     )
+
+
+def require_admin(user: User) -> User:
+    if user.role != "admin":
+        raise HTTPException(status_code=403, detail="Admin access required")
+    return user
 
 
 def create_session_tokens(user: User, db: Session) -> tuple[str, str]:
@@ -804,7 +824,7 @@ def list_practice_problems(
     solved_ids = set(db.scalars(select(PracticeSubmission.problem_id).where(
         PracticeSubmission.user_id == user.id, PracticeSubmission.status == "accepted",
     )))
-    query = select(PracticeProblem).order_by(PracticeProblem.id)
+    query = select(PracticeProblem).where(PracticeProblem.is_published.is_(True)).order_by(PracticeProblem.id)
     if difficulty:
         query = query.where(PracticeProblem.difficulty == difficulty)
     if topic:
@@ -884,8 +904,23 @@ def run_practice_code(
     except CodeRunnerError as error:
         raise HTTPException(status_code=400, detail=str(error)) from error
     return CodeRunResponse(
-        status=result.status, stdout=result.stdout, stderr=result.stderr, duration_ms=result.duration_ms,
+        status=result.status, stdout=result.stdout, stderr=result.stderr,
+        duration_ms=result.duration_ms, memory_kb=result.memory_kb,
     )
+
+
+def _normalized_output(value: str) -> str:
+    lines = [" ".join(line.split()) for line in value.strip().splitlines()]
+    return "\n".join(lines)
+
+
+def _outputs_match(actual: str, expected: str) -> bool:
+    if _normalized_output(actual) == _normalized_output(expected):
+        return True
+    try:
+        return json.loads(actual) == json.loads(expected)
+    except (json.JSONDecodeError, TypeError):
+        return False
 
 
 @app.post("/api/practice/problems/{problem_id}/submissions", response_model=SubmissionResponse, status_code=201)
@@ -898,9 +933,38 @@ def submit_practice(
     problem = db.get(PracticeProblem, problem_id)
     if problem is None:
         raise HTTPException(status_code=404, detail="Practice problem not found")
+    test_cases = list(db.scalars(select(PracticeTestCase).where(
+        PracticeTestCase.problem_id == problem.id,
+    ).order_by(PracticeTestCase.order_index)))
+    status = "accepted"
+    passed_tests = 0
+    duration_ms = 0
+    memory_kb = 0
+    stdout = ""
+    stderr = ""
+    for test_case in test_cases:
+        try:
+            result = run_code(payload.language, payload.code, test_case.stdin)
+        except CodeRunnerError as error:
+            raise HTTPException(status_code=400, detail=str(error)) from error
+        duration_ms += result.duration_ms
+        memory_kb = max(memory_kb, result.memory_kb)
+        stdout, stderr = result.stdout, result.stderr
+        if result.status == "time_limit_exceeded":
+            status = "time_limit_exceeded"
+            break
+        if result.status != "accepted":
+            status = result.status
+            break
+        if not _outputs_match(result.stdout, test_case.expected_stdout):
+            status = "wrong_answer"
+            break
+        passed_tests += 1
     submission = PracticeSubmission(
         user_id=user.id, problem_id=problem.id, language=payload.language,
-        code=payload.code, status="accepted",
+        code=payload.code, status=status, stdout=stdout, stderr=stderr,
+        duration_ms=duration_ms, memory_kb=memory_kb,
+        passed_tests=passed_tests, total_tests=len(test_cases),
     )
     db.add(submission)
     progress = db.scalar(select(PracticeProblemProgress).where(
@@ -910,19 +974,396 @@ def submit_practice(
         progress = PracticeProblemProgress(user_id=user.id, problem_id=problem.id, attempts=0, status="not_started", bookmarked=False)
         db.add(progress)
     progress.attempts += 1
-    progress.status = "solved"
-    progress.next_revision_at = datetime.now(UTC) + timedelta(days=1)
+    progress.status = "solved" if status == "accepted" else "attempted"
+    if status == "accepted":
+        progress.next_revision_at = datetime.now(UTC) + timedelta(days=1)
     profile = user.profile or UserProfile(user_id=user.id)
     already_solved = db.scalar(select(PracticeSubmission.id).where(
         PracticeSubmission.user_id == user.id, PracticeSubmission.problem_id == problem.id,
         PracticeSubmission.status == "accepted",
     )) is not None
-    if not already_solved:
+    if status == "accepted" and not already_solved:
         profile.problems_solved += 1
         db.add(profile)
     db.commit()
     db.refresh(submission)
-    return SubmissionResponse(id=submission.id, status=submission.status, language=submission.language)
+    return SubmissionResponse(
+        id=submission.id, status=submission.status, language=submission.language,
+        stdout=stdout, stderr=stderr, duration_ms=duration_ms,
+        memory_kb=memory_kb, passed_tests=passed_tests, total_tests=len(test_cases),
+    )
+
+
+@app.post("/api/v1/code/run", response_model=CodeRunResponse)
+def run_code_v1(
+    payload: V1CodeRunRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> CodeRunResponse:
+    return run_practice_code(payload.problem_id, payload, user, db)
+
+
+@app.post("/api/v1/code/submit", response_model=SubmissionResponse, status_code=201)
+def submit_code_v1(
+    payload: V1SubmissionRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> SubmissionResponse:
+    return submit_practice(payload.problem_id, payload, user, db)
+
+
+@app.get("/api/submissions", response_model=list[SubmissionHistoryResponse])
+def list_submissions(
+    limit: int = Query(default=50, ge=1, le=200),
+    problem_id: int | None = Query(default=None, gt=0),
+    language: str | None = Query(default=None, max_length=40),
+    verdict: str | None = Query(default=None, max_length=30),
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> list[SubmissionHistoryResponse]:
+    query = select(PracticeSubmission, PracticeProblem.title).join(
+        PracticeProblem, PracticeProblem.id == PracticeSubmission.problem_id,
+    ).where(PracticeSubmission.user_id == user.id).order_by(
+        PracticeSubmission.submitted_at.desc(),
+    ).limit(limit)
+    if problem_id:
+        query = query.where(PracticeSubmission.problem_id == problem_id)
+    if language:
+        query = query.where(PracticeSubmission.language == language)
+    if verdict:
+        query = query.where(PracticeSubmission.status == verdict)
+    return [
+        SubmissionHistoryResponse(
+            id=submission.id, status=submission.status, language=submission.language,
+            stdout=submission.stdout or "", stderr=submission.stderr or "",
+            duration_ms=submission.duration_ms, memory_kb=submission.memory_kb or 0,
+            passed_tests=submission.passed_tests,
+            total_tests=submission.total_tests, problem_id=submission.problem_id,
+            problem_title=title, code=submission.code,
+            submitted_at=submission.submitted_at.isoformat(),
+        )
+        for submission, title in db.execute(query)
+    ]
+
+
+@app.get("/api/analytics/coding", response_model=CodingAnalyticsResponse)
+def coding_analytics(user: User = Depends(current_user), db: Session = Depends(get_db)) -> CodingAnalyticsResponse:
+    submissions = list(db.scalars(select(PracticeSubmission).where(
+        PracticeSubmission.user_id == user.id,
+    )))
+    problem_ids = {row.problem_id for row in submissions}
+    problems = {
+        row.id: row for row in db.scalars(select(PracticeProblem).where(PracticeProblem.id.in_(problem_ids)))
+    } if problem_ids else {}
+    by_difficulty: dict[str, dict[str, int]] = {}
+    by_topic: dict[str, dict[str, int]] = {}
+    by_language: dict[str, int] = {}
+    for submission in submissions:
+        problem = problems.get(submission.problem_id)
+        if problem is None:
+            continue
+        difficulty = by_difficulty.setdefault(problem.difficulty, {"attempted": 0, "solved": 0})
+        difficulty["attempted"] += 1
+        if submission.status == "accepted":
+            difficulty["solved"] += 1
+        topic = problem.topic or problem.category
+        topic_stats = by_topic.setdefault(topic, {"attempted": 0, "solved": 0})
+        topic_stats["attempted"] += 1
+        if submission.status == "accepted":
+            topic_stats["solved"] += 1
+        by_language[submission.language] = by_language.get(submission.language, 0) + 1
+    accepted = sum(1 for row in submissions if row.status == "accepted")
+    solved = db.scalar(select(func.count()).select_from(PracticeProblemProgress).where(
+        PracticeProblemProgress.user_id == user.id, PracticeProblemProgress.status == "solved",
+    )) or 0
+    return CodingAnalyticsResponse(
+        attempted=len(problem_ids), solved=solved, total_submissions=len(submissions),
+        accepted_submissions=accepted,
+        acceptance_rate=round((accepted / len(submissions)) * 100, 2) if submissions else 0,
+        by_difficulty=by_difficulty, by_language=by_language, by_topic=by_topic,
+    )
+
+
+@app.get("/api/admin/problems", response_model=list[PracticeProblemResponse])
+def admin_list_problems(user: User = Depends(current_user), db: Session = Depends(get_db)) -> list[PracticeProblemResponse]:
+    require_admin(user)
+    return [practice_response(problem) for problem in db.scalars(select(PracticeProblem).order_by(PracticeProblem.id.desc()))]
+
+
+@app.post("/api/admin/problems", response_model=PracticeProblemResponse, status_code=201)
+def admin_create_problem(
+    payload: AdminProblemUpdateRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> PracticeProblemResponse:
+    require_admin(user)
+    if db.scalar(select(PracticeProblem).where(PracticeProblem.slug == payload.slug)):
+        raise HTTPException(status_code=409, detail="A problem with this slug already exists")
+    problem = PracticeProblem(
+        title=payload.title, slug=payload.slug, description=payload.description,
+        difficulty=payload.difficulty, category=payload.category,
+        topic=payload.topic, constraints=payload.constraints,
+        examples_json=json.dumps(payload.examples), hints_json=json.dumps(payload.hints),
+        editorial=payload.editorial, reference_url=payload.reference_url,
+        starter_code=payload.starter_code, is_published=payload.is_published,
+    )
+    db.add(problem)
+    db.commit()
+    db.refresh(problem)
+    return practice_response(problem)
+
+
+@app.put("/api/admin/problems/{problem_id}", response_model=PracticeProblemResponse)
+def admin_update_problem(
+    problem_id: int,
+    payload: AdminProblemUpdateRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> PracticeProblemResponse:
+    require_admin(user)
+    problem = db.get(PracticeProblem, problem_id)
+    if problem is None:
+        raise HTTPException(status_code=404, detail="Practice problem not found")
+    duplicate = db.scalar(select(PracticeProblem).where(
+        PracticeProblem.slug == payload.slug, PracticeProblem.id != problem_id,
+    ))
+    if duplicate:
+        raise HTTPException(status_code=409, detail="A problem with this slug already exists")
+    for field in ["title", "slug", "description", "difficulty", "category", "topic", "constraints", "editorial", "reference_url", "starter_code", "is_published"]:
+        setattr(problem, field, getattr(payload, field))
+    problem.examples_json = json.dumps(payload.examples)
+    problem.hints_json = json.dumps(payload.hints)
+    db.commit()
+    db.refresh(problem)
+    return practice_response(problem)
+
+
+@app.delete("/api/admin/problems/{problem_id}", status_code=204)
+def admin_delete_problem(problem_id: int, user: User = Depends(current_user), db: Session = Depends(get_db)) -> None:
+    require_admin(user)
+    problem = db.get(PracticeProblem, problem_id)
+    if problem is None:
+        raise HTTPException(status_code=404, detail="Practice problem not found")
+    db.delete(problem)
+    db.commit()
+
+
+@app.get("/api/admin/dashboard", response_model=AdminDashboardResponse)
+def admin_dashboard(user: User = Depends(current_user), db: Session = Depends(get_db)) -> AdminDashboardResponse:
+    require_admin(user)
+    problems = list(db.scalars(select(PracticeProblem)))
+    submissions = list(db.scalars(select(PracticeSubmission)))
+    return AdminDashboardResponse(
+        total_problems=len(problems),
+        published_problems=sum(problem.is_published for problem in problems),
+        draft_problems=sum(not problem.is_published for problem in problems),
+        total_submissions=len(submissions),
+        accepted_submissions=sum(row.status == "accepted" for row in submissions),
+        imports=db.scalar(select(func.count()).select_from(ProblemImportJob)) or 0,
+        by_difficulty={key: sum(problem.difficulty == key for problem in problems) for key in ("Easy", "Medium", "Hard")},
+        by_category={category: sum(problem.category == category for problem in problems) for category in {problem.category for problem in problems}},
+    )
+
+
+@app.get("/api/admin/problems/import/template")
+def admin_import_template(
+    file_format: str = Query(default="json", pattern="^(json|csv)$"),
+    user: User = Depends(current_user),
+) -> Response:
+    require_admin(user)
+    if file_format == "csv":
+        content = "title,slug,description,difficulty,category,topic,constraints,examples,hints,test_cases,starter_code,is_published\n"
+        content += 'Example,example-problem,"Describe the task",Easy,Arrays,Arrays,"Input constraints","[]","[]","[]","",true\n'
+        return Response(content, media_type="text/csv", headers={"Content-Disposition": "attachment; filename=learn2code-problems.csv"})
+    content = json.dumps({"problems": [{
+        "title": "Example", "slug": "example-problem", "description": "Describe the task",
+        "difficulty": "Easy", "category": "Arrays", "topic": "Arrays",
+        "constraints": ["Add constraints"], "examples": [{"input": "1", "output": "1"}],
+        "hints": ["Add a hint"], "test_cases": [{"input": "1", "expected_output": "1", "is_hidden": False}],
+        "starter_code": {"python": "print(1)"}, "is_published": True,
+    }]}, indent=2)
+    return Response(content, media_type="application/json", headers={"Content-Disposition": "attachment; filename=learn2code-problems.json"})
+
+
+@app.get("/api/admin/problems/export")
+def admin_export_problems(
+    file_format: str = Query(default="json", pattern="^(json|csv)$"),
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> Response:
+    require_admin(user)
+    problems = list(db.scalars(select(PracticeProblem).order_by(PracticeProblem.id)))
+    rows = [{
+        "title": problem.title, "slug": problem.slug, "description": problem.description,
+        "difficulty": problem.difficulty, "category": problem.category, "topic": problem.topic,
+        "constraints": problem.constraints, "examples": json.loads(problem.examples_json or "[]"),
+        "hints": json.loads(problem.hints_json or "[]"), "editorial": problem.editorial,
+        "reference_url": problem.reference_url, "starter_code": problem.starter_code,
+        "is_published": problem.is_published,
+        "test_cases": [{
+            "input": case.stdin, "expected_output": case.expected_stdout, "is_hidden": case.is_hidden,
+        } for case in problem.test_cases],
+    } for problem in problems]
+    if file_format == "json":
+        return Response(json.dumps({"problems": rows}, indent=2), media_type="application/json", headers={"Content-Disposition": "attachment; filename=learn2code-problems.json"})
+    output = io.StringIO()
+    fieldnames = ["title", "slug", "description", "difficulty", "category", "topic", "constraints", "examples", "hints", "test_cases", "starter_code", "is_published"]
+    writer = csv.DictWriter(output, fieldnames=fieldnames)
+    writer.writeheader()
+    for row in rows:
+        writer.writerow({field: json.dumps(row[field]) if isinstance(row[field], (list, dict)) else row[field] for field in fieldnames})
+    return Response(output.getvalue(), media_type="text/csv", headers={"Content-Disposition": "attachment; filename=learn2code-problems.csv"})
+
+
+@app.get("/api/admin/problems/{problem_id}/test-cases", response_model=list[AdminTestCaseResponse])
+def admin_list_test_cases(problem_id: int, user: User = Depends(current_user), db: Session = Depends(get_db)) -> list[PracticeTestCase]:
+    require_admin(user)
+    if db.get(PracticeProblem, problem_id) is None:
+        raise HTTPException(status_code=404, detail="Practice problem not found")
+    return list(db.scalars(select(PracticeTestCase).where(
+        PracticeTestCase.problem_id == problem_id,
+    ).order_by(PracticeTestCase.order_index)))
+
+
+@app.put("/api/admin/problems/{problem_id}/test-cases", response_model=list[AdminTestCaseResponse])
+def admin_replace_test_cases(
+    problem_id: int,
+    payload: list[AdminTestCaseRequest],
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> list[PracticeTestCase]:
+    require_admin(user)
+    if db.get(PracticeProblem, problem_id) is None:
+        raise HTTPException(status_code=404, detail="Practice problem not found")
+    for case in list(db.scalars(select(PracticeTestCase).where(PracticeTestCase.problem_id == problem_id))):
+        db.delete(case)
+    db.flush()
+    for order_index, case in enumerate(payload):
+        db.add(PracticeTestCase(problem_id=problem_id, order_index=order_index, **case.model_dump()))
+    db.commit()
+    return list(db.scalars(select(PracticeTestCase).where(
+        PracticeTestCase.problem_id == problem_id,
+    ).order_by(PracticeTestCase.order_index)))
+
+
+def _parse_problem_import(payload: ProblemImportRequest) -> list[dict[str, object]]:
+    if payload.file_format == "json":
+        parsed = json.loads(payload.content)
+        if isinstance(parsed, dict):
+            parsed = parsed.get("problems")
+        if not isinstance(parsed, list):
+            raise ValueError("JSON must contain a problems array")
+        return parsed
+    rows = csv.DictReader(io.StringIO(payload.content))
+    return [dict(row) for row in rows]
+
+
+@app.post("/api/admin/problems/import", response_model=ProblemImportResponse, status_code=201)
+def admin_import_problems(
+    payload: ProblemImportRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> ProblemImportResponse:
+    require_admin(user)
+    try:
+        rows = _parse_problem_import(payload)
+    except (ValueError, json.JSONDecodeError) as error:
+        raise HTTPException(status_code=422, detail=f"Invalid {payload.file_format.upper()} import: {error}") from error
+    errors: list[str] = []
+    imported = skipped = 0
+    job = ProblemImportJob(admin_id=user.id, file_format=payload.file_format, mode=payload.mode)
+    db.add(job)
+    db.flush()
+    for index, raw in enumerate(rows, 1):
+        if not isinstance(raw, dict):
+            errors.append(f"Row {index}: expected an object")
+            continue
+        slug = str(raw.get("slug", "")).strip()
+        required = ["title", "slug", "description", "difficulty", "category"]
+        missing = [field for field in required if not str(raw.get(field, "")).strip()]
+        if missing:
+            errors.append(f"Row {index}: missing {', '.join(missing)}")
+            continue
+        if str(raw["difficulty"]) not in {"Easy", "Medium", "Hard"}:
+            errors.append(f"Row {index}: difficulty must be Easy, Medium, or Hard")
+            continue
+        existing = db.scalar(select(PracticeProblem).where(PracticeProblem.slug == slug))
+        if existing and payload.mode == "skip":
+            skipped += 1
+            continue
+        if existing and payload.mode == "fail":
+            errors.append(f"Row {index}: duplicate slug '{slug}'")
+            continue
+        def list_value(name: str) -> list:
+            value = raw.get(name, [])
+            if isinstance(value, str):
+                try:
+                    value = json.loads(value)
+                except json.JSONDecodeError:
+                    return [value]
+            return value if isinstance(value, list) else []
+        if existing:
+            problem = existing
+        else:
+            problem = PracticeProblem(slug=slug)
+            db.add(problem)
+        problem.title = str(raw["title"])
+        problem.description = str(raw["description"])
+        problem.difficulty = str(raw["difficulty"])
+        problem.category = str(raw["category"])
+        problem.topic = str(raw.get("topic") or "") or None
+        problem.constraints = str(raw.get("constraints") or "") or None
+        problem.examples_json = json.dumps(list_value("examples"))
+        problem.hints_json = json.dumps(list_value("hints"))
+        problem.editorial = str(raw.get("editorial") or "") or None
+        problem.reference_url = str(raw.get("reference_url") or "") or None
+        starter_code = raw.get("starter_code")
+        problem.starter_code = json.dumps(starter_code) if isinstance(starter_code, dict) else (str(starter_code) if starter_code else None)
+        problem.is_published = str(raw.get("is_published", "true")).lower() not in {"false", "0", "draft"}
+        db.flush()
+        test_cases = list_value("test_cases")
+        if existing:
+            for test_case in list(db.scalars(select(PracticeTestCase).where(PracticeTestCase.problem_id == problem.id))):
+                db.delete(test_case)
+        for order, test_case in enumerate(test_cases):
+            if not isinstance(test_case, dict) or "expected_output" not in test_case:
+                errors.append(f"Row {index}: invalid test case at position {order + 1}")
+                continue
+            db.add(PracticeTestCase(
+                problem_id=problem.id, stdin=str(test_case.get("input", "")),
+                expected_stdout=str(test_case["expected_output"]),
+                is_hidden=bool(test_case.get("is_hidden", False)), order_index=order,
+            ))
+        imported += 1
+    if errors and payload.mode == "fail":
+        db.rollback()
+        raise HTTPException(status_code=422, detail={"message": "Import validation failed", "errors": errors})
+    job.imported_count = imported
+    job.skipped_count = skipped
+    job.error_count = len(errors)
+    job.errors_json = json.dumps(errors)
+    db.commit()
+    db.refresh(job)
+    return ProblemImportResponse(
+        id=job.id, status="completed_with_errors" if errors else "completed",
+        imported_count=imported, skipped_count=skipped, error_count=len(errors), errors=errors,
+    )
+
+
+@app.get("/api/admin/problems/import/history", response_model=list[ProblemImportResponse])
+def admin_import_history(user: User = Depends(current_user), db: Session = Depends(get_db)) -> list[ProblemImportResponse]:
+    require_admin(user)
+    jobs = db.scalars(select(ProblemImportJob).where(
+        ProblemImportJob.admin_id == user.id,
+    ).order_by(ProblemImportJob.created_at.desc()).limit(50))
+    return [
+        ProblemImportResponse(
+            id=job.id, status=job.status, imported_count=job.imported_count,
+            skipped_count=job.skipped_count, error_count=job.error_count,
+            errors=json.loads(job.errors_json or "[]"),
+        )
+        for job in jobs
+    ]
 
 
 @app.patch("/api/users/me/profile", response_model=UserResponse)

@@ -1,0 +1,1624 @@
+{
+  "problems": [
+    {
+      "title": "Binary Search Index",
+      "slug": "searching-sorting-01-binary-search-index",
+      "difficulty": "Easy",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "searching",
+        "binary"
+      ],
+      "description": "Return the index of target in a sorted array, or -1. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "5 1 3 5 7 9|7",
+          "output": "3"
+        },
+        {
+          "input": "4 2 4 6 8|5",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 3 5 7 9|7",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 2 4 6 8|5",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Lower Bound Position",
+      "slug": "searching-sorting-02-lower-bound-position",
+      "difficulty": "Easy",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "searching",
+        "lower"
+      ],
+      "description": "Return the first index whose value is at least target. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "5 1 3 3 7 9|3",
+          "output": "1"
+        },
+        {
+          "input": "4 2 4 6 8|5",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 3 3 7 9|3",
+          "expected_output": "1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 2 4 6 8|5",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Upper Bound Position",
+      "slug": "searching-sorting-03-upper-bound-position",
+      "difficulty": "Easy",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "searching",
+        "upper"
+      ],
+      "description": "Return the first index whose value is greater than target. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "5 1 3 3 7 9|3",
+          "output": "3"
+        },
+        {
+          "input": "4 2 4 6 8|9",
+          "output": "4"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 3 3 7 9|3",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 2 4 6 8|9",
+          "expected_output": "4",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "First And Last Target",
+      "slug": "searching-sorting-04-first-and-last-target",
+      "difficulty": "Easy",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "first"
+      ],
+      "description": "Return the first and last index of target in a sorted array. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "7 1 2 2 2 3 4 5|2",
+          "output": "1 3"
+        },
+        {
+          "input": "4 1 3 5 7|4",
+          "output": "-1 -1"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "7 1 2 2 2 3 4 5|2",
+          "expected_output": "1 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 3 5 7|4",
+          "expected_output": "-1 -1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Rotated Search",
+      "slug": "searching-sorting-05-rotated-search",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "searching",
+        "rotated"
+      ],
+      "description": "Find target in a sorted array rotated at an unknown pivot. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "7 4 5 6 7 0 1 2|0",
+          "output": "4"
+        },
+        {
+          "input": "5 6 7 1 2 3 4|5",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "7 4 5 6 7 0 1 2|0",
+          "expected_output": "4",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "5 6 7 1 2 3 4|5",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Rotated Minimum",
+      "slug": "searching-sorting-06-rotated-minimum",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "rotated"
+      ],
+      "description": "Return the minimum value in a rotated sorted array. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "5 4 5 1 2 3",
+          "output": "1"
+        },
+        {
+          "input": "4 2 2 2 2",
+          "output": "2"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "5 4 5 1 2 3",
+          "expected_output": "1",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 2 2 2 2",
+          "expected_output": "2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Peak Array Index",
+      "slug": "searching-sorting-07-peak-array-index",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "peak"
+      ],
+      "description": "Return an index of a value greater than its available neighbours. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "5 1 3 5 4 2",
+          "output": "2"
+        },
+        {
+          "input": "4 4 3 2 1",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 3 5 4 2",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 4 3 2 1",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Integer Square Root",
+      "slug": "searching-sorting-08-integer-square-root",
+      "difficulty": "Easy",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "integer"
+      ],
+      "description": "Return floor square root of non-negative x without floating-point square root. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "27",
+          "output": "5"
+        },
+        {
+          "input": "1",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "27",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Kth Missing Positive",
+      "slug": "searching-sorting-09-kth-missing-positive",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "kth"
+      ],
+      "description": "Return the k-th positive integer absent from a strictly increasing array. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "5 2 3 4 7 11|5",
+          "output": "9"
+        },
+        {
+          "input": "3 1 2 3|2",
+          "output": "6"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "5 2 3 4 7 11|5",
+          "expected_output": "9",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 1 2 3|2",
+          "expected_output": "6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Search In Matrix",
+      "slug": "searching-sorting-10-search-in-matrix",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "searching",
+        "search"
+      ],
+      "description": "Find target in a row-major matrix whose rows and columns are sorted. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "3 4 1 4 7 11 2 5 8 12 3 6 9 16|8",
+          "output": "true"
+        },
+        {
+          "input": "2 2 1 3 2 4|5",
+          "output": "false"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "3 4 1 4 7 11 2 5 8 12 3 6 9 16|8",
+          "expected_output": "true",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 2 1 3 2 4|5",
+          "expected_output": "false",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Merge Sort Values",
+      "slug": "searching-sorting-11-merge-sort-values",
+      "difficulty": "Easy",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "merge"
+      ],
+      "description": "Sort integer values in non-decreasing order using merge sort. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "6 5 1 4 2 8 0",
+          "output": "0 1 2 4 5 8"
+        },
+        {
+          "input": "4 -1 -3 -2 0",
+          "output": "-3 -2 -1 0"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "6 5 1 4 2 8 0",
+          "expected_output": "0 1 2 4 5 8",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 -1 -3 -2 0",
+          "expected_output": "-3 -2 -1 0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Quick Sort Values",
+      "slug": "searching-sorting-12-quick-sort-values",
+      "difficulty": "Easy",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "quick"
+      ],
+      "description": "Sort integer values in non-decreasing order using partitioning. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "5 3 1 2 3 0",
+          "output": "0 1 2 3 3"
+        },
+        {
+          "input": "3 9 8 7",
+          "output": "7 8 9"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "5 3 1 2 3 0",
+          "expected_output": "0 1 2 3 3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 9 8 7",
+          "expected_output": "7 8 9",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Counting Sort Range",
+      "slug": "searching-sorting-13-counting-sort-range",
+      "difficulty": "Easy",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "counting"
+      ],
+      "description": "Sort non-negative values whose maximum is small. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "7 4 2 2 8 3 3 1",
+          "output": "1 2 2 3 3 4 8"
+        },
+        {
+          "input": "4 0 0 1 0",
+          "output": "0 0 0 1"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "7 4 2 2 8 3 3 1",
+          "expected_output": "1 2 2 3 3 4 8",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0 0 1 0",
+          "expected_output": "0 0 0 1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Dutch Flag Sort",
+      "slug": "searching-sorting-14-dutch-flag-sort",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "dutch"
+      ],
+      "description": "Sort an array containing only 0, 1, and 2 in one pass. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "6 2 0 2 1 1 0",
+          "output": "0 0 1 1 2 2"
+        },
+        {
+          "input": "4 1 2 0 1",
+          "output": "0 1 1 2"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "6 2 0 2 1 1 0",
+          "expected_output": "0 0 1 1 2 2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 2 0 1",
+          "expected_output": "0 1 1 2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Sort By Parity",
+      "slug": "searching-sorting-15-sort-by-parity",
+      "difficulty": "Easy",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "sort"
+      ],
+      "description": "Move even values before odd values, preserving order within each group. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "6 3 2 4 1 5 6",
+          "output": "2 4 6 3 1 5"
+        },
+        {
+          "input": "4 1 3 5 7",
+          "output": "1 3 5 7"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "6 3 2 4 1 5 6",
+          "expected_output": "2 4 6 3 1 5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 3 5 7",
+          "expected_output": "1 3 5 7",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Inversion Count",
+      "slug": "searching-sorting-16-inversion-count",
+      "difficulty": "Hard",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "inversion"
+      ],
+      "description": "Count pairs i<j with values[i] greater than values[j]. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "5 2 4 1 3 5",
+          "output": "3"
+        },
+        {
+          "input": "4 4 3 2 1",
+          "output": "6"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "5 2 4 1 3 5",
+          "expected_output": "3",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 4 3 2 1",
+          "expected_output": "6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Kth Largest Selection",
+      "slug": "searching-sorting-17-kth-largest-selection",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "kth"
+      ],
+      "description": "Return the k-th largest value using one-based k. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "6 3 2 1 5 6 4|2",
+          "output": "5"
+        },
+        {
+          "input": "4 -1 -2 -3 -4|4",
+          "output": "-1"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "6 3 2 1 5 6 4|2",
+          "expected_output": "5",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 -1 -2 -3 -4|4",
+          "expected_output": "-1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Median Of Two Sorted",
+      "slug": "searching-sorting-18-median-of-two-sorted",
+      "difficulty": "Hard",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "median"
+      ],
+      "description": "Return the median of two sorted arrays; print .5 when needed. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "2 1 3|3 2 4 6",
+          "output": "3.00"
+        },
+        {
+          "input": "1 1|1 2",
+          "output": "1.50"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "2 1 3|3 2 4 6",
+          "expected_output": "3.00",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1 1|1 2",
+          "expected_output": "1.50",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Closest Pair Sum",
+      "slug": "searching-sorting-19-closest-pair-sum",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "closest"
+      ],
+      "description": "Find a pair with sum closest to target and print the smaller pair first. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "5 1 4 7 10 12|15",
+          "output": "4 12"
+        },
+        {
+          "input": "4 -5 0 8 20|7",
+          "output": "0 8"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "5 1 4 7 10 12|15",
+          "expected_output": "4 12",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 -5 0 8 20|7",
+          "expected_output": "0 8",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Three Sum Zero",
+      "slug": "searching-sorting-20-three-sum-zero",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "three"
+      ],
+      "description": "Print the number of distinct value triples with sum zero. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "6 -1 0 1 2 -1 -4",
+          "output": "2"
+        },
+        {
+          "input": "4 1 2 3 4",
+          "output": "0"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "6 -1 0 1 2 -1 -4",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 1 2 3 4",
+          "expected_output": "0",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Merge Intervals",
+      "slug": "searching-sorting-21-merge-intervals",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "merge"
+      ],
+      "description": "Merge overlapping inclusive intervals and print them in order. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "4 1-3 2-6 8-10 9-12",
+          "output": "1-6 8-12"
+        },
+        {
+          "input": "2 1-1 2-2",
+          "output": "1-1 2-2"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "4 1-3 2-6 8-10 9-12",
+          "expected_output": "1-6 8-12",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 1-1 2-2",
+          "expected_output": "1-1 2-2",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Insert Interval",
+      "slug": "searching-sorting-22-insert-interval",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "insert"
+      ],
+      "description": "Insert an interval into sorted disjoint intervals and merge overlaps. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "2 1-3 6-9|2-5",
+          "output": "1-5 6-9"
+        },
+        {
+          "input": "1 5-7|1-2",
+          "output": "1-2 5-7"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "2 1-3 6-9|2-5",
+          "expected_output": "1-5 6-9",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "1 5-7|1-2",
+          "expected_output": "1-2 5-7",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Meeting Rooms",
+      "slug": "searching-sorting-23-meeting-rooms",
+      "difficulty": "Easy",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "meeting"
+      ],
+      "description": "Determine whether all intervals can be attended without overlap. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "3 0-30 5-10 15-20",
+          "output": "false"
+        },
+        {
+          "input": "2 7-10 2-4",
+          "output": "true"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "3 0-30 5-10 15-20",
+          "expected_output": "false",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 7-10 2-4",
+          "expected_output": "true",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Minimum Meeting Rooms",
+      "slug": "searching-sorting-24-minimum-meeting-rooms",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "minimum"
+      ],
+      "description": "Return the minimum number of rooms needed for intervals. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "3 0-30 5-10 15-20",
+          "output": "2"
+        },
+        {
+          "input": "2 7-10 2-4",
+          "output": "1"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "3 0-30 5-10 15-20",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "2 7-10 2-4",
+          "expected_output": "1",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Job Sequencing Profit",
+      "slug": "searching-sorting-25-job-sequencing-profit",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "job"
+      ],
+      "description": "Schedule unit jobs before deadlines for maximum profit. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "4 2:100 1:19 2:27 1:25",
+          "output": "127"
+        },
+        {
+          "input": "3 1:10 1:20 1:5",
+          "output": "20"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "4 2:100 1:19 2:27 1:25",
+          "expected_output": "127",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 1:10 1:20 1:5",
+          "expected_output": "20",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Radix Sort Values",
+      "slug": "searching-sorting-26-radix-sort-values",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "radix"
+      ],
+      "description": "Sort non-negative integers using least-significant-digit passes. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "5 170 45 75 90 802",
+          "output": "45 75 90 170 802"
+        },
+        {
+          "input": "3 3 30 300",
+          "output": "3 30 300"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "5 170 45 75 90 802",
+          "expected_output": "45 75 90 170 802",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 3 30 300",
+          "expected_output": "3 30 300",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "External Run Merge",
+      "slug": "searching-sorting-27-external-run-merge",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "external"
+      ],
+      "description": "Merge sorted runs represented as pipe-separated rows. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "2 1 4 7|0 2 8",
+          "output": "0 1 2 4 7 8"
+        },
+        {
+          "input": "3 -2 0|1|2 3 5",
+          "output": "-2 0 1 2 3 5"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "2 1 4 7|0 2 8",
+          "expected_output": "0 1 2 4 7 8",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 -2 0|1|2 3 5",
+          "expected_output": "-2 0 1 2 3 5",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Range Frequency Query",
+      "slug": "searching-sorting-28-range-frequency-query",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "range"
+      ],
+      "description": "Return how many values in inclusive index range l..r equal target. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "6 1 2 1 3 1 4|1|4|1",
+          "output": "2"
+        },
+        {
+          "input": "4 5 5 5 5|0|2|5",
+          "output": "3"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "6 1 2 1 3 1 4|1|4|1",
+          "expected_output": "2",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 5 5 5 5|0|2|5",
+          "expected_output": "3",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Sorted Squares",
+      "slug": "searching-sorting-29-sorted-squares",
+      "difficulty": "Easy",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "sorted"
+      ],
+      "description": "Return squares in non-decreasing order from a sorted array. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "5 -7 -3 -1 4 8",
+          "output": "1 9 16 49 64"
+        },
+        {
+          "input": "3 -2 0 3",
+          "output": "0 4 9"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "5 -7 -3 -1 4 8",
+          "expected_output": "1 9 16 49 64",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "3 -2 0 3",
+          "expected_output": "0 4 9",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    },
+    {
+      "title": "Minimum Increments To Unique",
+      "slug": "searching-sorting-30-minimum-increments-to-unique",
+      "difficulty": "Medium",
+      "category": "Searching and Sorting",
+      "topic": "Searching and Sorting",
+      "tags": [
+        "sorting",
+        "minimum"
+      ],
+      "description": "Increment values until all are unique with minimum total increments. Inputs use the pipe-separated notation shown in examples for separate parameters. Return indexes, values, intervals, or counts in the requested ordering.",
+      "input_format": "The input is a whitespace- or pipe-separated record; the examples show the exact parameter order.",
+      "output_format": "Print the requested result on one line with single spaces between sequence items.",
+      "constraints": "1 <= n <= 200000; values fit signed 32-bit integers; arrays are sorted where the statement says so.",
+      "examples": [
+        {
+          "input": "5 3 2 1 2 1",
+          "output": "6"
+        },
+        {
+          "input": "4 0 0 0 0",
+          "output": "6"
+        }
+      ],
+      "hints": [
+        "Check whether the input ordering lets you discard half the search space.",
+        "When output order is constrained, choose a stable partition or define a tie-break rule explicitly."
+      ],
+      "test_cases": [
+        {
+          "input": "5 3 2 1 2 1",
+          "expected_output": "6",
+          "is_hidden": false,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        },
+        {
+          "input": "4 0 0 0 0",
+          "expected_output": "6",
+          "is_hidden": true,
+          "time_limit_ms": 3000,
+          "memory_limit_mb": 256
+        }
+      ],
+      "starter_code": {
+        "python": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    # Parse the documented searching/sorting input and print the required result.\n\nif __name__ == '__main__':\n    solve()\n",
+        "java": "import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        Scanner scanner = new Scanner(System.in);\n        // Parse the documented searching/sorting input and print the required result.\n    }\n}\n",
+        "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    // Parse the documented searching/sorting input and print the required result.\n    return 0;\n}\n",
+        "javascript": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\n// Parse the documented searching/sorting input and print the required result.\n"
+      },
+      "time_limit_ms": 3000,
+      "memory_limit_mb": 256,
+      "is_published": true
+    }
+  ]
+}

@@ -134,17 +134,107 @@ class CodeRunRequest(SubmissionRequest):
     stdin: str = Field(default="", max_length=20_000)
 
 
+class V1CodeRunRequest(CodeRunRequest):
+    problem_id: int = Field(gt=0)
+
+
+class V1SubmissionRequest(SubmissionRequest):
+    problem_id: int = Field(gt=0)
+
+
 class CodeRunResponse(BaseModel):
     status: str
     stdout: str
     stderr: str
     duration_ms: int
+    memory_kb: int = 0
 
 
 class SubmissionResponse(BaseModel):
     id: int
     status: str
     language: str
+    stdout: str = ""
+    stderr: str = ""
+    duration_ms: int = 0
+    passed_tests: int = 0
+    total_tests: int = 0
+    memory_kb: int = 0
+
+
+class SubmissionHistoryResponse(SubmissionResponse):
+    problem_id: int
+    problem_title: str
+    code: str
+    submitted_at: str
+
+
+class ProblemImportRequest(BaseModel):
+    file_format: str = Field(pattern="^(json|csv)$")
+    content: str = Field(min_length=1, max_length=10_000_000)
+    mode: str = Field(default="skip", pattern="^(skip|update|fail)$")
+
+
+class ProblemImportResponse(BaseModel):
+    id: int
+    status: str
+    imported_count: int
+    skipped_count: int
+    error_count: int
+    errors: list[str] = []
+
+
+class AdminProblemUpdateRequest(BaseModel):
+    title: str = Field(min_length=2, max_length=180)
+    slug: str = Field(min_length=2, max_length=200, pattern="^[a-z0-9]+(?:-[a-z0-9]+)*$")
+    description: str = Field(min_length=1)
+    difficulty: str = Field(pattern="^(Easy|Medium|Hard)$")
+    category: str = Field(min_length=1, max_length=80)
+    topic: str | None = Field(default=None, max_length=100)
+    constraints: str | None = None
+    starter_code: str | None = None
+    examples: list[dict[str, str]] = []
+    hints: list[str] = []
+    editorial: str | None = None
+    reference_url: str | None = None
+    is_published: bool = True
+
+
+class AdminDashboardResponse(BaseModel):
+    total_problems: int
+    published_problems: int
+    draft_problems: int
+    total_submissions: int
+    accepted_submissions: int
+    imports: int
+    by_difficulty: dict[str, int]
+    by_category: dict[str, int]
+
+
+class AdminTestCaseRequest(BaseModel):
+    stdin: str = Field(default="", max_length=20_000)
+    expected_stdout: str = Field(max_length=20_000)
+    is_hidden: bool = False
+    time_limit_ms: int = Field(default=3000, ge=100, le=30_000)
+    memory_limit_mb: int = Field(default=256, ge=16, le=2048)
+
+
+class AdminTestCaseResponse(AdminTestCaseRequest):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    order_index: int
+
+
+class CodingAnalyticsResponse(BaseModel):
+    attempted: int
+    solved: int
+    total_submissions: int
+    accepted_submissions: int
+    acceptance_rate: float
+    by_difficulty: dict[str, dict[str, int]]
+    by_language: dict[str, int]
+    by_topic: dict[str, dict[str, int]]
 
 
 class ProblemProgressResponse(BaseModel):
