@@ -50,6 +50,31 @@ export type Dashboard = {
   today_minutes: number;
 };
 
+export type Lesson = {
+  id: number;
+  subject_id: number;
+  title: string;
+  slug: string;
+  summary: string;
+  content: string;
+  code_example: string | null;
+  video_url: string | null;
+  order_index: number;
+  estimated_minutes: number;
+  completed: boolean;
+};
+
+export type PracticeProblem = {
+  id: number;
+  title: string;
+  slug: string;
+  description: string;
+  difficulty: string;
+  category: string;
+  acceptance_rate: number;
+  solved: boolean;
+};
+
 function setTokens(accessToken: string, refreshToken: string) {
   localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
   localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
@@ -166,4 +191,52 @@ export async function getSubjects() {
     difficulty: string;
     estimated_minutes: number;
   }>;
+}
+
+export async function getLessons(subjectSlug: string) {
+  return authorizedFetch(`/api/subjects/${encodeURIComponent(subjectSlug)}/lessons`) as Promise<Lesson[]>;
+}
+
+export async function completeLesson(lessonId: number) {
+  return authorizedFetch(`/api/lessons/${lessonId}/complete`, { method: "POST" }) as Promise<Lesson>;
+}
+
+export async function getPracticeProblems() {
+  return authorizedFetch("/api/practice/problems") as Promise<PracticeProblem[]>;
+}
+
+export async function submitPractice(problemId: number, language: string, code: string) {
+  return authorizedFetch(`/api/practice/problems/${problemId}/submissions`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ language, code }),
+  }) as Promise<{ id: number; status: string; language: string }>;
+}
+
+export async function updateProfile(payload: { full_name: string; daily_minutes: number }) {
+  return authorizedFetch("/api/users/me/profile", {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  }) as Promise<User>;
+}
+
+export async function getBookmarks() {
+  return authorizedFetch("/api/users/me/bookmarks") as Promise<Array<{ id: number; target_type: string; target_id: number }>>;
+}
+
+export async function saveBookmark(targetType: "lesson" | "problem" | "subject", targetId: number) {
+  return authorizedFetch("/api/users/me/bookmarks", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ target_type: targetType, target_id: targetId }),
+  });
+}
+
+export async function removeBookmark(targetType: string, targetId: number) {
+  return authorizedFetch(`/api/users/me/bookmarks/${targetType}/${targetId}`, { method: "DELETE" });
+}
+
+export async function getHistory() {
+  return authorizedFetch("/api/users/me/history") as Promise<Array<{ target_type: string; target_id: number; viewed_at: string }>>;
 }

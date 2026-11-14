@@ -86,3 +86,63 @@ class DashboardResponse(BaseModel):
     weekly_activity: list[int]
     daily_goal_minutes: int
     today_minutes: int
+
+
+class LessonResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    subject_id: int
+    title: str
+    slug: str
+    summary: str
+    content: str
+    code_example: str | None = None
+    video_url: str | None = None
+    order_index: int
+    estimated_minutes: int
+    completed: bool = False
+
+
+class PracticeProblemResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    title: str
+    slug: str
+    description: str
+    difficulty: str
+    category: str
+    acceptance_rate: float
+    solved: bool = False
+
+
+class SubmissionRequest(BaseModel):
+    language: str = Field(min_length=1, max_length=40)
+    code: str = Field(min_length=1, max_length=100_000)
+
+
+class SubmissionResponse(BaseModel):
+    id: int
+    status: str
+    language: str
+
+
+class BookmarkRequest(BaseModel):
+    target_type: str = Field(pattern="^(lesson|problem|subject)$")
+    target_id: int = Field(gt=0)
+
+
+class BookmarkResponse(BookmarkRequest):
+    id: int
+
+
+class HistoryResponse(BaseModel):
+    target_type: str
+    target_id: int
+    viewed_at: str
+
+
+class ProfileUpdateRequest(BaseModel):
+    full_name: str = Field(min_length=2, max_length=120)
+    daily_minutes: int = Field(ge=5, le=480)

@@ -1,8 +1,9 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { authenticate, clearSession, getCurrentUser, getDashboard, getSubjects, hasSession, logout, recordActivity, saveOnboarding, type Dashboard, type User } from "./api";
+import { authenticate, clearSession, completeLesson as apiCompleteLesson, getBookmarks, getCurrentUser, getDashboard, getHistory, getLessons, getPracticeProblems, getSubjects, hasSession, logout, recordActivity, saveOnboarding, submitPractice, updateProfile, type Dashboard, type Lesson, type PracticeProblem, type User } from "./api";
 
 type Subject = {
   name: string;
+  slug: string;
   category: string;
   description: string;
   progress: number;
@@ -13,10 +14,10 @@ type Subject = {
 };
 
 const initialSubjects: Subject[] = [
-  { name: "Python", category: "Programming", description: "Build a strong foundation with Python fundamentals and real projects.", progress: 68, lessons: 42, duration: "18h", color: "violet", icon: "Py" },
-  { name: "Data Structures & Algorithms", category: "Computer science", description: "Master problem solving patterns that power great engineering interviews.", progress: 34, lessons: 56, duration: "32h", color: "cyan", icon: "DS" },
-  { name: "React", category: "Web development", description: "Create fast, accessible interfaces with modern React and TypeScript.", progress: 12, lessons: 38, duration: "21h", color: "blue", icon: "Re" },
-  { name: "SQL & Databases", category: "Backend", description: "Design reliable data models and write queries with confidence.", progress: 0, lessons: 28, duration: "14h", color: "orange", icon: "DB" },
+  { name: "Python", slug: "python", category: "Programming", description: "Build a strong foundation with Python fundamentals and real projects.", progress: 0, lessons: 0, duration: "18h", color: "violet", icon: "Py" },
+  { name: "Data Structures & Algorithms", slug: "data-structures-algorithms", category: "Computer science", description: "Master problem solving patterns that power great engineering interviews.", progress: 0, lessons: 0, duration: "32h", color: "cyan", icon: "DS" },
+  { name: "React", slug: "react", category: "Web development", description: "Create fast, accessible interfaces with modern React and TypeScript.", progress: 0, lessons: 0, duration: "21h", color: "blue", icon: "Re" },
+  { name: "SQL & Databases", slug: "sql-databases", category: "Backend", description: "Design reliable data models and write queries with confidence.", progress: 0, lessons: 0, duration: "14h", color: "orange", icon: "DB" },
 ];
 
 const roadmap = [
@@ -28,35 +29,70 @@ const roadmap = [
   { title: "Final project", subtitle: "Ship something real", state: "locked", x: 62, y: 67 },
 ];
 
-const practiceProblems = [
-  { title: "Two Sum", difficulty: "Easy", category: "Arrays", solved: true, success: "48%" },
-  { title: "Valid Parentheses", difficulty: "Easy", category: "Stack", solved: true, success: "54%" },
-  { title: "Longest Substring Without Repeating Characters", difficulty: "Medium", category: "Strings", solved: false, success: "36%" },
-  { title: "Merge Intervals", difficulty: "Medium", category: "Sorting", solved: false, success: "41%" },
-  { title: "Trapping Rain Water", difficulty: "Hard", category: "Arrays", solved: false, success: "29%" },
-];
-
 function Icon({ children }: { children: string }) {
   return <span className="icon" aria-hidden="true">{children}</span>;
 }
 
-function WorkspacePage({ active, subjects, onSelect, dashboard }: { active: string; subjects: Subject[]; onSelect: (subject: Subject) => void; dashboard: Dashboard | null }) {
+function pageFromHash() {
+  const page = window.location.hash.slice(1).toLowerCase();
+  if (page === "explore" || page === "my-learning" || page === "practice" || page === "bookmarks" || page === "history" || page === "settings") {
+    return page === "my-learning" ? "My learning" : page[0].toUpperCase() + page.slice(1);
+  }
+  return "Overview";
+}
+
+function AccountPage({ active, user, onUser }: { active: string; user: User | null; onUser: (user: User) => void }) {
+  const [items, setItems] = useState<Array<{ target_type: string; target_id: number; viewed_at?: string }>>([]);
+  const [name, setName] = useState(user?.full_name ?? "");
+  const [minutes, setMinutes] = useState(user?.profile?.daily_minutes ?? 30);
+  const [message, setMessage] = useState("");
+  useEffect(() => {
+    if (active === "Bookmarks") getBookmarks().then((rows) => setItems(rows.map((row) => ({ ...row })))).catch(() => setMessage("Bookmarks could not be loaded."));
+    if (active === "History") getHistory().then(setItems).catch(() => setMessage("History could not be loaded."));
+  }, [active]);
+  async function saveSettings(event: FormEvent) {
+    event.preventDefault();
+    try {
+      onUser(await updateProfile({ full_name: name, daily_minutes: minutes }));
+      setMessage("Settings saved.");
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Settings could not be saved.");
+    }
+  }
+  if (active === "Settings") return <section className="alternate-view"><div className="page-heading"><div><p className="eyebrow">ACCOUNT</p><h1>Settings</h1><p className="muted">Keep your profile and daily goal up to date.</p></div></div><form className="onboarding-form" onSubmit={(event) => void saveSettings(event)}><label>Full name<input value={name} onChange={(event) => setName(event.target.value)} required /></label><label>Daily study time<select value={minutes} onChange={(event) => setMinutes(Number(event.target.value))}><option value={15}>15 minutes</option><option value={30}>30 minutes</option><option value={60}>1 hour</option><option value={90}>90 minutes</option></select></label>{message && <p className="auth-error" role="status">{message}</p>}<button className="primary-button" type="submit">Save settings <span>→</span></button></form></section>;
+  return <section className="alternate-view"><div className="page-heading"><div><p className="eyebrow">YOUR LIBRARY</p><h1>{active}</h1><p className="muted">{active === "Bookmarks" ? "Saved lessons and problems." : "Recently opened learning items."}</p></div></div>{message && <p className="auth-error" role="status">{message}</p>}<div className="problem-table">{items.length === 0 ? <p className="muted">Nothing here yet.</p> : items.map((item, index) => <div className="problem-row" key={`${item.target_type}-${item.target_id}-${index}`}><strong>{item.target_type} #{item.target_id}</strong><span className="muted">{item.viewed_at ? new Date(item.viewed_at).toLocaleString() : "Saved"}</span></div>)}</div></section>;
+}
+
+function WorkspacePage({ active, subjects, onSelect, dashboard, practiceProblems }: { active: string; subjects: Subject[]; onSelect: (subject: Subject) => void; dashboard: Dashboard | null; practiceProblems: PracticeProblem[] }) {
+  const [selectedProblem, setSelectedProblem] = useState<PracticeProblem | null>(null);
+  const [code, setCode] = useState("");
+  const [submissionMessage, setSubmissionMessage] = useState("");
+  async function submitSelectedProblem() {
+    if (!selectedProblem || !code.trim()) return;
+    try {
+      await submitPractice(selectedProblem.id, "python", code);
+      setSubmissionMessage("Submitted successfully.");
+    } catch (error) {
+      setSubmissionMessage(error instanceof Error ? error.message : "Submission failed.");
+    }
+  }
   if (active === "Explore") {
     return <section className="alternate-view"><div className="page-heading"><div><p className="eyebrow">LEARNING LIBRARY</p><h1>Explore your next skill</h1><p className="muted">Structured paths built to take you from curious to capable.</p></div><button className="filter-button">All categories <span>⌄</span></button></div><div className="explore-hero"><div><span className="hero-label">CURATED FOR YOU</span><h2>Build skills that<br /><em>compound.</em></h2><p>Choose a path, show up consistently, and let your progress do the talking.</p></div><div className="path-orbit">✦</div></div><div className="section-heading"><div><h3>All subjects</h3><p className="muted">{subjects.length} learning paths available</p></div></div><div className="explore-grid">{subjects.map((subject) => <button className="explore-card" key={subject.name} onClick={() => onSelect(subject)}><div className={`subject-symbol ${subject.color}`}>{subject.icon}</div><span className="tag">{subject.category}</span><h3>{subject.name}</h3><p>{subject.description}</p><div className="explore-meta"><span>{subject.lessons} lessons</span><span>{subject.duration}</span><b>View path →</b></div></button>)}</div></section>;
   }
   if (active === "Practice") {
-    return <section className="alternate-view"><div className="page-heading"><div><p className="eyebrow">CODING PRACTICE</p><h1>Sharpen your problem solving</h1><p className="muted">Practice deliberately. Build confidence one problem at a time.</p></div><button className="primary-button">My submissions <span>→</span></button></div><div className="practice-stats"><div><strong>{dashboard?.problems_solved ?? 0}</strong><span>Problems solved</span></div><div><strong>—</strong><span>Acceptance rate</span></div><div><strong>{dashboard?.current_streak ?? 0}</strong><span>Day streak</span></div><div><strong>—</strong><span>Languages used</span></div></div><div className="section-heading"><div><h3>Problem set</h3><p className="muted">Keep your momentum going</p></div><button className="filter-button">All difficulties <span>⌄</span></button></div><div className="problem-table"><div className="problem-header"><span>PROBLEM</span><span>DIFFICULTY</span><span>CATEGORY</span><span>ACCEPTANCE</span><span /></div>{practiceProblems.map((problem) => <button className="problem-row" key={problem.title}><span><i className={problem.solved ? "solved" : ""}>{problem.solved ? "✓" : "○"}</i><strong>{problem.title}</strong></span><span className={`problem-difficulty ${problem.difficulty.toLowerCase()}`}>{problem.difficulty}</span><span className="muted">{problem.category}</span><span className="muted">{problem.success}</span><b>→</b></button>)}</div></section>;
+    return <section className="alternate-view"><div className="page-heading"><div><p className="eyebrow">CODING PRACTICE</p><h1>Sharpen your problem solving</h1><p className="muted">Practice deliberately. Build confidence one problem at a time.</p></div></div><div className="practice-stats"><div><strong>{dashboard?.problems_solved ?? 0}</strong><span>Problems solved</span></div><div><strong>{practiceProblems.length ? `${Math.round(practiceProblems.reduce((sum, problem) => sum + problem.acceptance_rate, 0) / practiceProblems.length)}%` : "—"}</strong><span>Acceptance rate</span></div><div><strong>{dashboard?.current_streak ?? 0}</strong><span>Day streak</span></div><div><strong>{dashboard?.problems_solved ? "Python" : "—"}</strong><span>Languages used</span></div></div><div className="section-heading"><div><h3>Problem set</h3><p className="muted">Keep your momentum going</p></div></div><div className="problem-table"><div className="problem-header"><span>PROBLEM</span><span>DIFFICULTY</span><span>CATEGORY</span><span>ACCEPTANCE</span><span /></div>{practiceProblems.map((problem) => <button className="problem-row" key={problem.id} onClick={() => { setSelectedProblem(problem); setCode(""); setSubmissionMessage(""); }}><span><i className={problem.solved ? "solved" : ""}>{problem.solved ? "✓" : "○"}</i><strong>{problem.title}</strong></span><span className={`problem-difficulty ${problem.difficulty.toLowerCase()}`}>{problem.difficulty}</span><span className="muted">{problem.category}</span><span className="muted">{problem.acceptance_rate}%</span><b>→</b></button>)}</div>{selectedProblem && <div className="lesson-backdrop" onClick={() => setSelectedProblem(null)}><section className="lesson-modal" onClick={(event) => event.stopPropagation()}><div className="modal-header"><div><p className="eyebrow">PRACTICE PROBLEM</p><h2>{selectedProblem.title}</h2><p className="muted">{selectedProblem.description}</p></div><button className="close-button" onClick={() => setSelectedProblem(null)}>×</button></div><div className="lesson-layout"><article className="lesson-content"><label>Python solution<textarea value={code} onChange={(event) => setCode(event.target.value)} rows={12} placeholder="Write your solution here..." /></label>{submissionMessage && <p className="auth-error" role="status">{submissionMessage}</p>}<button className="primary-button" onClick={() => void submitSelectedProblem()}>Submit solution <span>→</span></button></article></div></section></div>}</section>;
   }
   return <section className="alternate-view"><div className="page-heading"><div><p className="eyebrow">YOUR PROGRESS</p><h1>My learning</h1><p className="muted">A clear view of everything you&apos;re building.</p></div><button className="secondary-button">Edit daily goal</button></div><div className="learning-overview"><div className="overview-ring"><strong>{dashboard?.overall_progress ?? 0}%</strong><span>overall progress</span></div><div><h3>You&apos;re building a habit.</h3><p className="muted">You&apos;ve learned for {dashboard?.learning_hours ?? 0} hours across {subjects.length} active paths. Keep your streak alive today.</p><div className="progress-track"><div style={{ width: `${dashboard?.overall_progress ?? 0}%` }} /></div><small>{dashboard?.topics_completed ?? 0} topics completed</small></div></div><div className="section-heading"><div><h3>Active learning paths</h3><p className="muted">Continue where you left off</p></div></div><div className="my-learning-list">{subjects.map((subject) => <button className="my-learning-row" key={subject.name} onClick={() => onSelect(subject)}><div className={`subject-symbol ${subject.color}`}>{subject.icon}</div><div><strong>{subject.name}</strong><span>{subject.progress}% complete · {subject.lessons} lessons</span></div><div className="progress-track"><div style={{ width: `${subject.progress}%` }} /></div><b>→</b></button>)}</div></section>;
 }
 
-function LessonView({ subject, onClose, onComplete }: { subject: Subject; onClose: () => void; onComplete: () => void }) {
-  const [completed, setCompleted] = useState(false);
+function LessonView({ subject, lesson, onClose, onComplete }: { subject: Subject; lesson?: Lesson; onClose: () => void; onComplete: () => void }) {
+  const [completed, setCompleted] = useState(lesson?.completed ?? false);
   const [error, setError] = useState("");
   async function completeLesson() {
     if (completed) return;
     try {
-      await recordActivity(45, "lesson");
+      if (lesson) await apiCompleteLesson(lesson.id);
+      else await recordActivity(45, "lesson");
       setCompleted(true);
       onComplete();
     } catch (requestError) {
@@ -64,7 +100,7 @@ function LessonView({ subject, onClose, onComplete }: { subject: Subject; onClos
     }
   }
 
-  return <div className="lesson-backdrop"><section className="lesson-modal"><header className="lesson-header"><div><button className="back-button" onClick={onClose}>← Back to roadmap</button><p className="eyebrow">MODULE 3 · DATA STRUCTURES</p><h1>Working with collections</h1><p className="muted">{subject.name} · Lesson 28 of {subject.lessons}</p></div><button className="close-button" onClick={onClose}>×</button></header><div className="lesson-progress"><span style={{ width: completed ? "72%" : "68%" }} /></div><div className="lesson-layout"><article className="lesson-content"><div className="video-placeholder"><div className="play-button">▶</div><span>Introduction to collections</span><small>12:48 · HD</small></div><h2>Make your data work for you</h2><p>Collections let you group and organize related values. In Python, the most common collection types are lists, tuples, sets, and dictionaries.</p><h3>Lists and dictionaries</h3><p>Use a list when order matters and a dictionary when you need to look values up by a meaningful key. Choosing the right structure makes your programs easier to reason about.</p><div className="lesson-callout"><strong>Key idea</strong><span>Good data structures reduce the amount of code you need to write.</span></div>{error && <p className="auth-error" role="alert">{error}</p>}<button className={`complete-button ${completed ? "done" : ""}`} onClick={() => void completeLesson()}>{completed ? "✓ Lesson completed" : "Mark lesson as complete"} <span>{completed ? "" : "→"}</span></button></article><aside className="lesson-aside"><div className="aside-section"><span className="eyebrow">ON THIS PAGE</span><button className="aside-link current">Working with collections</button><button className="aside-link">Lists and dictionaries</button><button className="aside-link">Quick knowledge check</button></div><div className="code-example"><div className="code-title"><span>PYTHON</span><span>Copy</span></div><pre><code><span className="code-purple">habits</span> = {'{'}{"\n"}  <span className="code-cyan">&quot;coding&quot;</span>: <span className="code-orange">True</span>,{"\n"}  <span className="code-cyan">&quot;minutes&quot;</span>: <span className="code-orange">45</span>,{"\n"}{'}'}{"\n"}{"\n"}<span className="code-purple">print</span>(habits[<span className="code-cyan">&quot;minutes&quot;</span>])</code></pre></div><div className="next-lesson"><span className="eyebrow">UP NEXT</span><strong>List comprehensions</strong><span>8 min · Not started</span></div></aside></div></section></div>;
+  return <div className="lesson-backdrop"><section className="lesson-modal"><header className="lesson-header"><div><button className="back-button" onClick={onClose}>← Back to roadmap</button><p className="eyebrow">LESSON {lesson?.order_index ?? 1}</p><h1>{lesson?.title ?? "Working with collections"}</h1><p className="muted">{subject.name} · {lesson?.estimated_minutes ?? 45} minutes</p></div><button className="close-button" onClick={onClose}>×</button></header><div className="lesson-progress"><span style={{ width: completed ? "100%" : "68%" }} /></div><div className="lesson-layout"><article className="lesson-content"><div className="video-placeholder"><div className="play-button">▶</div><span>{lesson?.summary ?? "Introduction to collections"}</span><small>{lesson?.video_url ? "Video lesson" : "Reading lesson"}</small></div><h2>{lesson?.title ?? "Make your data work for you"}</h2><p>{lesson?.content ?? "Collections let you group and organize related values."}</p>{lesson?.code_example && <pre><code>{lesson.code_example}</code></pre>}{error && <p className="auth-error" role="alert">{error}</p>}<button className={`complete-button ${completed ? "done" : ""}`} onClick={() => void completeLesson()}>{completed ? "✓ Lesson completed" : "Mark lesson as complete"} <span>{completed ? "" : "→"}</span></button></article></div></section></div>;
 }
 
 function AuthDialog({ onClose, onAuthenticated }: { onClose: () => void; onAuthenticated: (user: User) => void }) {
@@ -116,19 +152,40 @@ function AuthDialog({ onClose, onAuthenticated }: { onClose: () => void; onAuthe
 }
 
 export function App() {
-  const [active, setActive] = useState("Overview");
+  const [active, setActive] = useState(pageFromHash);
   const [subjects, setSubjects] = useState(initialSubjects);
   const [selectedSubject, setSelectedSubject] = useState(initialSubjects[0]);
+  const [lessons, setLessons] = useState<Lesson[]>([]);
+  const [selectedLesson, setSelectedLesson] = useState<Lesson | undefined>();
   const [search, setSearch] = useState("");
   const [showRoadmap, setShowRoadmap] = useState(false);
   const [showLesson, setShowLesson] = useState(false);
   const [showAuth, setShowAuth] = useState(!hasSession());
   const [user, setUser] = useState<User | null>(null);
   const [dashboard, setDashboard] = useState<Dashboard | null>(null);
+  const [practiceProblems, setPracticeProblems] = useState<PracticeProblem[]>([]);
   const [apiError, setApiError] = useState("");
   const closeAuth = () => {
     if (user) setShowAuth(false);
   };
+  function navigate(page: string) {
+    setActive(page);
+    window.history.pushState({}, "", `#${page === "My learning" ? "my-learning" : page.toLowerCase()}`);
+  }
+  useEffect(() => {
+    if (user && selectedSubject.slug) {
+      getLessons(selectedSubject.slug).then(setLessons).catch(() => setLessons([]));
+    }
+  }, [selectedSubject, user]);
+  useEffect(() => {
+    const handleNavigation = () => setActive(pageFromHash());
+    window.addEventListener("popstate", handleNavigation);
+    window.addEventListener("hashchange", handleNavigation);
+    return () => {
+      window.removeEventListener("popstate", handleNavigation);
+      window.removeEventListener("hashchange", handleNavigation);
+    };
+  }, []);
   useEffect(() => {
     if (hasSession()) {
       Promise.all([getCurrentUser(), getDashboard()]).then(([currentUser, currentDashboard]) => {
@@ -144,10 +201,11 @@ export function App() {
       if (remoteSubjects.length === 0) return;
       const mappedSubjects = remoteSubjects.map((subject, index) => ({
         name: subject.name,
+        slug: subject.slug,
         category: subject.category,
         description: subject.description,
         progress: initialSubjects[index % initialSubjects.length]?.progress ?? 0,
-        lessons: Math.max(12, Math.round(subject.estimated_minutes / 25)),
+        lessons: Math.max(1, Math.round(subject.estimated_minutes / 25)),
         duration: `${Math.max(1, Math.round(subject.estimated_minutes / 60))}h`,
         color: initialSubjects[index % initialSubjects.length]?.color ?? "violet",
         icon: subject.name.slice(0, 2),
@@ -158,6 +216,9 @@ export function App() {
     }).catch((error: unknown) => {
       setApiError(error instanceof Error ? error.message : "The subject API is unavailable.");
     });
+    if (hasSession()) {
+      getPracticeProblems().then(setPracticeProblems).catch(() => setApiError("Practice problems could not be loaded."));
+    }
   }, []);
   useEffect(() => {
     if (!dashboard) return;
@@ -177,7 +238,7 @@ export function App() {
         <div className="workspace-label">WORKSPACE</div>
         <nav className="nav-list" aria-label="Main navigation">
           {["Overview", "Explore", "My learning", "Practice"].map((item, index) => (
-            <button className={active === item ? "nav-item active" : "nav-item"} onClick={() => setActive(item)} key={item}>
+            <button className={active === item ? "nav-item active" : "nav-item"} onClick={() => navigate(item)} key={item}>
               <Icon>{["⌂", "◈", "▣", "⌘"][index]}</Icon>{item}
               {item === "My learning" && <span className="nav-count">4</span>}
             </button>
@@ -185,12 +246,12 @@ export function App() {
         </nav>
         <div className="workspace-label library-label">YOUR LIBRARY</div>
         <nav className="nav-list">
-          <button className="nav-item"><Icon>☆</Icon>Bookmarks</button>
-          <button className="nav-item"><Icon>◷</Icon>History</button>
+          <button className={active === "Bookmarks" ? "nav-item active" : "nav-item"} onClick={() => navigate("Bookmarks")}><Icon>☆</Icon>Bookmarks</button>
+          <button className={active === "History" ? "nav-item active" : "nav-item"} onClick={() => navigate("History")}><Icon>◷</Icon>History</button>
         </nav>
         <div className="sidebar-bottom">
           <div className="upgrade-card"><span className="sparkle">✦</span><strong>Unlock your potential</strong><p>Get unlimited access to every learning path.</p><button>Explore Pro <span>→</span></button></div>
-          <button className="nav-item"><Icon>⚙</Icon>Settings</button>
+          <button className={active === "Settings" ? "nav-item active" : "nav-item"} onClick={() => navigate("Settings")}><Icon>⚙</Icon>Settings</button>
           <button className="profile-mini" onClick={async () => { await logout(); setUser(null); setDashboard(null); setShowAuth(true); }}><div className="avatar">{user?.full_name.slice(0, 2).toUpperCase() ?? "YC"}</div><div><strong>{user?.full_name ?? "Learner"}</strong><small>Free plan · Sign out</small></div><span className="more">•••</span></button>
         </div>
       </aside>
@@ -203,7 +264,7 @@ export function App() {
 
         <div className={`content ${active === "Overview" ? "" : "alternate"}`}>
           {apiError && <div className="api-notice" role="status"><span>!</span><p><strong>Using local subject data</strong>{apiError}</p><button onClick={() => setApiError("")}>×</button></div>}
-          <WorkspacePage active={active} subjects={filteredSubjects} dashboard={dashboard} onSelect={(subject) => { setSelectedSubject(subject); setShowRoadmap(true); }} />
+          {["Bookmarks", "History", "Settings"].includes(active) ? <AccountPage active={active} user={user} onUser={setUser} /> : <WorkspacePage active={active} subjects={filteredSubjects} dashboard={dashboard} practiceProblems={practiceProblems} onSelect={(subject) => { setSelectedSubject(subject); setShowRoadmap(true); }} />}
           <section className="welcome-row">
             <div><p className="eyebrow">FRIDAY, NOVEMBER 14, 2026</p><h1>Good morning, {user?.full_name.split(" ")[0] ?? "Learner"} <span>✦</span></h1><p className="muted">Small steps every day lead to big results. Let&apos;s keep building.</p></div>
             <button className="streak"><span>♨</span><strong>12 day streak</strong><small>Keep it going!</small></button>
@@ -233,9 +294,9 @@ export function App() {
         </div>
       </main>
 
-      {showRoadmap && <div className="modal-backdrop" onClick={() => setShowRoadmap(false)}><section className="roadmap-modal" onClick={(event) => event.stopPropagation()}><div className="modal-header"><div><span className="eyebrow">LEARNING PATH</span><h2>{selectedSubject.name} roadmap</h2><p className="muted">Follow the path. Master the craft.</p></div><button className="close-button" onClick={() => setShowRoadmap(false)}>×</button></div><div className="roadmap-toolbar"><span><i className="legend-dot completed" /> Completed</span><span><i className="legend-dot current" /> In progress</span><span><i className="legend-dot locked" /> Locked</span><button>Fit to screen ⛶</button></div><div className="roadmap-canvas"><svg viewBox="0 0 100 80" preserveAspectRatio="none" aria-hidden="true"><path d="M 14 29 C 20 29, 22 17, 34 17 S 43 32, 57 35 S 67 19, 76 19 S 80 46, 88 46 S 78 71, 66 71" /><path className="completed-path" d="M 14 29 C 20 29, 22 17, 34 17 S 43 32, 57 35" /></svg>{roadmap.map((node) => <button className={`roadmap-node ${node.state}`} style={{ left: `${node.x}%`, top: `${node.y}%` }} key={node.title}><span>{node.state === "completed" ? "✓" : node.state === "locked" ? "•" : "→"}</span><strong>{node.title}</strong><small>{node.subtitle}</small></button>)}</div><div className="roadmap-footer"><div><strong>Next up: Data structures</strong><span>Estimated time · 45 min</span></div><button className="primary-button" onClick={() => { setShowRoadmap(false); setShowLesson(true); }}>Start learning <span>→</span></button></div></section></div>}
-      {showLesson && <LessonView subject={selectedSubject} onClose={() => setShowLesson(false)} onComplete={() => { getDashboard().then(setDashboard).catch(() => setApiError("Dashboard data could not be refreshed.")); }} />}
-      {showAuth && <AuthDialog onClose={closeAuth} onAuthenticated={(authenticatedUser) => { setUser(authenticatedUser); setShowAuth(false); getDashboard().then(setDashboard).catch(() => setApiError("Dashboard data could not be loaded.")); }} />}
+      {showRoadmap && <div className="modal-backdrop" onClick={() => setShowRoadmap(false)}><section className="roadmap-modal" onClick={(event) => event.stopPropagation()}><div className="modal-header"><div><span className="eyebrow">LEARNING PATH</span><h2>{selectedSubject.name} roadmap</h2><p className="muted">Follow the path. Master the craft.</p></div><button className="close-button" onClick={() => setShowRoadmap(false)}>×</button></div><div className="roadmap-toolbar"><span><i className="legend-dot completed" /> Completed</span><span><i className="legend-dot current" /> In progress</span><span><i className="legend-dot locked" /> Locked</span></div><div className="roadmap-canvas">{lessons.length ? lessons.map((lesson, index) => <button className={`roadmap-node ${lesson.completed ? "completed" : index === 0 ? "current" : "available"}`} style={{ left: `${15 + (index % 4) * 23}%`, top: `${25 + Math.floor(index / 4) * 35}%` }} key={lesson.id} onClick={() => { setSelectedLesson(lesson); setShowRoadmap(false); setShowLesson(true); }}><span>{lesson.completed ? "✓" : "→"}</span><strong>{lesson.title}</strong><small>{lesson.estimated_minutes} min</small></button>) : roadmap.map((node) => <button className={`roadmap-node ${node.state}`} style={{ left: `${node.x}%`, top: `${node.y}%` }} key={node.title}><span>→</span><strong>{node.title}</strong><small>{node.subtitle}</small></button>)}</div><div className="roadmap-footer"><div><strong>{lessons[0]?.title ?? "Start your learning path"}</strong><span>Estimated time · {lessons[0]?.estimated_minutes ?? 45} min</span></div><button className="primary-button" onClick={() => { setSelectedLesson(lessons[0]); setShowRoadmap(false); setShowLesson(true); }}>Start learning <span>→</span></button></div></section></div>}
+      {showLesson && <LessonView subject={selectedSubject} lesson={selectedLesson} onClose={() => setShowLesson(false)} onComplete={() => { getDashboard().then(setDashboard).catch(() => setApiError("Dashboard data could not be refreshed.")); getLessons(selectedSubject.slug).then(setLessons).catch(() => undefined); }} />}
+      {showAuth && <AuthDialog onClose={closeAuth} onAuthenticated={(authenticatedUser) => { setUser(authenticatedUser); setShowAuth(false); getDashboard().then(setDashboard).catch(() => setApiError("Dashboard data could not be loaded.")); getPracticeProblems().then(setPracticeProblems).catch(() => setApiError("Practice problems could not be loaded.")); }} />}
     </div>
   );
 }

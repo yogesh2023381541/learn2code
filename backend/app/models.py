@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import date, datetime
 from typing import Optional
 
-from sqlalchemy import Boolean, Date, DateTime, ForeignKey, Integer, String, Text, func
+from sqlalchemy import Boolean, Date, DateTime, ForeignKey, Integer, String, Text, UniqueConstraint, Float, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .db import Base
@@ -50,6 +50,7 @@ class Subject(Base):
     difficulty: Mapped[str] = mapped_column(String(20), default="beginner")
     estimated_minutes: Mapped[int] = mapped_column(Integer, default=60)
     is_published: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+    lessons: Mapped[list["Lesson"]] = relationship(back_populates="subject", cascade="all, delete-orphan")
 
 
 class SubjectEnrollment(Base):
@@ -61,6 +62,78 @@ class SubjectEnrollment(Base):
     progress: Mapped[int] = mapped_column(Integer, default=0)
     current_topic: Mapped[Optional[str]] = mapped_column(String(160))
     enrolled_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    __table_args__ = (UniqueConstraint("user_id", "subject_id", name="uq_subject_enrollments_user_subject"),)
+
+
+class Lesson(Base):
+    __tablename__ = "lessons"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    subject_id: Mapped[int] = mapped_column(ForeignKey("subjects.id", ondelete="CASCADE"), index=True)
+    title: Mapped[str] = mapped_column(String(160))
+    slug: Mapped[str] = mapped_column(String(180), unique=True, index=True)
+    summary: Mapped[str] = mapped_column(Text)
+    content: Mapped[str] = mapped_column(Text)
+    code_example: Mapped[Optional[str]] = mapped_column(Text)
+    video_url: Mapped[Optional[str]] = mapped_column(String(500))
+    order_index: Mapped[int] = mapped_column(Integer)
+    estimated_minutes: Mapped[int] = mapped_column(Integer, default=30)
+    subject: Mapped[Subject] = relationship(back_populates="lessons")
+
+
+class LessonProgress(Base):
+    __tablename__ = "lesson_progress"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    lesson_id: Mapped[int] = mapped_column(ForeignKey("lessons.id", ondelete="CASCADE"), index=True)
+    completed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    __table_args__ = (UniqueConstraint("user_id", "lesson_id", name="uq_lesson_progress_user_lesson"),)
+
+
+class PracticeProblem(Base):
+    __tablename__ = "practice_problems"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    title: Mapped[str] = mapped_column(String(180))
+    slug: Mapped[str] = mapped_column(String(200), unique=True, index=True)
+    description: Mapped[str] = mapped_column(Text)
+    difficulty: Mapped[str] = mapped_column(String(20))
+    category: Mapped[str] = mapped_column(String(80))
+    acceptance_rate: Mapped[float] = mapped_column(Float, default=0)
+
+
+class PracticeSubmission(Base):
+    __tablename__ = "practice_submissions"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    problem_id: Mapped[int] = mapped_column(ForeignKey("practice_problems.id", ondelete="CASCADE"), index=True)
+    language: Mapped[str] = mapped_column(String(40))
+    code: Mapped[str] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(String(30), default="submitted")
+    submitted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class UserBookmark(Base):
+    __tablename__ = "user_bookmarks"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    target_type: Mapped[str] = mapped_column(String(30))
+    target_id: Mapped[int] = mapped_column(Integer)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    __table_args__ = (UniqueConstraint("user_id", "target_type", "target_id", name="uq_user_bookmark_target"),)
+
+
+class UserHistory(Base):
+    __tablename__ = "user_history"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    target_type: Mapped[str] = mapped_column(String(30))
+    target_id: Mapped[int] = mapped_column(Integer)
+    viewed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
 class UserActivity(Base):

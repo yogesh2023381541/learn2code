@@ -79,3 +79,51 @@ def test_activity_updates_dashboard_metrics(client):
     assert dashboard.json()["topics_completed"] == 1
     assert dashboard.json()["today_minutes"] == 45
     assert sum(dashboard.json()["weekly_activity"]) == 45
+
+
+def test_lessons_completion_updates_progress_and_history(client):
+    signup = client.post("/api/auth/signup", json=signup_payload()).json()
+    headers = {"Authorization": f"Bearer {signup['access_token']}"}
+    client.put(
+        "/api/users/me/onboarding",
+        headers=headers,
+        json={
+            "experience_level": "beginner",
+            "learning_goal": "Learn Programming",
+            "preferred_language": "Python",
+            "daily_minutes": 30,
+            "subjects": ["Python"],
+        },
+    )
+    lessons = client.get("/api/subjects/python/lessons", headers=headers)
+    assert lessons.status_code == 200
+    lesson = lessons.json()[0]
+    assert lesson["completed"] is False
+    completed = client.post(f"/api/lessons/{lesson['id']}/complete", headers=headers)
+    assert completed.status_code == 200
+    assert completed.json()["completed"] is True
+    assert client.get("/api/subjects/python/lessons", headers=headers).json()[0]["completed"] is True
+    assert client.get("/api/users/me/history", headers=headers).status_code == 200
+
+
+def test_practice_submission_and_bookmark_are_persisted(client):
+    signup = client.post("/api/auth/signup", json=signup_payload()).json()
+    headers = {"Authorization": f"Bearer {signup['access_token']}"}
+    problems = client.get("/api/practice/problems", headers=headers)
+    assert problems.status_code == 200
+    problem = problems.json()[0]
+    submission = client.post(
+        f"/api/practice/problems/{problem['id']}/submissions",
+        headers=headers,
+        json={"language": "python", "code": "return answer"},
+    )
+    assert submission.status_code == 201
+    assert submission.json()["status"] == "accepted"
+    assert client.get("/api/practice/problems", headers=headers).json()[0]["solved"] is True
+    bookmark = client.post(
+        "/api/users/me/bookmarks",
+        headers=headers,
+        json={"target_type": "problem", "target_id": problem["id"]},
+    )
+    assert bookmark.status_code == 201
+    assert len(client.get("/api/users/me/bookmarks", headers=headers).json()) == 1

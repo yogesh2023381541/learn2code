@@ -8,15 +8,36 @@ from sqlalchemy.orm import Session
 
 from .config import settings
 from .db import get_db
-from .models import RefreshSession, Subject, SubjectEnrollment, User, UserActivity, UserProfile
+from .models import (
+    Lesson,
+    LessonProgress,
+    PracticeProblem,
+    PracticeSubmission,
+    RefreshSession,
+    Subject,
+    SubjectEnrollment,
+    User,
+    UserActivity,
+    UserBookmark,
+    UserHistory,
+    UserProfile,
+)
 from .schemas import (
     ActivityRequest,
     AuthResponse,
+    BookmarkRequest,
+    BookmarkResponse,
     DashboardResponse,
+    HistoryResponse,
     LoginRequest,
+    LessonResponse,
     OnboardingRequest,
+    PracticeProblemResponse,
+    ProfileUpdateRequest,
     RefreshRequest,
     SignupRequest,
+    SubmissionRequest,
+    SubmissionResponse,
     SubjectResponse,
     TokenResponse,
     UserResponse,
@@ -276,3 +297,201 @@ def record_activity(
 @app.get("/api/subjects", response_model=list[SubjectResponse])
 def list_subjects(db: Session = Depends(get_db)) -> list[Subject]:
     return list(db.scalars(select(Subject).where(Subject.is_published.is_(True)).order_by(Subject.name)))
+
+
+def lesson_response(lesson: Lesson, completed: bool = False) -> LessonResponse:
+    return LessonResponse(
+        id=lesson.id, subject_id=lesson.subject_id, title=lesson.title, slug=lesson.slug,
+        summary=lesson.summary, content=lesson.content, code_example=lesson.code_example,
+        video_url=lesson.video_url, order_index=lesson.order_index,
+        estimated_minutes=lesson.estimated_minutes, completed=completed,
+    )
+
+
+@app.get("/api/subjects/{slug}/lessons", response_model=list[LessonResponse])
+def list_lessons(
+    slug: str,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> list[LessonResponse]:
+    subject = db.scalar(select(Subject).where(Subject.slug == slug, Subject.is_published.is_(True)))
+    if subject is None:
+        raise HTTPException(status_code=404, detail="Subject not found")
+    completed_ids = set(db.scalars(select(LessonProgress.lesson_id).where(LessonProgress.user_id == user.id)))
+    lessons = db.scalars(select(Lesson).where(Lesson.subject_id == subject.id).order_by(Lesson.order_index))
+    return [lesson_response(lesson, lesson.id in completed_ids) for lesson in lessons]
+
+
+@app.get("/api/lessons/{lesson_id}", response_model=LessonResponse)
+def get_lesson(
+    lesson_id: int,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> LessonResponse:
+    lesson = db.get(Lesson, lesson_id)
+    if lesson is None:
+        raise HTTPException(status_code=404, detail="Lesson not found")
+    progress = db.scalar(select(LessonProgress).where(
+        LessonProgress.user_id == user.id, LessonProgress.lesson_id == lesson.id,
+    ))
+    db.add(UserHistory(user_id=user.id, target_type="lesson", target_id=lesson.id))
+    db.commit()
+    return lesson_response(lesson, progress is not None)
+
+
+@app.post("/api/lessons/{lesson_id}/complete", response_model=LessonResponse)
+def complete_lesson(
+    lesson_id: int,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> LessonResponse:
+    lesson = db.get(Lesson, lesson_id)
+    if lesson is None:
+        raise HTTPException(status_code=404, detail="Lesson not found")
+    progress = db.scalar(select(LessonProgress).where(
+        LessonProgress.user_id == user.id, LessonProgress.lesson_id == lesson.id,
+    ))
+    if progress is None:
+        db.add(LessonProgress(user_id=user.id, lesson_id=lesson.id))
+        record = UserActivity(
+            user_id=user.id, activity_date=datetime.now(UTC).date(),
+            minutes=lesson.estimated_minutes, activity_type="lesson",
+        )
+        db.add(record)
+        profile = user.profile or UserProfile(user_id=user.id)
+        profile.learning_hours += lesson.estimated_minutes / 60
+        profile.topics_completed += 1
+        db.add(profile)
+        enrollment = db.scalar(select(SubjectEnrollment).where(
+            SubjectEnrollment.user_id == user.id, SubjectEnrollment.subject_id == lesson.subject_id,
+        ))
+        if enrollment is not None:
+            total = db.scalar(select(func.count(Lesson.id)).where(Lesson.subject_id == lesson.subject_id)) or 1
+            completed = db.scalar(select(func.count(LessonProgress.id)).join(Lesson, Lesson.id == LessonProgress.lesson_id).where(
+                LessonProgress.user_id == user.id, Lesson.subject_id == lesson.subject_id,
+            )) or 0
+            enrollment.progress = min(100, round(completed / total * 100))
+    db.commit()
+    return lesson_response(lesson, True)
+
+
+def practice_response(problem: PracticeProblem, solved: bool = False) -> PracticeProblemResponse:
+    return PracticeProblemResponse(
+        id=problem.id, title=problem.title, slug=problem.slug, description=problem.description,
+        difficulty=problem.difficulty, category=problem.category,
+        acceptance_rate=problem.acceptance_rate, solved=solved,
+    )
+
+
+@app.get("/api/practice/problems", response_model=list[PracticeProblemResponse])
+def list_practice_problems(user: User = Depends(current_user), db: Session = Depends(get_db)) -> list[PracticeProblemResponse]:
+    solved_ids = set(db.scalars(select(PracticeSubmission.problem_id).where(
+        PracticeSubmission.user_id == user.id, PracticeSubmission.status == "accepted",
+    )))
+    problems = db.scalars(select(PracticeProblem).order_by(PracticeProblem.id))
+    return [practice_response(problem, problem.id in solved_ids) for problem in problems]
+
+
+@app.get("/api/practice/problems/{slug}", response_model=PracticeProblemResponse)
+def get_practice_problem(slug: str, user: User = Depends(current_user), db: Session = Depends(get_db)) -> PracticeProblemResponse:
+    problem = db.scalar(select(PracticeProblem).where(PracticeProblem.slug == slug))
+    if problem is None:
+        raise HTTPException(status_code=404, detail="Practice problem not found")
+    solved = db.scalar(select(PracticeSubmission.id).where(
+        PracticeSubmission.user_id == user.id, PracticeSubmission.problem_id == problem.id,
+        PracticeSubmission.status == "accepted",
+    )) is not None
+    db.add(UserHistory(user_id=user.id, target_type="problem", target_id=problem.id))
+    db.commit()
+    return practice_response(problem, solved)
+
+
+@app.post("/api/practice/problems/{problem_id}/submissions", response_model=SubmissionResponse, status_code=201)
+def submit_practice(
+    problem_id: int,
+    payload: SubmissionRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> SubmissionResponse:
+    problem = db.get(PracticeProblem, problem_id)
+    if problem is None:
+        raise HTTPException(status_code=404, detail="Practice problem not found")
+    submission = PracticeSubmission(
+        user_id=user.id, problem_id=problem.id, language=payload.language,
+        code=payload.code, status="accepted",
+    )
+    db.add(submission)
+    profile = user.profile or UserProfile(user_id=user.id)
+    already_solved = db.scalar(select(PracticeSubmission.id).where(
+        PracticeSubmission.user_id == user.id, PracticeSubmission.problem_id == problem.id,
+        PracticeSubmission.status == "accepted",
+    )) is not None
+    if not already_solved:
+        profile.problems_solved += 1
+        db.add(profile)
+    db.commit()
+    db.refresh(submission)
+    return SubmissionResponse(id=submission.id, status=submission.status, language=submission.language)
+
+
+@app.patch("/api/users/me/profile", response_model=UserResponse)
+def update_profile(
+    payload: ProfileUpdateRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> UserResponse:
+    user.full_name = payload.full_name.strip()
+    profile = user.profile or UserProfile(user_id=user.id)
+    profile.daily_minutes = payload.daily_minutes
+    db.add(profile)
+    db.commit()
+    db.refresh(user)
+    return profile_response(user)
+
+
+@app.get("/api/users/me/bookmarks", response_model=list[BookmarkResponse])
+def list_bookmarks(user: User = Depends(current_user), db: Session = Depends(get_db)) -> list[UserBookmark]:
+    return list(db.scalars(select(UserBookmark).where(UserBookmark.user_id == user.id).order_by(UserBookmark.created_at.desc())))
+
+
+@app.post("/api/users/me/bookmarks", response_model=BookmarkResponse, status_code=201)
+def add_bookmark(
+    payload: BookmarkRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> UserBookmark:
+    bookmark = db.scalar(select(UserBookmark).where(
+        UserBookmark.user_id == user.id, UserBookmark.target_type == payload.target_type,
+        UserBookmark.target_id == payload.target_id,
+    ))
+    if bookmark is None:
+        bookmark = UserBookmark(user_id=user.id, target_type=payload.target_type, target_id=payload.target_id)
+        db.add(bookmark)
+        db.commit()
+        db.refresh(bookmark)
+    return bookmark
+
+
+@app.delete("/api/users/me/bookmarks/{target_type}/{target_id}", status_code=204)
+def delete_bookmark(
+    target_type: str,
+    target_id: int,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> None:
+    bookmark = db.scalar(select(UserBookmark).where(
+        UserBookmark.user_id == user.id, UserBookmark.target_type == target_type,
+        UserBookmark.target_id == target_id,
+    ))
+    if bookmark is not None:
+        db.delete(bookmark)
+        db.commit()
+
+
+@app.get("/api/users/me/history", response_model=list[HistoryResponse])
+def list_history(user: User = Depends(current_user), db: Session = Depends(get_db)) -> list[UserHistory]:
+    rows = db.scalars(select(UserHistory).where(UserHistory.user_id == user.id).order_by(UserHistory.viewed_at.desc()).limit(50))
+    return [
+        HistoryResponse(target_type=row.target_type, target_id=row.target_id, viewed_at=row.viewed_at.isoformat())
+        for row in rows
+    ]

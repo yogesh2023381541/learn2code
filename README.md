@@ -37,9 +37,11 @@ uvicorn app.main:app --reload --port 8000
 ```
 
 The API provides access and rotating refresh JWTs, secure password hashing,
-logout/revocation, authenticated profile/onboarding, dashboard metrics, and
-published subject listing endpoints. Learning activity is persisted and powers
-the dashboard chart and daily goal. Run backend tests with:
+logout/revocation, authenticated profile/onboarding, dashboard metrics, a
+persisted lesson library and progress tracking, practice problems/submissions,
+bookmarks, history, and profile settings. Learning activity is persisted and
+powers the dashboard chart and daily goal. Apply the latest migration before
+starting the API. Run backend tests with:
 
 ```bash
 python -m pytest -q
