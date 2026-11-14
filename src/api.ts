@@ -73,6 +73,13 @@ export type PracticeProblem = {
   category: string;
   acceptance_rate: number;
   solved: boolean;
+  topic?: string | null;
+  pattern?: string | null;
+  constraints?: string | null;
+  examples?: Array<{ input: string; output: string }>;
+  hints?: string[];
+  editorial?: string | null;
+  reference_url?: string | null;
 };
 
 function setTokens(accessToken: string, refreshToken: string) {
