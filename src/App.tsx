@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
+import { authenticate } from "./api";
 
 type Subject = {
   name: string;
@@ -54,12 +55,35 @@ function LessonView({ subject, onClose }: { subject: Subject; onClose: () => voi
   return <div className="lesson-backdrop"><section className="lesson-modal"><header className="lesson-header"><div><button className="back-button" onClick={onClose}>← Back to roadmap</button><p className="eyebrow">MODULE 3 · DATA STRUCTURES</p><h1>Working with collections</h1><p className="muted">{subject.name} · Lesson 28 of {subject.lessons}</p></div><button className="close-button" onClick={onClose}>×</button></header><div className="lesson-progress"><span style={{ width: completed ? "72%" : "68%" }} /></div><div className="lesson-layout"><article className="lesson-content"><div className="video-placeholder"><div className="play-button">▶</div><span>Introduction to collections</span><small>12:48 · HD</small></div><h2>Make your data work for you</h2><p>Collections let you group and organize related values. In Python, the most common collection types are lists, tuples, sets, and dictionaries.</p><h3>Lists and dictionaries</h3><p>Use a list when order matters and a dictionary when you need to look values up by a meaningful key. Choosing the right structure makes your programs easier to reason about.</p><div className="lesson-callout"><strong>Key idea</strong><span>Good data structures reduce the amount of code you need to write.</span></div><button className={`complete-button ${completed ? "done" : ""}`} onClick={() => setCompleted(true)}>{completed ? "✓ Lesson completed" : "Mark lesson as complete"} <span>{completed ? "" : "→"}</span></button></article><aside className="lesson-aside"><div className="aside-section"><span className="eyebrow">ON THIS PAGE</span><button className="aside-link current">Working with collections</button><button className="aside-link">Lists and dictionaries</button><button className="aside-link">Quick knowledge check</button></div><div className="code-example"><div className="code-title"><span>PYTHON</span><span>Copy</span></div><pre><code><span className="code-purple">habits</span> = {'{'}{"\n"}  <span className="code-cyan">&quot;coding&quot;</span>: <span className="code-orange">True</span>,{"\n"}  <span className="code-cyan">&quot;minutes&quot;</span>: <span className="code-orange">45</span>,{"\n"}{'}'}{"\n"}{"\n"}<span className="code-purple">print</span>(habits[<span className="code-cyan">&quot;minutes&quot;</span>])</code></pre></div><div className="next-lesson"><span className="eyebrow">UP NEXT</span><strong>List comprehensions</strong><span>8 min · Not started</span></div></aside></div></section></div>;
 }
 
+function AuthDialog({ onClose }: { onClose: () => void }) {
+  const [mode, setMode] = useState<"login" | "signup">("login");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  async function submit(event: FormEvent) {
+    event.preventDefault();
+    setError("");
+    try {
+      await authenticate(mode, { full_name: fullName, email, password });
+      setSubmitted(true);
+    } catch (requestError) {
+      setError(requestError instanceof Error ? requestError.message : "Authentication failed.");
+    }
+  }
+
+  return <div className="auth-backdrop" onClick={onClose}><section className="auth-dialog" onClick={(event) => event.stopPropagation()}><button className="close-button auth-close" onClick={onClose}>×</button><div className="auth-brand"><span className="brand-mark">&lt;/&gt;</span><strong>learn<span>2</span>code</strong></div>{submitted ? <div className="auth-success"><div>✓</div><h2>{mode === "signup" ? "Account created" : "Welcome back"}</h2><p className="muted">{mode === "signup" ? "Your account is ready. You can now connect onboarding and personalized progress." : "You are signed in to your Learn2Code account."}</p><button className="primary-button" onClick={onClose}>Continue learning <span>→</span></button></div> : <><p className="eyebrow">{mode === "login" ? "WELCOME BACK" : "GET STARTED"}</p><h2>{mode === "login" ? "Sign in to your workspace" : "Create your account"}</h2><p className="muted">{mode === "login" ? "Continue building your skills." : "Start your personalized learning journey."}</p><form onSubmit={submit}>{mode === "signup" && <label>Full name<input required value={fullName} onChange={(event) => setFullName(event.target.value)} placeholder="Yogesh Chavan" /></label>}<label>Email address<input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="you@example.com" /></label><label>Password<input required minLength={8} type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="At least 8 characters" /></label>{error && <p className="auth-error" role="alert">{error}</p>}<button className="primary-button auth-submit" type="submit">{mode === "login" ? "Sign in" : "Create account"} <span>→</span></button></form><button className="auth-switch" onClick={() => { setMode(mode === "login" ? "signup" : "login"); setError(""); }}>{mode === "login" ? "New to Learn2Code? Create an account" : "Already have an account? Sign in"}</button></>}</section></div>;
+}
+
 export function App() {
   const [active, setActive] = useState("Overview");
   const [selectedSubject, setSelectedSubject] = useState(subjects[0]);
   const [search, setSearch] = useState("");
   const [showRoadmap, setShowRoadmap] = useState(false);
   const [showLesson, setShowLesson] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
   const filteredSubjects = subjects.filter((subject) =>
     `${subject.name} ${subject.category}`.toLowerCase().includes(search.toLowerCase()),
   );
@@ -85,7 +109,7 @@ export function App() {
         <div className="sidebar-bottom">
           <div className="upgrade-card"><span className="sparkle">✦</span><strong>Unlock your potential</strong><p>Get unlimited access to every learning path.</p><button>Explore Pro <span>→</span></button></div>
           <button className="nav-item"><Icon>⚙</Icon>Settings</button>
-          <div className="profile-mini"><div className="avatar">YC</div><div><strong>Yogesh Chavan</strong><small>Free plan</small></div><span className="more">•••</span></div>
+          <button className="profile-mini" onClick={() => setShowAuth(true)}><div className="avatar">YC</div><div><strong>Yogesh Chavan</strong><small>Free plan · Account</small></div><span className="more">•••</span></button>
         </div>
       </aside>
 
@@ -128,6 +152,7 @@ export function App() {
 
       {showRoadmap && <div className="modal-backdrop" onClick={() => setShowRoadmap(false)}><section className="roadmap-modal" onClick={(event) => event.stopPropagation()}><div className="modal-header"><div><span className="eyebrow">LEARNING PATH</span><h2>{selectedSubject.name} roadmap</h2><p className="muted">Follow the path. Master the craft.</p></div><button className="close-button" onClick={() => setShowRoadmap(false)}>×</button></div><div className="roadmap-toolbar"><span><i className="legend-dot completed" /> Completed</span><span><i className="legend-dot current" /> In progress</span><span><i className="legend-dot locked" /> Locked</span><button>Fit to screen ⛶</button></div><div className="roadmap-canvas"><svg viewBox="0 0 100 80" preserveAspectRatio="none" aria-hidden="true"><path d="M 14 29 C 20 29, 22 17, 34 17 S 43 32, 57 35 S 67 19, 76 19 S 80 46, 88 46 S 78 71, 66 71" /><path className="completed-path" d="M 14 29 C 20 29, 22 17, 34 17 S 43 32, 57 35" /></svg>{roadmap.map((node) => <button className={`roadmap-node ${node.state}`} style={{ left: `${node.x}%`, top: `${node.y}%` }} key={node.title}><span>{node.state === "completed" ? "✓" : node.state === "locked" ? "•" : "→"}</span><strong>{node.title}</strong><small>{node.subtitle}</small></button>)}</div><div className="roadmap-footer"><div><strong>Next up: Data structures</strong><span>Estimated time · 45 min</span></div><button className="primary-button" onClick={() => { setShowRoadmap(false); setShowLesson(true); }}>Start learning <span>→</span></button></div></section></div>}
       {showLesson && <LessonView subject={selectedSubject} onClose={() => setShowLesson(false)} />}
+      {showAuth && <AuthDialog onClose={() => setShowAuth(false)} />}
     </div>
   );
 }
