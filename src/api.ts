@@ -41,3 +41,20 @@ export async function saveOnboarding(payload: {
   }
   return body;
 }
+
+export async function getSubjects() {
+  const response = await fetch(`${API_URL}/api/subjects`);
+  const body = await response.json().catch(() => null);
+  if (!response.ok) {
+    throw new Error(body?.detail ?? "Unable to load subjects from the Learn2Code API.");
+  }
+  return body as Array<{
+    id: number;
+    name: string;
+    slug: string;
+    category: string;
+    description: string;
+    difficulty: string;
+    estimated_minutes: number;
+  }>;
+}

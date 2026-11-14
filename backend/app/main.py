@@ -5,7 +5,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from .config import settings
-from .db import Base, engine, get_db
+from .db import Base, SessionLocal, engine, get_db
 from .models import Subject, User, UserProfile
 from .schemas import (
     LoginRequest,
@@ -31,6 +31,45 @@ bearer = HTTPBearer(auto_error=False)
 @app.on_event("startup")
 def create_tables() -> None:
     Base.metadata.create_all(bind=engine)
+    with SessionLocal() as db:
+        if db.scalar(select(Subject.id).limit(1)) is None:
+            db.add_all(
+                [
+                    Subject(
+                        name="Python",
+                        slug="python",
+                        category="Programming",
+                        description="Build a strong foundation with Python fundamentals and real projects.",
+                        difficulty="intermediate",
+                        estimated_minutes=1080,
+                    ),
+                    Subject(
+                        name="Data Structures & Algorithms",
+                        slug="data-structures-algorithms",
+                        category="Computer science",
+                        description="Master problem solving patterns that power great engineering interviews.",
+                        difficulty="intermediate",
+                        estimated_minutes=1920,
+                    ),
+                    Subject(
+                        name="React",
+                        slug="react",
+                        category="Web development",
+                        description="Create fast, accessible interfaces with modern React and TypeScript.",
+                        difficulty="beginner",
+                        estimated_minutes=1260,
+                    ),
+                    Subject(
+                        name="SQL & Databases",
+                        slug="sql-databases",
+                        category="Backend",
+                        description="Design reliable data models and write queries with confidence.",
+                        difficulty="beginner",
+                        estimated_minutes=840,
+                    ),
+                ],
+            )
+            db.commit()
 
 
 def current_user(

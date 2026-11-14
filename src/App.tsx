@@ -1,5 +1,5 @@
-import { useState, type FormEvent } from "react";
-import { authenticate, saveOnboarding } from "./api";
+import { useEffect, useState, type FormEvent } from "react";
+import { authenticate, getSubjects, saveOnboarding } from "./api";
 
 type Subject = {
   name: string;
@@ -12,7 +12,7 @@ type Subject = {
   icon: string;
 };
 
-const subjects: Subject[] = [
+const initialSubjects: Subject[] = [
   { name: "Python", category: "Programming", description: "Build a strong foundation with Python fundamentals and real projects.", progress: 68, lessons: 42, duration: "18h", color: "violet", icon: "Py" },
   { name: "Data Structures & Algorithms", category: "Computer science", description: "Master problem solving patterns that power great engineering interviews.", progress: 34, lessons: 56, duration: "32h", color: "cyan", icon: "DS" },
   { name: "React", category: "Web development", description: "Create fast, accessible interfaces with modern React and TypeScript.", progress: 12, lessons: 38, duration: "21h", color: "blue", icon: "Re" },
@@ -106,11 +106,33 @@ function AuthDialog({ onClose }: { onClose: () => void }) {
 
 export function App() {
   const [active, setActive] = useState("Overview");
-  const [selectedSubject, setSelectedSubject] = useState(subjects[0]);
+  const [subjects, setSubjects] = useState(initialSubjects);
+  const [selectedSubject, setSelectedSubject] = useState(initialSubjects[0]);
   const [search, setSearch] = useState("");
   const [showRoadmap, setShowRoadmap] = useState(false);
   const [showLesson, setShowLesson] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
+  const [apiError, setApiError] = useState("");
+  useEffect(() => {
+    getSubjects().then((remoteSubjects) => {
+      if (remoteSubjects.length === 0) return;
+      const mappedSubjects = remoteSubjects.map((subject, index) => ({
+        name: subject.name,
+        category: subject.category,
+        description: subject.description,
+        progress: initialSubjects[index % initialSubjects.length]?.progress ?? 0,
+        lessons: Math.max(12, Math.round(subject.estimated_minutes / 25)),
+        duration: `${Math.max(1, Math.round(subject.estimated_minutes / 60))}h`,
+        color: initialSubjects[index % initialSubjects.length]?.color ?? "violet",
+        icon: subject.name.slice(0, 2),
+      }));
+      setSubjects(mappedSubjects);
+      setSelectedSubject(mappedSubjects[0]);
+      setApiError("");
+    }).catch((error: unknown) => {
+      setApiError(error instanceof Error ? error.message : "The subject API is unavailable.");
+    });
+  }, []);
   const filteredSubjects = subjects.filter((subject) =>
     `${subject.name} ${subject.category}`.toLowerCase().includes(search.toLowerCase()),
   );
@@ -147,6 +169,7 @@ export function App() {
         </header>
 
         <div className={`content ${active === "Overview" ? "" : "alternate"}`}>
+          {apiError && <div className="api-notice" role="status"><span>!</span><p><strong>Using local subject data</strong>{apiError}</p><button onClick={() => setApiError("")}>×</button></div>}
           <WorkspacePage active={active} subjects={filteredSubjects} onSelect={(subject) => { setSelectedSubject(subject); setShowRoadmap(true); }} />
           <section className="welcome-row">
             <div><p className="eyebrow">FRIDAY, NOVEMBER 14, 2026</p><h1>Good morning, Yogesh <span>✦</span></h1><p className="muted">Small steps every day lead to big results. Let&apos;s keep building.</p></div>
