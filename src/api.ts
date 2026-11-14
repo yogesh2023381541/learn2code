@@ -45,6 +45,9 @@ export type Dashboard = {
     estimated_minutes: number;
     progress: number;
   }>;
+  weekly_activity: number[];
+  daily_goal_minutes: number;
+  today_minutes: number;
 };
 
 function setTokens(accessToken: string, refreshToken: string) {
@@ -129,6 +132,14 @@ export async function saveOnboarding(payload: {
 
 export async function getDashboard() {
   return authorizedFetch("/api/dashboard") as Promise<Dashboard>;
+}
+
+export async function recordActivity(minutes: number, activityType: "lesson" | "practice" | "quiz") {
+  return authorizedFetch("/api/users/me/activity", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ minutes, activity_type: activityType }),
+  }) as Promise<{ minutes: number; topics_completed: number }>;
 }
 
 export async function logout() {

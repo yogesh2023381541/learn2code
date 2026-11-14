@@ -9,6 +9,34 @@ services:
       - "5432:5432"
     volumes:
       - learn2code-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U learn2code -d learn2code"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://learn2code:learn2code@postgres:5432/learn2code
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET before starting the stack}
+      FRONTEND_ORIGIN: http://localhost:5173
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: .
+      args:
+        VITE_API_URL: http://localhost:8000
+    depends_on:
+      - api
+    ports:
+      - "5173:80"
 
 volumes:
   learn2code-postgres:

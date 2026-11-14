@@ -1,15 +1,16 @@
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime, timedelta
 
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from .config import settings
 from .db import get_db
-from .models import RefreshSession, Subject, SubjectEnrollment, User, UserProfile
+from .models import RefreshSession, Subject, SubjectEnrollment, User, UserActivity, UserProfile
 from .schemas import (
+    ActivityRequest,
     AuthResponse,
     DashboardResponse,
     LoginRequest,
@@ -228,6 +229,16 @@ def dashboard(user: User = Depends(current_user), db: Session = Depends(get_db))
         for subject, enrollment in rows
     ]
     overall_progress = round(sum(subject.progress for subject in subjects) / len(subjects)) if subjects else 0
+    today = datetime.now(UTC).date()
+    activity_rows = db.execute(
+        select(UserActivity.activity_date, func.sum(UserActivity.minutes))
+        .where(
+            UserActivity.user_id == user.id,
+            UserActivity.activity_date >= today - timedelta(days=6),
+        )
+        .group_by(UserActivity.activity_date),
+    ).all()
+    activity_by_date = {activity_date: int(minutes) for activity_date, minutes in activity_rows}
     return DashboardResponse(
         learning_hours=profile.learning_hours,
         topics_completed=profile.topics_completed,
@@ -235,7 +246,31 @@ def dashboard(user: User = Depends(current_user), db: Session = Depends(get_db))
         current_streak=profile.current_streak,
         overall_progress=overall_progress,
         recommended_subjects=subjects,
+        weekly_activity=[activity_by_date.get(today - timedelta(days=offset), 0) for offset in range(6, -1, -1)],
+        daily_goal_minutes=profile.daily_minutes or 30,
+        today_minutes=activity_by_date.get(today, 0),
     )
+
+
+@app.post("/api/users/me/activity", status_code=status.HTTP_201_CREATED)
+def record_activity(
+    payload: ActivityRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> dict[str, int]:
+    profile = user.profile or UserProfile(user_id=user.id)
+    db.add(UserActivity(
+        user_id=user.id,
+        activity_date=datetime.now(UTC).date(),
+        minutes=payload.minutes,
+        activity_type=payload.activity_type,
+    ))
+    profile.learning_hours += payload.minutes / 60
+    if payload.activity_type == "lesson":
+        profile.topics_completed += 1
+    db.add(profile)
+    db.commit()
+    return {"minutes": payload.minutes, "topics_completed": profile.topics_completed}
 
 
 @app.get("/api/subjects", response_model=list[SubjectResponse])

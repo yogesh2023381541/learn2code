@@ -61,3 +61,21 @@ def test_onboarding_is_persisted_for_authenticated_user(client):
     assert dashboard.status_code == 200
     assert dashboard.json()["overall_progress"] == 0
     assert [subject["name"] for subject in dashboard.json()["recommended_subjects"]] == ["Python", "React"]
+
+
+def test_activity_updates_dashboard_metrics(client):
+    signup = client.post("/api/auth/signup", json=signup_payload()).json()
+    headers = {"Authorization": f"Bearer {signup['access_token']}"}
+
+    activity = client.post(
+        "/api/users/me/activity",
+        headers=headers,
+        json={"minutes": 45, "activity_type": "lesson"},
+    )
+
+    assert activity.status_code == 201
+    dashboard = client.get("/api/dashboard", headers=headers)
+    assert dashboard.json()["learning_hours"] == 0.75
+    assert dashboard.json()["topics_completed"] == 1
+    assert dashboard.json()["today_minutes"] == 45
+    assert sum(dashboard.json()["weekly_activity"]) == 45

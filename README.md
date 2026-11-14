@@ -38,8 +38,22 @@ uvicorn app.main:app --reload --port 8000
 
 The API provides access and rotating refresh JWTs, secure password hashing,
 logout/revocation, authenticated profile/onboarding, dashboard metrics, and
-published subject listing endpoints. Run backend tests with:
+published subject listing endpoints. Learning activity is persisted and powers
+the dashboard chart and daily goal. Run backend tests with:
 
 ```bash
 python -m pytest -q
 ```
+
+## Run the complete container stack
+
+Set a production-strength secret, then start PostgreSQL, the migrated API, and
+the Nginx-served frontend:
+
+```bash
+export JWT_SECRET="$(openssl rand -hex 32)"
+docker-compose up --build
+```
+
+The frontend is available at `http://localhost:5173` and the API at
+`http://localhost:8000`.

@@ -50,6 +50,11 @@ class OnboardingRequest(BaseModel):
     subjects: list[str] = Field(min_length=1, max_length=20)
 
 
+class ActivityRequest(BaseModel):
+    minutes: int = Field(ge=1, le=1440)
+    activity_type: str = Field(pattern="^(lesson|practice|quiz)$")
+
+
 class SubjectResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -78,3 +83,6 @@ class DashboardResponse(BaseModel):
     current_streak: int
     overall_progress: int
     recommended_subjects: list[SubjectResponse]
+    weekly_activity: list[int]
+    daily_goal_minutes: int
+    today_minutes: int
