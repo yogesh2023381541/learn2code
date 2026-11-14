@@ -208,8 +208,13 @@ export async function completeLesson(lessonId: number) {
   return authorizedFetch(`/api/lessons/${lessonId}/complete`, { method: "POST" }) as Promise<Lesson>;
 }
 
-export async function getPracticeProblems() {
-  return authorizedFetch("/api/practice/problems") as Promise<PracticeProblem[]>;
+export async function getPracticeProblems(filters?: { difficulty?: string; topic?: string; pattern?: string }) {
+  const params = new URLSearchParams();
+  if (filters?.difficulty) params.set("difficulty", filters.difficulty);
+  if (filters?.topic) params.set("topic", filters.topic);
+  if (filters?.pattern) params.set("pattern", filters.pattern);
+  const query = params.toString();
+  return authorizedFetch(`/api/practice/problems${query ? `?${query}` : ""}`) as Promise<PracticeProblem[]>;
 }
 
 export async function submitPractice(problemId: number, language: string, code: string) {

@@ -1,7 +1,7 @@
 from datetime import UTC, date, datetime, timedelta
 import json
 
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, FastAPI, HTTPException, Query, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy import func, select
@@ -790,11 +790,24 @@ def practice_response(problem: PracticeProblem, solved: bool = False) -> Practic
 
 
 @app.get("/api/practice/problems", response_model=list[PracticeProblemResponse])
-def list_practice_problems(user: User = Depends(current_user), db: Session = Depends(get_db)) -> list[PracticeProblemResponse]:
+def list_practice_problems(
+    difficulty: str | None = Query(default=None, max_length=20),
+    topic: str | None = Query(default=None, max_length=100),
+    pattern: str | None = Query(default=None, max_length=100),
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> list[PracticeProblemResponse]:
     solved_ids = set(db.scalars(select(PracticeSubmission.problem_id).where(
         PracticeSubmission.user_id == user.id, PracticeSubmission.status == "accepted",
     )))
-    problems = db.scalars(select(PracticeProblem).order_by(PracticeProblem.id))
+    query = select(PracticeProblem).order_by(PracticeProblem.id)
+    if difficulty:
+        query = query.where(PracticeProblem.difficulty == difficulty)
+    if topic:
+        query = query.where(PracticeProblem.topic == topic)
+    if pattern:
+        query = query.where(PracticeProblem.pattern == pattern)
+    problems = db.scalars(query)
     return [practice_response(problem, problem.id in solved_ids) for problem in problems]
 
 
