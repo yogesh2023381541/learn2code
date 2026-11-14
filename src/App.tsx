@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { authenticate } from "./api";
+import { authenticate, saveOnboarding } from "./api";
 
 type Subject = {
   name: string;
@@ -62,19 +62,46 @@ function AuthDialog({ onClose }: { onClose: () => void }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [onboarding, setOnboarding] = useState(false);
+  const [experience, setExperience] = useState("beginner");
+  const [goal, setGoal] = useState("Become a Full-Stack Developer");
+  const [language, setLanguage] = useState("Python");
+  const [minutes, setMinutes] = useState(30);
+  const [selectedSubjects, setSelectedSubjects] = useState(["Python", "Data Structures & Algorithms"]);
 
   async function submit(event: FormEvent) {
     event.preventDefault();
     setError("");
     try {
       await authenticate(mode, { full_name: fullName, email, password });
-      setSubmitted(true);
+      if (mode === "signup") {
+        await authenticate("login", { email, password });
+        setOnboarding(true);
+      } else {
+        setSubmitted(true);
+      }
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : "Authentication failed.");
     }
   }
 
-  return <div className="auth-backdrop" onClick={onClose}><section className="auth-dialog" onClick={(event) => event.stopPropagation()}><button className="close-button auth-close" onClick={onClose}>×</button><div className="auth-brand"><span className="brand-mark">&lt;/&gt;</span><strong>learn<span>2</span>code</strong></div>{submitted ? <div className="auth-success"><div>✓</div><h2>{mode === "signup" ? "Account created" : "Welcome back"}</h2><p className="muted">{mode === "signup" ? "Your account is ready. You can now connect onboarding and personalized progress." : "You are signed in to your Learn2Code account."}</p><button className="primary-button" onClick={onClose}>Continue learning <span>→</span></button></div> : <><p className="eyebrow">{mode === "login" ? "WELCOME BACK" : "GET STARTED"}</p><h2>{mode === "login" ? "Sign in to your workspace" : "Create your account"}</h2><p className="muted">{mode === "login" ? "Continue building your skills." : "Start your personalized learning journey."}</p><form onSubmit={submit}>{mode === "signup" && <label>Full name<input required value={fullName} onChange={(event) => setFullName(event.target.value)} placeholder="Yogesh Chavan" /></label>}<label>Email address<input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="you@example.com" /></label><label>Password<input required minLength={8} type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="At least 8 characters" /></label>{error && <p className="auth-error" role="alert">{error}</p>}<button className="primary-button auth-submit" type="submit">{mode === "login" ? "Sign in" : "Create account"} <span>→</span></button></form><button className="auth-switch" onClick={() => { setMode(mode === "login" ? "signup" : "login"); setError(""); }}>{mode === "login" ? "New to Learn2Code? Create an account" : "Already have an account? Sign in"}</button></>}</section></div>;
+  async function finishOnboarding(event: FormEvent) {
+    event.preventDefault();
+    setError("");
+    try {
+      await saveOnboarding({ experience_level: experience, learning_goal: goal, preferred_language: language, daily_minutes: minutes, subjects: selectedSubjects });
+      setOnboarding(false);
+      setSubmitted(true);
+    } catch (requestError) {
+      setError(requestError instanceof Error ? requestError.message : "Unable to save onboarding.");
+    }
+  }
+
+  function toggleSubject(subject: string) {
+    setSelectedSubjects((current) => current.includes(subject) ? current.filter((item) => item !== subject) : [...current, subject]);
+  }
+
+  return <div className="auth-backdrop" onClick={onClose}><section className="auth-dialog" onClick={(event) => event.stopPropagation()}><button className="close-button auth-close" onClick={onClose}>×</button><div className="auth-brand"><span className="brand-mark">&lt;/&gt;</span><strong>learn<span>2</span>code</strong></div>{onboarding ? <form className="onboarding-form" onSubmit={finishOnboarding}><p className="eyebrow">PERSONALIZE YOUR PATH</p><h2>Make learning fit you.</h2><p className="muted">A few answers help us shape your first recommendations.</p><label>Experience level<select value={experience} onChange={(event) => setExperience(event.target.value)}><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label><label>Your main goal<select value={goal} onChange={(event) => setGoal(event.target.value)}><option>Become a Full-Stack Developer</option><option>Master DSA</option><option>Learn Programming</option><option>Explore Computer Science</option></select></label><label>Preferred language<select value={language} onChange={(event) => setLanguage(event.target.value)}><option>Python</option><option>JavaScript</option><option>TypeScript</option><option>Java</option><option>C++</option></select></label><label>Daily study time<select value={minutes} onChange={(event) => setMinutes(Number(event.target.value))}><option value={15}>15 minutes</option><option value={30}>30 minutes</option><option value={60}>1 hour</option><option value={90}>90 minutes</option></select></label><div><span className="form-label">What do you want to learn?</span><div className="subject-pills">{["Python", "Data Structures & Algorithms", "React", "SQL & Databases"].map((subject) => <button type="button" className={selectedSubjects.includes(subject) ? "subject-pill selected" : "subject-pill"} onClick={() => toggleSubject(subject)} key={subject}>{selectedSubjects.includes(subject) ? "✓ " : ""}{subject}</button>)}</div></div>{error && <p className="auth-error" role="alert">{error}</p>}<button className="primary-button auth-submit" type="submit">Build my learning path <span>→</span></button></form> : submitted ? <div className="auth-success"><div>✓</div><h2>{mode === "signup" ? "You&apos;re all set" : "Welcome back"}</h2><p className="muted">{mode === "signup" ? "Your personalized learning path is ready." : "You are signed in to your Learn2Code account."}</p><button className="primary-button" onClick={onClose}>Continue learning <span>→</span></button></div> : <><p className="eyebrow">{mode === "login" ? "WELCOME BACK" : "GET STARTED"}</p><h2>{mode === "login" ? "Sign in to your workspace" : "Create your account"}</h2><p className="muted">{mode === "login" ? "Continue building your skills." : "Start your personalized learning journey."}</p><form onSubmit={submit}>{mode === "signup" && <label>Full name<input required value={fullName} onChange={(event) => setFullName(event.target.value)} placeholder="Yogesh Chavan" /></label>}<label>Email address<input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="you@example.com" /></label><label>Password<input required minLength={8} type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="At least 8 characters" /></label>{error && <p className="auth-error" role="alert">{error}</p>}<button className="primary-button auth-submit" type="submit">{mode === "login" ? "Sign in" : "Create account"} <span>→</span></button></form><button className="auth-switch" onClick={() => { setMode(mode === "login" ? "signup" : "login"); setError(""); }}>{mode === "login" ? "New to Learn2Code? Create an account" : "Already have an account? Sign in"}</button></>}</section></div>;
 }
 
 export function App() {

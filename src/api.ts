@@ -18,3 +18,26 @@ export async function authenticate(
   }
   return body;
 }
+
+export async function saveOnboarding(payload: {
+  experience_level: string;
+  learning_goal: string;
+  preferred_language: string;
+  daily_minutes: number;
+  subjects: string[];
+}) {
+  const token = localStorage.getItem("learn2code_access_token");
+  const response = await fetch(`${API_URL}/api/users/me/onboarding`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify(payload),
+  });
+  const body = await response.json().catch(() => null);
+  if (!response.ok) {
+    throw new Error(body?.detail ?? "Unable to save your onboarding preferences.");
+  }
+  return body;
+}
