@@ -122,6 +122,20 @@ class PracticeSubmission(Base):
     submitted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
+class PracticeProblemProgress(Base):
+    __tablename__ = "practice_problem_progress"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    problem_id: Mapped[int] = mapped_column(ForeignKey("practice_problems.id", ondelete="CASCADE"), index=True)
+    status: Mapped[str] = mapped_column(String(20), default="not_started")
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    bookmarked: Mapped[bool] = mapped_column(Boolean, default=False)
+    next_revision_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True))
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+    __table_args__ = (UniqueConstraint("user_id", "problem_id", name="uq_problem_progress_user_problem"),)
+
+
 class UserBookmark(Base):
     __tablename__ = "user_bookmarks"
 

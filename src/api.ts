@@ -220,6 +220,24 @@ export async function submitPractice(problemId: number, language: string, code: 
   }) as Promise<{ id: number; status: string; language: string }>;
 }
 
+export async function getPracticeProgress() {
+  return authorizedFetch("/api/practice/progress") as Promise<Array<{
+    problem_id: number;
+    status: string;
+    attempts: number;
+    bookmarked: boolean;
+    next_revision_at: string | null;
+  }>>;
+}
+
+export async function updatePracticeProgress(problemId: number, status: "not_started" | "attempted" | "solved" | "revision", bookmarked?: boolean) {
+  return authorizedFetch(`/api/practice/problems/${problemId}/progress`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ status, bookmarked }),
+  });
+}
+
 export async function updateProfile(payload: { full_name: string; daily_minutes: number }) {
   return authorizedFetch("/api/users/me/profile", {
     method: "PATCH",

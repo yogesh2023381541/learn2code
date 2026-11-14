@@ -135,6 +135,19 @@ class SubmissionResponse(BaseModel):
     language: str
 
 
+class ProblemProgressResponse(BaseModel):
+    problem_id: int
+    status: str
+    attempts: int
+    bookmarked: bool
+    next_revision_at: str | None = None
+
+
+class ProblemProgressRequest(BaseModel):
+    status: str = Field(pattern="^(not_started|attempted|solved|revision)$")
+    bookmarked: bool | None = None
+
+
 class BookmarkRequest(BaseModel):
     target_type: str = Field(pattern="^(lesson|problem|subject)$")
     target_id: int = Field(gt=0)

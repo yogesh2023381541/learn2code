@@ -119,6 +119,17 @@ def test_practice_submission_and_bookmark_are_persisted(client):
     )
     assert submission.status_code == 201
     assert submission.json()["status"] == "accepted"
+    progress = client.get("/api/practice/progress", headers=headers)
+    assert progress.status_code == 200
+    assert progress.json()[0]["status"] == "solved"
+    assert progress.json()[0]["attempts"] == 1
+    revision = client.patch(
+        f"/api/practice/problems/{problem['id']}/progress",
+        headers=headers,
+        json={"status": "revision", "bookmarked": True},
+    )
+    assert revision.status_code == 200
+    assert revision.json()["bookmarked"] is True
     assert client.get("/api/practice/problems", headers=headers).json()[0]["solved"] is True
     bookmark = client.post(
         "/api/users/me/bookmarks",

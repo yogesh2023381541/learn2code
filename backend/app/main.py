@@ -21,6 +21,7 @@ from .models import (
     Lesson,
     LessonProgress,
     PracticeProblem,
+    PracticeProblemProgress,
     PracticeSubmission,
     PersonalizedRoadmap,
     PersonalizedRoadmapNode,
@@ -56,6 +57,8 @@ from .schemas import (
     LessonResponse,
     OnboardingRequest,
     PracticeProblemResponse,
+    ProblemProgressRequest,
+    ProblemProgressResponse,
     ProfileUpdateRequest,
     QuizAttemptRequest,
     QuizAttemptResponse,
@@ -795,6 +798,47 @@ def list_practice_problems(user: User = Depends(current_user), db: Session = Dep
     return [practice_response(problem, problem.id in solved_ids) for problem in problems]
 
 
+def progress_response(progress: PracticeProblemProgress) -> ProblemProgressResponse:
+    return ProblemProgressResponse(
+        problem_id=progress.problem_id, status=progress.status, attempts=progress.attempts,
+        bookmarked=progress.bookmarked,
+        next_revision_at=progress.next_revision_at.isoformat() if progress.next_revision_at else None,
+    )
+
+
+@app.get("/api/practice/progress", response_model=list[ProblemProgressResponse])
+def list_practice_progress(user: User = Depends(current_user), db: Session = Depends(get_db)) -> list[ProblemProgressResponse]:
+    rows = db.scalars(select(PracticeProblemProgress).where(
+        PracticeProblemProgress.user_id == user.id,
+    ).order_by(PracticeProblemProgress.updated_at.desc()))
+    return [progress_response(row) for row in rows]
+
+
+@app.patch("/api/practice/problems/{problem_id}/progress", response_model=ProblemProgressResponse)
+def update_practice_progress(
+    problem_id: int,
+    payload: ProblemProgressRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> ProblemProgressResponse:
+    if db.get(PracticeProblem, problem_id) is None:
+        raise HTTPException(status_code=404, detail="Practice problem not found")
+    progress = db.scalar(select(PracticeProblemProgress).where(
+        PracticeProblemProgress.user_id == user.id, PracticeProblemProgress.problem_id == problem_id,
+    ))
+    if progress is None:
+        progress = PracticeProblemProgress(user_id=user.id, problem_id=problem_id, attempts=0, status="not_started", bookmarked=False)
+        db.add(progress)
+    progress.status = payload.status
+    if payload.bookmarked is not None:
+        progress.bookmarked = payload.bookmarked
+    if payload.status == "revision":
+        progress.next_revision_at = datetime.now(UTC) + timedelta(days=1)
+    db.commit()
+    db.refresh(progress)
+    return progress_response(progress)
+
+
 @app.get("/api/practice/problems/{slug}", response_model=PracticeProblemResponse)
 def get_practice_problem(slug: str, user: User = Depends(current_user), db: Session = Depends(get_db)) -> PracticeProblemResponse:
     problem = db.scalar(select(PracticeProblem).where(PracticeProblem.slug == slug))
@@ -824,6 +868,15 @@ def submit_practice(
         code=payload.code, status="accepted",
     )
     db.add(submission)
+    progress = db.scalar(select(PracticeProblemProgress).where(
+        PracticeProblemProgress.user_id == user.id, PracticeProblemProgress.problem_id == problem.id,
+    ))
+    if progress is None:
+        progress = PracticeProblemProgress(user_id=user.id, problem_id=problem.id, attempts=0, status="not_started", bookmarked=False)
+        db.add(progress)
+    progress.attempts += 1
+    progress.status = "solved"
+    progress.next_revision_at = datetime.now(UTC) + timedelta(days=1)
     profile = user.profile or UserProfile(user_id=user.id)
     already_solved = db.scalar(select(PracticeSubmission.id).where(
         PracticeSubmission.user_id == user.id, PracticeSubmission.problem_id == problem.id,
