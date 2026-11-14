@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 
 from .config import settings
 from .db import get_db
-from .models import RefreshSession, Subject, User, UserProfile
+from .models import RefreshSession, Subject, SubjectEnrollment, User, UserProfile
 from .schemas import (
     AuthResponse,
     DashboardResponse,
@@ -190,6 +190,16 @@ def save_onboarding(
     profile.daily_minutes = payload.daily_minutes
     profile.subjects = ",".join(payload.subjects)
     db.add(profile)
+    selected_subjects = list(
+        db.scalars(select(Subject).where(Subject.name.in_(payload.subjects), Subject.is_published.is_(True))),
+    )
+    existing = {
+        enrollment.subject_id: enrollment
+        for enrollment in db.scalars(select(SubjectEnrollment).where(SubjectEnrollment.user_id == user.id))
+    }
+    for subject in selected_subjects:
+        if subject.id not in existing:
+            db.add(SubjectEnrollment(user_id=user.id, subject_id=subject.id))
     db.commit()
     db.refresh(user)
     return profile_response(user)
@@ -198,13 +208,32 @@ def save_onboarding(
 @app.get("/api/dashboard", response_model=DashboardResponse)
 def dashboard(user: User = Depends(current_user), db: Session = Depends(get_db)) -> DashboardResponse:
     profile = user.profile or UserProfile(user_id=user.id)
-    subjects = list(db.scalars(select(Subject).where(Subject.is_published.is_(True)).order_by(Subject.name).limit(4)))
+    rows = db.execute(
+        select(Subject, SubjectEnrollment)
+        .join(SubjectEnrollment, SubjectEnrollment.subject_id == Subject.id)
+        .where(SubjectEnrollment.user_id == user.id, Subject.is_published.is_(True))
+        .order_by(Subject.name)
+    ).all()
+    subjects = [
+        SubjectResponse(
+            id=subject.id,
+            name=subject.name,
+            slug=subject.slug,
+            category=subject.category,
+            description=subject.description,
+            difficulty=subject.difficulty,
+            estimated_minutes=subject.estimated_minutes,
+            progress=enrollment.progress,
+        )
+        for subject, enrollment in rows
+    ]
+    overall_progress = round(sum(subject.progress for subject in subjects) / len(subjects)) if subjects else 0
     return DashboardResponse(
         learning_hours=profile.learning_hours,
         topics_completed=profile.topics_completed,
         problems_solved=profile.problems_solved,
         current_streak=profile.current_streak,
-        overall_progress=0,
+        overall_progress=overall_progress,
         recommended_subjects=subjects,
     )
 

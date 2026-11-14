@@ -52,6 +52,17 @@ class Subject(Base):
     is_published: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
 
 
+class SubjectEnrollment(Base):
+    __tablename__ = "subject_enrollments"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    subject_id: Mapped[int] = mapped_column(ForeignKey("subjects.id", ondelete="CASCADE"), index=True)
+    progress: Mapped[int] = mapped_column(Integer, default=0)
+    current_topic: Mapped[Optional[str]] = mapped_column(String(160))
+    enrolled_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
 class RefreshSession(Base):
     __tablename__ = "refresh_sessions"
 

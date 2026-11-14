@@ -57,3 +57,7 @@ def test_onboarding_is_persisted_for_authenticated_user(client):
     assert response.status_code == 200
     assert response.json()["profile"]["learning_goal"] == "Learn Programming"
     assert response.json()["profile"]["subjects"] == ["Python", "React"]
+    dashboard = client.get("/api/dashboard", headers=headers)
+    assert dashboard.status_code == 200
+    assert dashboard.json()["overall_progress"] == 0
+    assert [subject["name"] for subject in dashboard.json()["recommended_subjects"]] == ["Python", "React"]

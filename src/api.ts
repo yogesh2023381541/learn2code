@@ -35,6 +35,16 @@ export type Dashboard = {
   problems_solved: number;
   current_streak: number;
   overall_progress: number;
+  recommended_subjects: Array<{
+    id: number;
+    name: string;
+    slug: string;
+    category: string;
+    description: string;
+    difficulty: string;
+    estimated_minutes: number;
+    progress: number;
+  }>;
 };
 
 function setTokens(accessToken: string, refreshToken: string) {

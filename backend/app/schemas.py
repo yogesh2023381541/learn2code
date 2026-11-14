@@ -60,6 +60,7 @@ class SubjectResponse(BaseModel):
     description: str
     difficulty: str
     estimated_minutes: int
+    progress: int = 0
 
 
 class AuthResponse(TokenResponse):

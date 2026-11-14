@@ -147,6 +147,13 @@ export function App() {
       setApiError(error instanceof Error ? error.message : "The subject API is unavailable.");
     });
   }, []);
+  useEffect(() => {
+    if (!dashboard) return;
+    const progressByName = new Map(dashboard.recommended_subjects.map((subject) => [subject.name, subject.progress]));
+    setSubjects((current) => current.map((subject) => (
+      progressByName.has(subject.name) ? { ...subject, progress: progressByName.get(subject.name) ?? 0 } : subject
+    )));
+  }, [dashboard]);
   const filteredSubjects = subjects.filter((subject) =>
     `${subject.name} ${subject.category}`.toLowerCase().includes(search.toLowerCase()),
   );
