@@ -240,3 +240,36 @@ export async function removeBookmark(targetType: string, targetId: number) {
 export async function getHistory() {
   return authorizedFetch("/api/users/me/history") as Promise<Array<{ target_type: string; target_id: number; viewed_at: string }>>;
 }
+
+export type AIConversation = {
+  id: number;
+  title: string;
+  teaching_mode: string;
+  created_at: string;
+  updated_at: string;
+  messages: Array<{ id: number; role: string; content: string; created_at: string }>;
+};
+
+export async function createAIConversation(teachingMode = "beginner") {
+  return authorizedFetch("/api/ai/conversations", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ teaching_mode: teachingMode }),
+  }) as Promise<AIConversation>;
+}
+
+export async function getAIConversations() {
+  return authorizedFetch("/api/ai/conversations") as Promise<AIConversation[]>;
+}
+
+export async function getAIConversation(id: number) {
+  return authorizedFetch(`/api/ai/conversations/${id}`) as Promise<AIConversation>;
+}
+
+export async function sendAIMessage(id: number, content: string, context: Record<string, string>) {
+  return authorizedFetch(`/api/ai/conversations/${id}/messages`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ content, context }),
+  }) as Promise<{ id: number; role: string; content: string; created_at: string }>;
+}

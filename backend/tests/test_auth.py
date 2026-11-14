@@ -127,3 +127,28 @@ def test_practice_submission_and_bookmark_are_persisted(client):
     )
     assert bookmark.status_code == 201
     assert len(client.get("/api/users/me/bookmarks", headers=headers).json()) == 1
+
+
+def test_ai_conversations_are_private_and_provider_errors_are_explicit(client):
+    first = client.post("/api/auth/signup", json=signup_payload()).json()
+    second = client.post(
+        "/api/auth/signup",
+        json={"full_name": "Other Learner", "email": "other@example.com", "password": "correct horse battery staple"},
+    ).json()
+    first_headers = {"Authorization": f"Bearer {first['access_token']}"}
+    second_headers = {"Authorization": f"Bearer {second['access_token']}"}
+    conversation = client.post(
+        "/api/ai/conversations",
+        headers=first_headers,
+        json={"title": "Python help", "teaching_mode": "beginner"},
+    )
+    assert conversation.status_code == 201
+    conversation_id = conversation.json()["id"]
+    assert client.get(f"/api/ai/conversations/{conversation_id}", headers=second_headers).status_code == 404
+    message = client.post(
+        f"/api/ai/conversations/{conversation_id}/messages",
+        headers=first_headers,
+        json={"content": "Explain functions", "context": {"subject": "Python"}},
+    )
+    assert message.status_code == 503
+    assert "AI_PROVIDER_URL" in message.json()["detail"]

@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { authenticate, clearSession, completeLesson as apiCompleteLesson, getBookmarks, getCurrentUser, getDashboard, getHistory, getLessons, getPracticeProblems, getSubjects, hasSession, logout, recordActivity, saveOnboarding, submitPractice, updateProfile, type Dashboard, type Lesson, type PracticeProblem, type User } from "./api";
+import { authenticate, clearSession, completeLesson as apiCompleteLesson, createAIConversation, getAIConversation, getAIConversations, getBookmarks, getCurrentUser, getDashboard, getHistory, getLessons, getPracticeProblems, getSubjects, hasSession, logout, recordActivity, saveOnboarding, sendAIMessage, submitPractice, updateProfile, type AIConversation, type Dashboard, type Lesson, type PracticeProblem, type User } from "./api";
 
 type Subject = {
   name: string;
@@ -35,8 +35,8 @@ function Icon({ children }: { children: string }) {
 
 function pageFromHash() {
   const page = window.location.hash.slice(1).toLowerCase();
-  if (page === "explore" || page === "my-learning" || page === "practice" || page === "bookmarks" || page === "history" || page === "settings") {
-    return page === "my-learning" ? "My learning" : page[0].toUpperCase() + page.slice(1);
+  if (page === "explore" || page === "my-learning" || page === "practice" || page === "bookmarks" || page === "history" || page === "settings" || page === "ai-assistant") {
+    return page === "my-learning" ? "My learning" : page === "ai-assistant" ? "AI Assistant" : page[0].toUpperCase() + page.slice(1);
   }
   return "Overview";
 }
@@ -59,8 +59,32 @@ function AccountPage({ active, user, onUser }: { active: string; user: User | nu
       setMessage(error instanceof Error ? error.message : "Settings could not be saved.");
     }
   }
+
   if (active === "Settings") return <section className="alternate-view"><div className="page-heading"><div><p className="eyebrow">ACCOUNT</p><h1>Settings</h1><p className="muted">Keep your profile and daily goal up to date.</p></div></div><form className="onboarding-form" onSubmit={(event) => void saveSettings(event)}><label>Full name<input value={name} onChange={(event) => setName(event.target.value)} required /></label><label>Daily study time<select value={minutes} onChange={(event) => setMinutes(Number(event.target.value))}><option value={15}>15 minutes</option><option value={30}>30 minutes</option><option value={60}>1 hour</option><option value={90}>90 minutes</option></select></label>{message && <p className="auth-error" role="status">{message}</p>}<button className="primary-button" type="submit">Save settings <span>→</span></button></form></section>;
   return <section className="alternate-view"><div className="page-heading"><div><p className="eyebrow">YOUR LIBRARY</p><h1>{active}</h1><p className="muted">{active === "Bookmarks" ? "Saved lessons and problems." : "Recently opened learning items."}</p></div></div>{message && <p className="auth-error" role="status">{message}</p>}<div className="problem-table">{items.length === 0 ? <p className="muted">Nothing here yet.</p> : items.map((item, index) => <div className="problem-row" key={`${item.target_type}-${item.target_id}-${index}`}><strong>{item.target_type} #{item.target_id}</strong><span className="muted">{item.viewed_at ? new Date(item.viewed_at).toLocaleString() : "Saved"}</span></div>)}</div></section>;
+}
+
+function AssistantPage({ user }: { user: User | null }) {
+  const [conversations, setConversations] = useState<AIConversation[]>([]);
+  const [conversation, setConversation] = useState<AIConversation | null>(null);
+  const [message, setMessage] = useState("");
+  const [mode, setMode] = useState("beginner");
+  const [error, setError] = useState("");
+  useEffect(() => { getAIConversations().then(setConversations).catch(() => setError("AI conversations could not be loaded.")); }, []);
+  async function newConversation() {
+    try { const created = await createAIConversation(mode); setConversation(created); setConversations((current) => [created, ...current]); setError(""); }
+    catch (requestError) { setError(requestError instanceof Error ? requestError.message : "AI provider is unavailable."); }
+  }
+  async function send(event: FormEvent) {
+    event.preventDefault();
+    if (!conversation || !message.trim()) return;
+    const text = message.trim(); setMessage("");
+    try {
+      const response = await sendAIMessage(conversation.id, text, { user_level: user?.profile?.experience_level ?? "beginner", learning_goal: user?.profile?.learning_goal ?? "programming" });
+      setConversation((current) => current ? { ...current, messages: [...current.messages, { id: Date.now(), role: "user", content: text, created_at: new Date().toISOString() }, response] } : current);
+    } catch (requestError) { setError(requestError instanceof Error ? requestError.message : "AI request failed."); }
+  }
+  return <section className="alternate-view"><div className="page-heading"><div><p className="eyebrow">PERSONAL AI TUTOR</p><h1>Learn with your AI assistant</h1><p className="muted">Ask questions with your current learning context included.</p></div><div><select value={mode} onChange={(event) => setMode(event.target.value)}><option value="beginner">Beginner mode</option><option value="detailed">Detailed explanation</option><option value="interview">Interview preparation</option><option value="practical">Practical coding</option><option value="revision">Revision mode</option></select><button className="primary-button" onClick={() => void newConversation()}>New conversation</button></div></div><div className="ai-chat-layout"><aside className="problem-table">{conversations.map((item) => <button className="problem-row" key={item.id} onClick={() => getAIConversation(item.id).then(setConversation)}>{item.title}</button>)}</aside><div className="ai-chat-panel">{conversation ? <>{conversation.messages.map((item) => <div className={`chat-message ${item.role}`} key={item.id}><strong>{item.role === "assistant" ? "Learn2Code AI" : "You"}</strong><p>{item.content}</p></div>)}<form onSubmit={(event) => void send(event)}><input value={message} onChange={(event) => setMessage(event.target.value)} placeholder="Ask your tutor..." /><button className="primary-button">Send</button></form></> : <p className="muted">Create a conversation to start learning.</p>}{error && <p className="auth-error" role="alert">{error}</p>}</div></div></section>;
 }
 
 function WorkspacePage({ active, subjects, onSelect, dashboard, practiceProblems }: { active: string; subjects: Subject[]; onSelect: (subject: Subject) => void; dashboard: Dashboard | null; practiceProblems: PracticeProblem[] }) {
@@ -170,7 +194,7 @@ export function App() {
   };
   function navigate(page: string) {
     setActive(page);
-    window.history.pushState({}, "", `#${page === "My learning" ? "my-learning" : page.toLowerCase()}`);
+    window.history.pushState({}, "", `#${page === "My learning" ? "my-learning" : page === "AI Assistant" ? "ai-assistant" : page.toLowerCase()}`);
   }
   useEffect(() => {
     if (user && selectedSubject.slug) {
@@ -243,6 +267,7 @@ export function App() {
               {item === "My learning" && <span className="nav-count">4</span>}
             </button>
           ))}
+          <button className={active === "AI Assistant" ? "nav-item active" : "nav-item"} onClick={() => navigate("AI Assistant")}><Icon>✦</Icon>AI Assistant</button>
         </nav>
         <div className="workspace-label library-label">YOUR LIBRARY</div>
         <nav className="nav-list">
@@ -264,7 +289,7 @@ export function App() {
 
         <div className={`content ${active === "Overview" ? "" : "alternate"}`}>
           {apiError && <div className="api-notice" role="status"><span>!</span><p><strong>Using local subject data</strong>{apiError}</p><button onClick={() => setApiError("")}>×</button></div>}
-          {["Bookmarks", "History", "Settings"].includes(active) ? <AccountPage active={active} user={user} onUser={setUser} /> : <WorkspacePage active={active} subjects={filteredSubjects} dashboard={dashboard} practiceProblems={practiceProblems} onSelect={(subject) => { setSelectedSubject(subject); setShowRoadmap(true); }} />}
+          {active === "AI Assistant" ? <AssistantPage user={user} /> : ["Bookmarks", "History", "Settings"].includes(active) ? <AccountPage active={active} user={user} onUser={setUser} /> : <WorkspacePage active={active} subjects={filteredSubjects} dashboard={dashboard} practiceProblems={practiceProblems} onSelect={(subject) => { setSelectedSubject(subject); setShowRoadmap(true); }} />}
           <section className="welcome-row">
             <div><p className="eyebrow">FRIDAY, NOVEMBER 14, 2026</p><h1>Good morning, {user?.full_name.split(" ")[0] ?? "Learner"} <span>✦</span></h1><p className="muted">Small steps every day lead to big results. Let&apos;s keep building.</p></div>
             <button className="streak"><span>♨</span><strong>12 day streak</strong><small>Keep it going!</small></button>
@@ -296,6 +321,7 @@ export function App() {
 
       {showRoadmap && <div className="modal-backdrop" onClick={() => setShowRoadmap(false)}><section className="roadmap-modal" onClick={(event) => event.stopPropagation()}><div className="modal-header"><div><span className="eyebrow">LEARNING PATH</span><h2>{selectedSubject.name} roadmap</h2><p className="muted">Follow the path. Master the craft.</p></div><button className="close-button" onClick={() => setShowRoadmap(false)}>×</button></div><div className="roadmap-toolbar"><span><i className="legend-dot completed" /> Completed</span><span><i className="legend-dot current" /> In progress</span><span><i className="legend-dot locked" /> Locked</span></div><div className="roadmap-canvas">{lessons.length ? lessons.map((lesson, index) => <button className={`roadmap-node ${lesson.completed ? "completed" : index === 0 ? "current" : "available"}`} style={{ left: `${15 + (index % 4) * 23}%`, top: `${25 + Math.floor(index / 4) * 35}%` }} key={lesson.id} onClick={() => { setSelectedLesson(lesson); setShowRoadmap(false); setShowLesson(true); }}><span>{lesson.completed ? "✓" : "→"}</span><strong>{lesson.title}</strong><small>{lesson.estimated_minutes} min</small></button>) : roadmap.map((node) => <button className={`roadmap-node ${node.state}`} style={{ left: `${node.x}%`, top: `${node.y}%` }} key={node.title}><span>→</span><strong>{node.title}</strong><small>{node.subtitle}</small></button>)}</div><div className="roadmap-footer"><div><strong>{lessons[0]?.title ?? "Start your learning path"}</strong><span>Estimated time · {lessons[0]?.estimated_minutes ?? 45} min</span></div><button className="primary-button" onClick={() => { setSelectedLesson(lessons[0]); setShowRoadmap(false); setShowLesson(true); }}>Start learning <span>→</span></button></div></section></div>}
       {showLesson && <LessonView subject={selectedSubject} lesson={selectedLesson} onClose={() => setShowLesson(false)} onComplete={() => { getDashboard().then(setDashboard).catch(() => setApiError("Dashboard data could not be refreshed.")); getLessons(selectedSubject.slug).then(setLessons).catch(() => undefined); }} />}
+      {user && active !== "AI Assistant" && <button className="ai-floating-button" onClick={() => navigate("AI Assistant")} aria-label="Open AI assistant">✦</button>}
       {showAuth && <AuthDialog onClose={closeAuth} onAuthenticated={(authenticatedUser) => { setUser(authenticatedUser); setShowAuth(false); getDashboard().then(setDashboard).catch(() => setApiError("Dashboard data could not be loaded.")); getPracticeProblems().then(setPracticeProblems).catch(() => setApiError("Practice problems could not be loaded.")); }} />}
     </div>
   );

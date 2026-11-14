@@ -1,4 +1,5 @@
 from datetime import UTC, date, datetime, timedelta
+import json
 
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
@@ -9,6 +10,10 @@ from sqlalchemy.orm import Session
 from .config import settings
 from .db import get_db
 from .models import (
+    AIConversation,
+    AIFeedback,
+    AIMessage,
+    AIUsageLog,
     Lesson,
     LessonProgress,
     PracticeProblem,
@@ -23,6 +28,11 @@ from .models import (
     UserProfile,
 )
 from .schemas import (
+    AIConversationCreateRequest,
+    AIConversationResponse,
+    AIFeedbackRequest,
+    AIMessageRequest,
+    AIMessageResponse,
     ActivityRequest,
     AuthResponse,
     BookmarkRequest,
@@ -42,6 +52,7 @@ from .schemas import (
     TokenResponse,
     UserResponse,
 )
+from .services.ai.chat_service import AIProviderError, generate_reply
 from .security import (
     create_access_token,
     create_refresh_token,
@@ -128,6 +139,141 @@ def auth_response(user: User, access_token: str, refresh_token: str) -> AuthResp
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
+
+
+def ai_conversation_response(conversation: AIConversation, messages: list[AIMessage] | None = None) -> AIConversationResponse:
+    return AIConversationResponse(
+        id=conversation.id,
+        title=conversation.title,
+        teaching_mode=conversation.teaching_mode,
+        created_at=conversation.created_at.isoformat(),
+        updated_at=conversation.updated_at.isoformat(),
+        messages=[
+            AIMessageResponse(id=message.id, role=message.role, content=message.content, created_at=message.created_at.isoformat())
+            for message in (messages or [])
+        ],
+    )
+
+
+def owned_conversation(conversation_id: int, user: User, db: Session) -> AIConversation:
+    conversation = db.scalar(select(AIConversation).where(
+        AIConversation.id == conversation_id, AIConversation.user_id == user.id,
+    ))
+    if conversation is None:
+        raise HTTPException(status_code=404, detail="Conversation not found")
+    return conversation
+
+
+@app.post("/api/ai/conversations", response_model=AIConversationResponse, status_code=201)
+def create_ai_conversation(
+    payload: AIConversationCreateRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> AIConversationResponse:
+    conversation = AIConversation(user_id=user.id, title=payload.title, teaching_mode=payload.teaching_mode)
+    db.add(conversation)
+    db.commit()
+    db.refresh(conversation)
+    return ai_conversation_response(conversation)
+
+
+@app.get("/api/ai/conversations", response_model=list[AIConversationResponse])
+def list_ai_conversations(user: User = Depends(current_user), db: Session = Depends(get_db)) -> list[AIConversationResponse]:
+    conversations = db.scalars(select(AIConversation).where(
+        AIConversation.user_id == user.id,
+    ).order_by(AIConversation.updated_at.desc()))
+    return [ai_conversation_response(conversation) for conversation in conversations]
+
+
+@app.get("/api/ai/conversations/{conversation_id}", response_model=AIConversationResponse)
+def get_ai_conversation(
+    conversation_id: int,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> AIConversationResponse:
+    conversation = owned_conversation(conversation_id, user, db)
+    messages = list(db.scalars(select(AIMessage).where(
+        AIMessage.conversation_id == conversation.id,
+    ).order_by(AIMessage.created_at)))
+    return ai_conversation_response(conversation, messages)
+
+
+@app.delete("/api/ai/conversations/{conversation_id}", status_code=204)
+def delete_ai_conversation(
+    conversation_id: int,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> None:
+    conversation = owned_conversation(conversation_id, user, db)
+    db.delete(conversation)
+    db.commit()
+
+
+@app.post("/api/ai/conversations/{conversation_id}/messages", response_model=AIMessageResponse, status_code=201)
+def send_ai_message(
+    conversation_id: int,
+    payload: AIMessageRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> AIMessageResponse:
+    conversation = owned_conversation(conversation_id, user, db)
+    since = datetime.now(UTC) - timedelta(minutes=1)
+    recent_requests = db.scalar(select(func.count(AIUsageLog.id)).where(
+        AIUsageLog.user_id == user.id, AIUsageLog.created_at >= since,
+    )) or 0
+    if recent_requests >= settings.ai_requests_per_minute:
+        raise HTTPException(status_code=429, detail="AI usage limit reached. Try again in a minute.")
+    history = list(db.scalars(select(AIMessage).where(
+        AIMessage.conversation_id == conversation.id,
+    ).order_by(AIMessage.created_at).limit(30)))
+    user_message = AIMessage(
+        conversation_id=conversation.id, role="user", content=payload.content,
+        context_json=json.dumps(payload.context, separators=(",", ":")),
+    )
+    db.add(user_message)
+    db.flush()
+    try:
+        result = generate_reply(
+            [{"role": message.role, "content": message.content} for message in history] + [
+                {"role": "user", "content": payload.content},
+            ],
+            conversation.teaching_mode,
+            payload.context,
+        )
+    except AIProviderError as error:
+        db.rollback()
+        raise HTTPException(status_code=503, detail=str(error)) from error
+    assistant_message = AIMessage(conversation_id=conversation.id, role="assistant", content=result.content)
+    db.add(assistant_message)
+    db.add(AIUsageLog(
+        user_id=user.id, conversation_id=conversation.id,
+        prompt_tokens=result.prompt_tokens, completion_tokens=result.completion_tokens,
+        model=settings.ai_provider_model,
+    ))
+    conversation.updated_at = datetime.now(UTC)
+    db.commit()
+    db.refresh(assistant_message)
+    return AIMessageResponse(
+        id=assistant_message.id, role=assistant_message.role,
+        content=assistant_message.content, created_at=assistant_message.created_at.isoformat(),
+    )
+
+
+@app.post("/api/ai/messages/{message_id}/feedback", status_code=201)
+def add_ai_feedback(
+    message_id: int,
+    payload: AIFeedbackRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> dict[str, str]:
+    message = db.scalar(select(AIMessage).join(AIConversation).where(
+        AIMessage.id == message_id, AIConversation.user_id == user.id,
+    ))
+    if message is None:
+        raise HTTPException(status_code=404, detail="Message not found")
+    db.add(AIFeedback(user_id=user.id, message_id=message.id, rating=payload.rating, comment=payload.comment))
+    db.commit()
+    return {"status": "recorded"}
 
 
 @app.post("/api/auth/signup", response_model=AuthResponse, status_code=status.HTTP_201_CREATED)

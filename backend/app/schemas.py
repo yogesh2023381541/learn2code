@@ -146,3 +146,34 @@ class HistoryResponse(BaseModel):
 class ProfileUpdateRequest(BaseModel):
     full_name: str = Field(min_length=2, max_length=120)
     daily_minutes: int = Field(ge=5, le=480)
+
+
+class AIConversationCreateRequest(BaseModel):
+    title: str = Field(default="New conversation", min_length=1, max_length=160)
+    teaching_mode: str = Field(default="beginner", pattern="^(beginner|detailed|interview|practical|revision)$")
+
+
+class AIMessageRequest(BaseModel):
+    content: str = Field(min_length=1, max_length=20_000)
+    context: dict[str, str] = Field(default_factory=dict)
+
+
+class AIMessageResponse(BaseModel):
+    id: int
+    role: str
+    content: str
+    created_at: str
+
+
+class AIConversationResponse(BaseModel):
+    id: int
+    title: str
+    teaching_mode: str
+    created_at: str
+    updated_at: str
+    messages: list[AIMessageResponse] = []
+
+
+class AIFeedbackRequest(BaseModel):
+    rating: str = Field(pattern="^(helpful|not_helpful)$")
+    comment: str | None = Field(default=None, max_length=2_000)
