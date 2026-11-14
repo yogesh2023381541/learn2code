@@ -108,6 +108,7 @@ class PracticeProblem(Base):
     hints_json: Mapped[Optional[str]] = mapped_column(Text)
     editorial: Mapped[Optional[str]] = mapped_column(Text)
     reference_url: Mapped[Optional[str]] = mapped_column(String(500))
+    starter_code: Mapped[Optional[str]] = mapped_column(Text)
 
 
 class PracticeSubmission(Base):

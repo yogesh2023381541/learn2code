@@ -130,6 +130,14 @@ def test_practice_submission_and_bookmark_are_persisted(client):
     )
     assert revision.status_code == 200
     assert revision.json()["bookmarked"] is True
+    run = client.post(
+        f"/api/practice/problems/{problem['id']}/run",
+        headers=headers,
+        json={"language": "python", "code": "print('hello')", "stdin": ""},
+    )
+    assert run.status_code == 200
+    assert run.json()["status"] == "accepted"
+    assert run.json()["stdout"].strip() == "hello"
     assert client.get("/api/practice/problems", headers=headers).json()[0]["solved"] is True
     bookmark = client.post(
         "/api/users/me/bookmarks",

@@ -80,6 +80,7 @@ export type PracticeProblem = {
   hints?: string[];
   editorial?: string | null;
   reference_url?: string | null;
+  starter_code?: string | null;
 };
 
 function setTokens(accessToken: string, refreshToken: string) {
@@ -223,6 +224,14 @@ export async function submitPractice(problemId: number, language: string, code: 
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ language, code }),
   }) as Promise<{ id: number; status: string; language: string }>;
+}
+
+export async function runPractice(problemId: number, language: string, code: string, stdin: string) {
+  return authorizedFetch(`/api/practice/problems/${problemId}/run`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ language, code, stdin }),
+  }) as Promise<{ status: string; stdout: string; stderr: string; duration_ms: number }>;
 }
 
 export async function getPracticeProgress() {

@@ -38,6 +38,7 @@ from .models import (
     UserHistory,
     UserProfile,
 )
+from .services.code_runner import CodeRunnerError, run_code
 from .schemas import (
     AdminDraftRequest,
     AdminDraftResponse,
@@ -47,6 +48,8 @@ from .schemas import (
     AIMessageRequest,
     AIMessageResponse,
     CodeAssistantRequest,
+    CodeRunRequest,
+    CodeRunResponse,
     ActivityRequest,
     AuthResponse,
     BookmarkRequest,
@@ -786,6 +789,7 @@ def practice_response(problem: PracticeProblem, solved: bool = False) -> Practic
         examples=json.loads(problem.examples_json or "[]"),
         hints=json.loads(problem.hints_json or "[]"),
         editorial=problem.editorial, reference_url=problem.reference_url,
+        starter_code=problem.starter_code,
     )
 
 
@@ -864,6 +868,24 @@ def get_practice_problem(slug: str, user: User = Depends(current_user), db: Sess
     db.add(UserHistory(user_id=user.id, target_type="problem", target_id=problem.id))
     db.commit()
     return practice_response(problem, solved)
+
+
+@app.post("/api/practice/problems/{problem_id}/run", response_model=CodeRunResponse)
+def run_practice_code(
+    problem_id: int,
+    payload: CodeRunRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> CodeRunResponse:
+    if db.get(PracticeProblem, problem_id) is None:
+        raise HTTPException(status_code=404, detail="Practice problem not found")
+    try:
+        result = run_code(payload.language, payload.code, payload.stdin)
+    except CodeRunnerError as error:
+        raise HTTPException(status_code=400, detail=str(error)) from error
+    return CodeRunResponse(
+        status=result.status, stdout=result.stdout, stderr=result.stderr, duration_ms=result.duration_ms,
+    )
 
 
 @app.post("/api/practice/problems/{problem_id}/submissions", response_model=SubmissionResponse, status_code=201)

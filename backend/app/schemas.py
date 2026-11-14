@@ -122,11 +122,23 @@ class PracticeProblemResponse(BaseModel):
     hints: list[str] = []
     editorial: str | None = None
     reference_url: str | None = None
+    starter_code: str | None = None
 
 
 class SubmissionRequest(BaseModel):
     language: str = Field(min_length=1, max_length=40)
     code: str = Field(min_length=1, max_length=100_000)
+
+
+class CodeRunRequest(SubmissionRequest):
+    stdin: str = Field(default="", max_length=20_000)
+
+
+class CodeRunResponse(BaseModel):
+    status: str
+    stdout: str
+    stderr: str
+    duration_ms: int
 
 
 class SubmissionResponse(BaseModel):
