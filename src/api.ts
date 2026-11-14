@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+const API_URL = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
 const ACCESS_TOKEN_KEY = "learn2code_access_token";
 const REFRESH_TOKEN_KEY = "learn2code_refresh_token";
 
